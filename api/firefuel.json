@@ -1,0 +1,171 @@
+{
+"users": [
+    {
+        "id": 1,
+        "name": "Jeff",
+        "phoneNumber": "561-262-1469",
+        "userSeller": false,
+        "userNeedsWood": true,
+        "cityId": 1
+    },
+    {
+        "id": 2,
+        "name": "Renee",
+        "phoneNumber": "954-263-2963",
+        "userSeller": true,
+        "userNeedsWood": false,
+        "cityId": 1
+    }
+],
+"favorites": [
+    {
+        "id": 1,
+        "favoriterId": 1,
+        "favoritedId": 2
+    },
+    {
+        "id": 2,
+        "favoriterId": 2,
+        "favoritedId": 1
+    }
+],
+"cities": [
+    {
+        "id": 1,
+        "cityName": "Nashville"
+    },
+    {
+        "id": 2,
+        "cityName": "Antioch"
+    },
+    {
+        "id": 3,
+        "cityName": "Arrington"
+    },
+    {
+        "id": 4,
+        "cityName": "Belle Meade"
+    },
+    {
+        "id": 5,
+        "cityName": "Bellevue"
+    },
+    {
+        "id": 6,
+        "cityName": "Berry Hill"
+    },
+    {
+        "id": 7,
+        "cityName": "Brentwood"
+    },
+    {
+        "id": 7,
+        "cityName": "Bordeaux"
+    },
+    {
+        "id": 7,
+        "cityName": "Crieve Hall"
+    },
+    {
+        "id": 7,
+        "cityName": "Donelson"
+    },
+    {
+        "id": 7,
+        "cityName": "East Nashville"
+    },
+    {
+        "id": 7,
+        "cityName": "Fairview"
+    },
+    {
+        "id": 7,
+        "cityName": "Forest Hills"
+    },
+    {
+        "id": 7,
+        "cityName": "Franklin"
+    },
+    {
+        "id": 7,
+        "cityName": "Goodlettsville"
+    },
+    {
+        "id": 7,
+        "cityName": "Green Hills"
+    },
+    {
+        "id": 7,
+        "cityName": "Hendersonville"
+    },
+    {
+        "id": 7,
+        "cityName": "Hermitage"
+    },
+    {
+        "id": 7,
+        "cityName": "Inglewood"
+    },
+    {
+        "id": 7,
+        "cityName": "Leipers Fork"
+    },
+    {
+        "id": 7,
+        "cityName": "Madison"
+    },
+    {
+        "id": 7,
+        "cityName": "Mt. Juliet"
+    },
+    {
+        "id": 7,
+        "cityName": "Murfreesboro"
+    },
+    {
+        "id": 7,
+        "cityName": "Nolensville"
+    },
+    {
+        "id": 7,
+        "cityName": "Oak Hill"
+    },
+    {
+        "id": 7,
+        "cityName": "Old Hickory"
+    },
+    {
+        "id": 7,
+        "cityName": "Smyrna"
+    },
+    {
+        "id": 7,
+        "cityName": "Spring Hill"
+    },
+    {
+        "id": 7,
+        "cityName": "Thompson's Station"
+    },
+    {
+        "id": 7,
+        "cityName": "West Meade"
+    },
+    {
+        "id": 7,
+        "cityName": "Whites Creek"
+    }
+],
+"sellerProfiles": [
+    {
+        "id": 1,
+        "userId": 2,
+        "locationCrossStreetOne": "US 70",
+        "locationCrossStreetTwo": "Old Hickory Blvd",
+        "pricePerLog": "1",
+        "pricePerHalfCord": "50",
+        "pricePerFullCord": "100",
+        "sellerDelivers": true,
+        "readyToSell": true
+    }
+]
+}
