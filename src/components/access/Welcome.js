@@ -11,12 +11,12 @@ class Welcome extends Component {
                 <Card>
                     <CardBody>
                         <CardTitle className="h1 mb-3 font-weight-normal">Welcome to FireFuel Please Register or Login</CardTitle>
-                        <CardText>New User
+                        <CardText>New User</CardText>
                         <Button outline><Link to="/register">Register</Link></Button>
-                        </CardText>
-                        <CardText>Already Have Profile?
+
+                        <CardText>Already Have Profile?</CardText>
                         <Button outline><Link to="/login">Login</Link></Button>
-                        </CardText>
+
                     </CardBody>
                 </Card>
             </div>

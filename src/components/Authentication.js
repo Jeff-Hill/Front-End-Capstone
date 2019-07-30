@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { withRouter } from "react-router"
-import Welcome from "./authentication/Welcome"
-import Login from "./authentication/Login"
-import Registration from "./authentication/Registration"
+import Welcome from "./access/Welcome"
+import Login from "./access/Login"
+import Registration from "./access/Registration"
+
 
 
 class Authentication extends Component {
