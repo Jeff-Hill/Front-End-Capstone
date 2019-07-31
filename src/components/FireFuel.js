@@ -18,6 +18,8 @@ export default class FireFuel extends Component {
   isUserLoggedIn = () => {
     if (this.isAuthenticated()) {
       this.setState({ isLoggedIn: true });
+    } else {
+        this.setState({isLoggedIn: false})
     }
   };
 
@@ -29,7 +31,7 @@ export default class FireFuel extends Component {
     if (this.isAuthenticated()) {
       return (
         <React.Fragment>
-          <NavBar />
+          <NavBar isUserLoggedIn={this.isUserLoggedIn}/>
           <ApplicationViews />
         </React.Fragment>
       );

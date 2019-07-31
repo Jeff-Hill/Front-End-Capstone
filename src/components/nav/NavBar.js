@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Button } from 'reactstrap';
-
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
@@ -25,7 +23,8 @@ export default class NavBar extends Component {
                 <Link className="nav-link" to="/favorites">Favorites</Link>
             </li>
             </ul>
-            <Button className="btn btn-outline-success my-2 my-sm-0" type="submit" outline>Logout</Button>
+            <Link className="btn-logout my-2 my-sm-0"
+            outline to="/login" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
 
         </div>
         </nav>
