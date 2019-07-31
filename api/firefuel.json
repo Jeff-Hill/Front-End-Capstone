@@ -34,6 +34,12 @@
       "password": "john",
       "userSeller": false,
       "id": 5
+    },
+    {
+      "username": "bob",
+      "password": "bob",
+      "userSeller": false,
+      "id": 6
     }
   ],
   "favorites": [

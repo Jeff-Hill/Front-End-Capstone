@@ -8,9 +8,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 export default class NavBar extends Component {
     render() {
         return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <div className="navbar-brand">Welcome to FireFuel</div>
+        <Link className="navbar-brand" to="/">Welcome to FireFuel</Link>
             <ul className="navbar-nav mr-auto">
             <li className="nav-item">
                 <Link className="nav-link" to="/home">Home</Link>

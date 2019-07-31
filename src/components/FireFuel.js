@@ -1,39 +1,45 @@
-import React, { Component } from 'react'
-import NavBar from "./nav/NavBar"
-import ApplicationViews from "./ApplicationViews"
+import React, { Component } from "react";
+import NavBar from "./nav/NavBar";
+import ApplicationViews from "./ApplicationViews";
 import Authentication from "./Authentication";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
-let currentUser = sessionStorage.getItem("userId")
 export default class FireFuel extends Component {
-    state = {
-        userId: currentUser
+  // Have to set state in order to change it in the isUserLoggedIn function below to trigger a component re-render
+  state = {
+    username: "",
+    isLoggedIn: false
+  };
+
+  isAuthenticated = () => sessionStorage.getItem("userId") !== null;
+
+  // This function's purpose is to re-render this component after a user is registered or logged in
+  // which will re-run the isAuthenticated and show the navbar on the Home page
+  isUserLoggedIn = () => {
+    if (this.isAuthenticated()) {
+      this.setState({ isLoggedIn: true });
     }
+  };
 
-    isAuthenticated = () => sessionStorage.getItem("userId") !== null;
+  // In order to only show the NavBar to users that are registered or logged in I set isAuthenticated to determine
+  // if session storage has a user logged in and to render the appropriate components.
 
-    isUserLoggedIn = () => {
-        if(this.state.userId === currentUser) {
-            this.isAuthenticated()
-        }
+  render() {
+    console.log("render of the main page");
+    if (this.isAuthenticated()) {
+      return (
+        <React.Fragment>
+          <NavBar />
+          <ApplicationViews />
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+{/* Pass in the isUserLoggedFunction so it can be used by the child components of Authentication */}
+          <Authentication isUserLoggedIn={this.isUserLoggedIn} />
+        </React.Fragment>
+      );
     }
-
-    render() {
-        if (this.isAuthenticated()) {
-        return (
-            <React.Fragment>
-                <NavBar/>
-                <ApplicationViews/>
-            </React.Fragment>
-        )
-        } else {
-        return (
-            <React.Fragment>
-                <Authentication isUserLoggedIn={this.isUserLoggedIn}/>
-            </React.Fragment>
-        )
-            }
-
-
-    }
+  }
 }

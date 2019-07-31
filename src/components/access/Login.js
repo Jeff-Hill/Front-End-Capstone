@@ -17,7 +17,7 @@ class Login extends Component {
     this.setState(stateToChange);
   };
 
-  // Simplistic handler for login submit
+  // This will set session storage when the Login button is clicked
   handleLogin = e => {
     e.preventDefault();
 
@@ -37,12 +37,12 @@ class Login extends Component {
         alert('Please Register');
         this.props.history.push('/register')
       }
-    });
+    // Chain a .then onto this handleLogin function and call the function that triggers a re-render of FireFuel.js
+    // The asynchronousicity of this process doesn't allow for seesion storage to be set quick enough for the re-render
+    // function to work properly
+    }).then(() => this.props.isUserLoggedIn())
 
-    /*
-            For now, just store the email and password that
-            the customer enters into local storage.
-        */
+
   };
 
   render() {
