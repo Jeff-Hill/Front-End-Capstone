@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
-import { Button } from 'reactstrap';
-
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
 export default class NavBar extends Component {
     render() {
         return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <div className="navbar-brand">Welcome to FireFuel</div>
+        <Link className="navbar-brand" to="/">Welcome to FireFuel</Link>
             <ul className="navbar-nav mr-auto">
             <li className="nav-item">
                 <Link className="nav-link" to="/home">Home</Link>
@@ -25,7 +23,8 @@ export default class NavBar extends Component {
                 <Link className="nav-link" to="/favorites">Favorites</Link>
             </li>
             </ul>
-            <Button className="btn btn-outline-success my-2 my-sm-0" type="submit" outline>Logout</Button>
+            <Link className="btn-logout my-2 my-sm-0"
+            outline to="/login" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
 
         </div>
         </nav>
