@@ -11,7 +11,6 @@ class Registration extends Component {
     username: "",
     password: "",
     userSeller: false,
-    isLoggedIn: false
   };
 
   addNewUser = user => {
@@ -51,8 +50,7 @@ class Registration extends Component {
     const user = {
       username: this.state.username,
       password: this.state.password,
-      userSeller: this.state.userSeller,
-      isLoggedIn: true
+      userSeller: this.state.userSeller
     };
 
     // Add a .then onto this function to trigger the re-render of FireFuel.js
