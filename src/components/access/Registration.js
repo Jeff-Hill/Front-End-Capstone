@@ -3,20 +3,29 @@ import { Link, withRouter } from "react-router-dom";
 import LoginManager from "../../modules/LoginManager";
 import { Button } from "reactstrap";
 
+let currentUser = sessionStorage.getItem("userId");
 class Registration extends Component {
   // Set initial state needs to be empty
   state = {
+    id: currentUser,
     username: "",
     password: "",
-    userSeller: false
+    userSeller: false,
+    isLoggedIn: false
   };
 
-  addNewUser = user =>
-    LoginManager.post(user).then(newUser => {
-      sessionStorage.setItem("userId", newUser.id);
-      alert("Thank you for Registering");
-    });
+  addNewUser = user => {
 
+    return LoginManager.post(user)
+      .then(newUser => {
+        sessionStorage.setItem("userId", newUser.id);
+        //   console.log(newUser.id)
+        //   alert("Thank you for Registering")
+      })
+      .then(() =>
+        this.props.history.push(`/profile/${sessionStorage.getItem("userId")}`)
+      );
+  };
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {};
@@ -26,7 +35,7 @@ class Registration extends Component {
 
   // Upon registration of a new user we have to set whether the user is a seller or buyer
   handleUserTypeChange = evt => {
-  // The string of seller is set below as the id of the radio buttons
+    // The string of seller is set below as the id of the radio buttons
     if (evt.target.id === "seller") {
       this.setState({
         userSeller: true
@@ -42,13 +51,13 @@ class Registration extends Component {
     const user = {
       username: this.state.username,
       password: this.state.password,
-      userSeller: this.state.userSeller
+      userSeller: this.state.userSeller,
+      isLoggedIn: true
     };
 
-    this.addNewUser(user)
-      .then(() => this.props.history.push("/home"))
-   // Chain a .then onto this function to trigger the re-render of FireFuel.js
-      .then(() => this.props.isUserLoggedIn());
+    // Add a .then onto this function to trigger the re-render of FireFuel.js
+    this.addNewUser(user).then(() => this.props.isUserLoggedIn());
+
   };
   render() {
     return (
