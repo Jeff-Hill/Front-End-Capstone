@@ -19,55 +19,13 @@
       "cityId": 1
     },
     {
-      "username": "bob",
-      "password": "bob",
-      "userSeller": false,
-      "id": 3
-    },
-    {
-      "username": "jim",
-      "password": "jim",
-      "userSeller": false,
-      "id": 4
-    },
-    {
-      "username": "john",
-      "password": "john",
-      "userSeller": false,
-      "id": 5
-    },
-    {
-      "username": "brad",
-      "password": "brad",
-      "userSeller": false,
-      "id": 6
-    },
-    {
-      "username": "matt",
-      "password": "matt",
-      "userSeller": true,
-      "id": 7
-    },
-    {
-      "username": "matt",
-      "password": "matt",
-      "userSeller": true,
-      "isLoggedIn": true,
-      "id": 8
-    },
-    {
+      "id": 3,
       "username": "will",
       "password": "will",
-      "userSeller": true,
-      "isLoggedIn": true,
-      "id": 9
-    },
-    {
-      "username": "jack",
-      "password": "jack",
+      "phoneNumber": "555-555-5555",
       "userSeller": false,
-      "isLoggedIn": true,
-      "id": 10
+      "userNeedsWood": true,
+      "cityId": 4
     }
   ],
   "favorites": [
@@ -112,99 +70,99 @@
       "cityName": "Brentwood"
     },
     {
-      "id": 7,
+      "id": 8,
       "cityName": "Bordeaux"
     },
     {
-      "id": 7,
+      "id": 9,
       "cityName": "Crieve Hall"
     },
     {
-      "id": 7,
+      "id": 10,
       "cityName": "Donelson"
     },
     {
-      "id": 7,
+      "id": 11,
       "cityName": "East Nashville"
     },
     {
-      "id": 7,
+      "id": 12,
       "cityName": "Fairview"
     },
     {
-      "id": 7,
+      "id": 13,
       "cityName": "Forest Hills"
     },
     {
-      "id": 7,
+      "id": 14,
       "cityName": "Franklin"
     },
     {
-      "id": 7,
+      "id": 15,
       "cityName": "Goodlettsville"
     },
     {
-      "id": 7,
+      "id": 16,
       "cityName": "Green Hills"
     },
     {
-      "id": 7,
+      "id": 17,
       "cityName": "Hendersonville"
     },
     {
-      "id": 7,
+      "id": 18,
       "cityName": "Hermitage"
     },
     {
-      "id": 7,
+      "id": 19,
       "cityName": "Inglewood"
     },
     {
-      "id": 7,
+      "id": 20,
       "cityName": "Leipers Fork"
     },
     {
-      "id": 7,
+      "id": 21,
       "cityName": "Madison"
     },
     {
-      "id": 7,
+      "id": 22,
       "cityName": "Mt. Juliet"
     },
     {
-      "id": 7,
+      "id": 23,
       "cityName": "Murfreesboro"
     },
     {
-      "id": 7,
+      "id": 24,
       "cityName": "Nolensville"
     },
     {
-      "id": 7,
+      "id": 25,
       "cityName": "Oak Hill"
     },
     {
-      "id": 7,
+      "id": 26,
       "cityName": "Old Hickory"
     },
     {
-      "id": 7,
+      "id": 27,
       "cityName": "Smyrna"
     },
     {
-      "id": 7,
+      "id": 28,
       "cityName": "Spring Hill"
     },
     {
-      "id": 7,
+      "id": 29,
       "cityName": "Thompson's Station"
     },
     {
-      "id": 7,
+      "id": 30,
       "cityName": "West Meade"
     },
     {
-      "id": 7,
+      "id": 31,
       "cityName": "Whites Creek"
     }
   ],

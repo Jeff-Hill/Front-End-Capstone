@@ -22,21 +22,22 @@ class ApplicationViews extends Component {
   componentDidMount() {
     const newState = {};
 
-    UserManager.getAll("users").then(users => (newState.users = users));
-    CityManager.getAll("cities").then(cities => (newState.cities = cities));
-    SellerProfileManager.getAll("sellerProfiles").then(
-      sellerProfiles => (newState.sellerProfiless = sellerProfiles)
-    );
-    FavoriteManager.getAll("favorites")
-      .then(favorites => (newState.favorites = favorites))
-      .then(() => this.setState(newState));
+    UserManager.getAll("users")
+    .then(users => (newState.users = users))
+    .then(() => CityManager.getAll("cities"))
+    .then(cities => (newState.cities = cities))
+    .then(() => SellerProfileManager.getAll("sellerProfiles"))
+    .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles) )
+    .then(() => FavoriteManager.getAll("favorites"))
+    .then(favorites => (newState.favorites = favorites))
+    .then(() => this.setState(newState));
   }
 
-  updateBuyer = editedBuyerObject => {
-    return UserManager.put("users", editedBuyerObject)
+  updateUser = editedUserObject => {
+    return UserManager.put("users", editedUserObject)
       .then(() => UserManager.getAll("users"))
       .then(users => {
-        this.props.history.push("/buyers");
+        // this.props.history.push("/buyers");
         this.setState({
           users: users
         });
@@ -44,7 +45,7 @@ class ApplicationViews extends Component {
   };
 
   updateSeller = editedSellerObject => {
-    return SellerProfileManager.put("sellerProfiles", editedSellerObject)
+    return SellerProfileManager.post("sellerProfiles", editedSellerObject)
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
       .then(sellerProfiles => {
         this.props.history.push("/sellers");
@@ -102,9 +103,8 @@ class ApplicationViews extends Component {
                 {...props}
                 user={user}
                 cities={this.state.cities}
-                users={this.state.users}
                 sellerProfiles={this.state.sellerProfiles}
-                updateBuyer={this.updateBuyer}
+                updateUser={this.updateUser}
                 updateSeller={this.updateSeller}
               />
             );
