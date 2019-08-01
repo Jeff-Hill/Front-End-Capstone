@@ -4,8 +4,23 @@ import { withRouter } from "react-router";
 import Welcome from "./access/Welcome";
 import Login from "./access/Login";
 import Registration from "./access/Registration";
+import UserManager from "../modules/UserManager"
 
 class Authentication extends Component {
+  state = {
+    users: [],
+    favorites: [],
+    cities: [],
+    sellerProfiles: []
+  };
+
+  componentDidMount() {
+    const newState = {};
+
+    UserManager.getAll("users")
+      .then(users => (newState.users = users))
+      .then(() => this.setState(newState));
+  }
   render() {
     return (
       <React.Fragment>
@@ -24,7 +39,12 @@ class Authentication extends Component {
           exact
           path="/register"
           render={props => {
-            return <Registration isUserLoggedIn={this.props.isUserLoggedIn} />;
+            return (
+              <Registration
+                isUserLoggedIn={this.props.isUserLoggedIn}
+                users={this.state.users}
+              />
+            );
           }}
         />
       </React.Fragment>
