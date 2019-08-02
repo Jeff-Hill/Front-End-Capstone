@@ -20,18 +20,43 @@
     },
     {
       "id": 3,
-      "username": "will",
-      "password": "will",
-      "phoneNumber": "555-555-5555",
+      "username": "bob",
+      "password": "bob",
+      "phoneNumber": "",
       "userSeller": false,
-      "userNeedsWood": true,
-      "cityId": 4
+      "userNeedsWood": false,
+      "cityId": 1
     },
     {
-      "username": "matt",
-      "password": "matt",
-      "userSeller": true,
-      "id": 4
+      "id": 4,
+      "username": "jim",
+      "password": "jim",
+      "phoneNumber": "",
+      "userSeller": false,
+      "userNeedsWood": false,
+      "cityId": 1
+    },
+    {
+      "id": 5,
+      "username": "bill",
+      "password": "bill",
+      "phoneNumber": "",
+      "userSeller": false,
+      "userNeedsWood": false,
+      "cityId": 2
+    }
+  ],
+  "sellerProfiles": [
+    {
+      "id": 1,
+      "userId": 2,
+      "locationCrossStreetOne": "US 70",
+      "locationCrossStreetTwo": "Old Hickory Blvd",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "50",
+      "pricePerFullCord": "100",
+      "sellerDelivers": true,
+      "readyToSell": true
     }
   ],
   "favorites": [
@@ -170,32 +195,6 @@
     {
       "id": 31,
       "cityName": "Whites Creek"
-    }
-  ],
-  "sellerProfiles": [
-    {
-      "id": 1,
-      "userId": 2,
-      "locationCrossStreetOne": "US 70",
-      "locationCrossStreetTwo": "Old Hickory Blvd",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "50",
-      "pricePerFullCord": "100",
-      "sellerDelivers": true,
-      "readyToSell": true,
-      "paymentAccepted": []
-    },
-    {
-      "userId": "4",
-      "locationCrossStreetOne": "70 S",
-      "locationCrossStreetTwo": "Old Hickory Blvd",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "60",
-      "pricePerFullCord": "120",
-      "sellerDelivers": true,
-      "readyToSell": true,
-      "paymentAccepted": [],
-      "id": 2
     }
   ]
 }

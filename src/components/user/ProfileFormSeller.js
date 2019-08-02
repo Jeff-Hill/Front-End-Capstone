@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class SellerCard extends Component {
+export default class ProfileFormSeller extends Component {
     render() {
         return (
             <div>

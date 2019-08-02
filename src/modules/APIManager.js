@@ -10,6 +10,10 @@ export default {
             return fetch(`${remoteURL}/${resource}`).then(e => e.json())
         },
 
+    allWithCity(resource) {
+      return fetch(`${remoteURL}/${resource}?_expand=city`).then(e => e.json())
+    },
+
     post (resource, resourceObj) {
             return fetch(`${remoteURL}/${resource}`, {
                 method: "POST",

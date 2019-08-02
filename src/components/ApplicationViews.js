@@ -22,7 +22,7 @@ class ApplicationViews extends Component {
   componentDidMount() {
     const newState = {};
 
-    UserManager.getAll("users")
+    UserManager.expandCity("users")
     .then(users => (newState.users = users))
     .then(() => CityManager.getAll("cities"))
     .then(cities => (newState.cities = cities))
@@ -44,7 +44,7 @@ class ApplicationViews extends Component {
       });
   };
 
-  updateSeller = editedSellerObject => {
+  updateSeller = (editedSellerObject, editedUserObject) => {
     return SellerProfileManager.post("sellerProfiles", editedSellerObject)
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
       .then(sellerProfiles => {
@@ -53,10 +53,11 @@ class ApplicationViews extends Component {
           sellerProfiles: sellerProfiles
         });
       })
-      .then(() => this.updateUser())
+      .then(() => this.updateUser(editedUserObject))
   };
 
   render() {
+    console.log(this.state.users)
     return (
       <React.Fragment>
         <Route
@@ -71,7 +72,7 @@ class ApplicationViews extends Component {
           exact
           path="/buyers"
           render={props => {
-            return <UserList {...props} updateUser={this.updateUser} />;
+            return <UserList {...props} users={this.state.users} updateUser={this.updateUser} />;
           }}
         />
 
@@ -96,6 +97,7 @@ class ApplicationViews extends Component {
           render={(props) => {
             let user = this.state.users.find(user => user.id === parseInt(props.match.params.userId)
             )
+            console.log(user)
             if (!user) {
               user = { id: 404, username: "404" };
             }

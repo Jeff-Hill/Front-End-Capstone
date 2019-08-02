@@ -24,7 +24,7 @@ export default class NavBar extends Component {
             </li>
             </ul>
             <Link className="btn-logout my-2 my-sm-0"
-            outline to="/login" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
+            outline to="/" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
 
         </div>
         </nav>

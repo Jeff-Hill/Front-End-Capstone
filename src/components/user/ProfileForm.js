@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import SellerProfileManager from "../../modules/SellerProfileManager";
-import UserManager from "../../modules/UserManager";
 import {
   Col,
   Button,
@@ -11,10 +9,12 @@ import {
   Input,
   FormText
 } from "reactstrap";
+import { stringify } from "querystring";
 
 let currentUser = sessionStorage.getItem("userId");
 class ProfileForm extends Component {
   state = {
+    username: this.props.user.username,
     phoneNumber: "",
     userId: currentUser,
     userNeedsWood: false,
@@ -26,8 +26,7 @@ class ProfileForm extends Component {
     pricePerHalfCord: "",
     pricePerFullCord: "",
     sellerDelivers: false,
-    readyToSell: false,
-    paymentAccepted: []
+    readyToSell: false
   };
 
   handleFieldChange = evt => {
@@ -42,14 +41,25 @@ class ProfileForm extends Component {
     this.setState(stateToChange);
   };
 
-  handleUserNeedsWoodChange = evt => {
-    // The string of yes is set below as the id of the radio buttons
-    if (evt.target.id === "yes") {
-      this.setState({ userNeedsWood: true });
-    } else {
-      this.setState({ userNeedsWood: false });
-    }
-  };
+  addPaymentType = () => {
+    this.setState(state => {
+      const paymentAccepted = [...state.paymentAccepted]
+      return{
+        paymentAccepted
+      }
+    })
+  }
+
+
+
+  // handleUserNeedsWoodChange = evt => {
+  //   // The string of yes is set below as the id of the radio buttons
+  //   if (evt.target.id === "yes") {
+  //     this.setState({ userNeedsWood: true });
+  //   } else {
+  //     this.setState({ userNeedsWood: false });
+  //   }
+  // };
 
   updateBuyerProfile = evt => {
     evt.preventDefault();
@@ -79,10 +89,19 @@ class ProfileForm extends Component {
       pricePerFullCord: this.state.pricePerFullCord,
       sellerDelivers: this.state.sellerDelivers,
       readyToSell: this.state.readyToSell,
-      paymentAccepted: []
+      paymentAccepted: this.state.paymentAccepted
+    };
+    const editedBuyer = {
+      id: this.props.match.params.userId,
+      username: this.props.user.username,
+      password: this.props.user.password,
+      phoneNumber: this.state.phoneNumber,
+      userSeller: this.props.user.userSeller,
+      userNeedsWood: this.state.userNeedsWood,
+      cityId: parseInt(this.state.cityId)
     };
     this.props
-      .updateSeller(editedSeller)
+      .updateSeller(editedSeller, editedBuyer)
       .then(() => this.props.history.push("/sellers"));
   };
 
@@ -106,8 +125,9 @@ class ProfileForm extends Component {
               className="name-to-edit"
               name="username"
               id="username"
-              defaultValue={this.props.user.username}
+              placeholder="Username"
               onChange={this.handleFieldChange}
+              value={this.state.username.status}
             />
           </FormGroup>
           <FormGroup>
@@ -147,9 +167,9 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="yes"
-                name="need-wood"
-                onChange={this.handleUserNeedsWoodChange}
+                id="userNeedsWood"
+                name="userNeedsWood"
+                onChange={this.handleRadioBtnChange}
               />
               Yes
             </Label>
@@ -158,9 +178,9 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="no"
-                name="need-wood"
-                onChange={this.handleUserNeedsWoodChange}
+                id="userNeedsWood"
+                name="userNeedsWood"
+                onChange={this.handleRadioBtnChange}
               />
               No
             </Label>
@@ -184,6 +204,7 @@ class ProfileForm extends Component {
         </Form>
       );
     } else {
+      console.log(this.props.user)
       return (
         <Form>
           <FormText color="dark">
@@ -203,7 +224,7 @@ class ProfileForm extends Component {
               name="username"
               id="username"
               onChange={this.handleFieldChange}
-              defaultValue={this.props.user.username}
+              value={this.props.user.username}
             />
           </FormGroup>
           <FormGroup>
@@ -349,25 +370,25 @@ class ProfileForm extends Component {
             <Col sm="10">
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" />
+                  <Input type="checkbox" onChange={this.addPaymentType} />
                   Card
                 </Label>
               </FormGroup>
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" />
+                  <Input type="checkbox" onChange={this.addPaymentType}/>
                   Cash
                 </Label>
               </FormGroup>
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" />
+                  <Input type="checkbox" onChange={this.addPaymentType} />
                   Venmo
                 </Label>
               </FormGroup>
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" />
+                  <Input type="checkbox" onChange={this.addPaymentType} />
                   PayPal
                 </Label>
               </FormGroup>
