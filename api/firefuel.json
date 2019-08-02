@@ -26,6 +26,12 @@
       "userSeller": false,
       "userNeedsWood": true,
       "cityId": 4
+    },
+    {
+      "username": "matt",
+      "password": "matt",
+      "userSeller": true,
+      "id": 4
     }
   ],
   "favorites": [
@@ -178,6 +184,18 @@
       "sellerDelivers": true,
       "readyToSell": true,
       "paymentAccepted": []
+    },
+    {
+      "userId": "4",
+      "locationCrossStreetOne": "70 S",
+      "locationCrossStreetTwo": "Old Hickory Blvd",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "60",
+      "pricePerFullCord": "120",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "paymentAccepted": [],
+      "id": 2
     }
   ]
 }

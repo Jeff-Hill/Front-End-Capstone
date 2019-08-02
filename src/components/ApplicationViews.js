@@ -27,7 +27,7 @@ class ApplicationViews extends Component {
     .then(() => CityManager.getAll("cities"))
     .then(cities => (newState.cities = cities))
     .then(() => SellerProfileManager.getAll("sellerProfiles"))
-    .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles) )
+    .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles))
     .then(() => FavoriteManager.getAll("favorites"))
     .then(favorites => (newState.favorites = favorites))
     .then(() => this.setState(newState));
@@ -48,11 +48,12 @@ class ApplicationViews extends Component {
     return SellerProfileManager.post("sellerProfiles", editedSellerObject)
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
       .then(sellerProfiles => {
-        this.props.history.push("/sellers");
+        // this.props.history.push("/sellers");
         this.setState({
           sellerProfiles: sellerProfiles
         });
-      });
+      })
+      .then(() => this.updateUser())
   };
 
   render() {
@@ -70,7 +71,7 @@ class ApplicationViews extends Component {
           exact
           path="/buyers"
           render={props => {
-            return <UserList {...props} updateBuyer={this.updateBuyer} />;
+            return <UserList {...props} updateUser={this.updateUser} />;
           }}
         />
 
