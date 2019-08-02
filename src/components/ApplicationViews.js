@@ -22,12 +22,12 @@ class ApplicationViews extends Component {
   componentDidMount() {
     const newState = {};
 
-    UserManager.getAll("users")
+    UserManager.expandCity("users")
     .then(users => (newState.users = users))
     .then(() => CityManager.getAll("cities"))
     .then(cities => (newState.cities = cities))
     .then(() => SellerProfileManager.getAll("sellerProfiles"))
-    .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles) )
+    .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles))
     .then(() => FavoriteManager.getAll("favorites"))
     .then(favorites => (newState.favorites = favorites))
     .then(() => this.setState(newState));
@@ -44,18 +44,20 @@ class ApplicationViews extends Component {
       });
   };
 
-  updateSeller = editedSellerObject => {
+  updateSeller = (editedSellerObject, editedUserObject) => {
     return SellerProfileManager.post("sellerProfiles", editedSellerObject)
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
       .then(sellerProfiles => {
-        this.props.history.push("/sellers");
+        // this.props.history.push("/sellers");
         this.setState({
           sellerProfiles: sellerProfiles
         });
-      });
+      })
+      .then(() => this.updateUser(editedUserObject))
   };
 
   render() {
+    console.log(this.state.users)
     return (
       <React.Fragment>
         <Route
@@ -70,7 +72,7 @@ class ApplicationViews extends Component {
           exact
           path="/buyers"
           render={props => {
-            return <UserList {...props} updateBuyer={this.updateBuyer} />;
+            return <UserList {...props} users={this.state.users} updateUser={this.updateUser} />;
           }}
         />
 
@@ -95,6 +97,7 @@ class ApplicationViews extends Component {
           render={(props) => {
             let user = this.state.users.find(user => user.id === parseInt(props.match.params.userId)
             )
+            console.log(user)
             if (!user) {
               user = { id: 404, username: "404" };
             }
