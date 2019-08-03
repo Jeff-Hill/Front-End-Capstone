@@ -9,8 +9,9 @@ import CityManager from "../modules/CityManager";
 import SellerProfileManager from "../modules/SellerProfileManager";
 import FavoriteManager from "../modules/FavoriteManager";
 import ProfileForm from "./user/ProfileForm";
+import ProfileEditForm from "./user/ProfileEditForm";
 
-let currentUser = sessionStorage.getItem("userId")
+let currentUser = sessionStorage.getItem("userId");
 class ApplicationViews extends Component {
   state = {
     users: [],
@@ -22,15 +23,15 @@ class ApplicationViews extends Component {
   componentDidMount() {
     const newState = {};
 
-    UserManager.expandCity("users")
-    .then(users => (newState.users = users))
-    .then(() => CityManager.getAll("cities"))
-    .then(cities => (newState.cities = cities))
-    .then(() => SellerProfileManager.getAll("sellerProfiles"))
-    .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles))
-    .then(() => FavoriteManager.getAll("favorites"))
-    .then(favorites => (newState.favorites = favorites))
-    .then(() => this.setState(newState));
+    UserManager.getAll("users")
+      .then(users => (newState.users = users))
+      .then(() => CityManager.getAll("cities"))
+      .then(cities => (newState.cities = cities))
+      .then(() => SellerProfileManager.getAll("sellerProfiles"))
+      .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles))
+      .then(() => FavoriteManager.getAll("favorites"))
+      .then(favorites => (newState.favorites = favorites))
+      .then(() => this.setState(newState));
   }
 
   updateUser = editedUserObject => {
@@ -53,11 +54,11 @@ class ApplicationViews extends Component {
           sellerProfiles: sellerProfiles
         });
       })
-      .then(() => this.updateUser(editedUserObject))
+      .then(() => this.updateUser(editedUserObject));
   };
 
   render() {
-    console.log(this.state.users)
+    console.log(this.state.users);
     return (
       <React.Fragment>
         <Route
@@ -72,7 +73,36 @@ class ApplicationViews extends Component {
           exact
           path="/buyers"
           render={props => {
-            return <UserList {...props} users={this.state.users} updateUser={this.updateUser} />;
+            return (
+              <UserList
+                {...props}
+                users={this.state.users}
+                updateUser={this.updateUser}
+              />
+            );
+          }}
+        />
+
+        <Route
+          exact path="/profile/:userId(\d+)/edit"
+          render={props => {
+            let user = this.state.users.find(
+              user => user.id === parseInt(props.match.params.userId)
+            );
+            console.log(user);
+            if (!user) {
+              user = { id: 404, username: "404" };
+            }
+            return (
+              <ProfileEditForm
+                {...props}
+                user={user}
+                cities={this.state.cities}
+                sellerProfiles={this.state.sellerProfiles}
+                updateUser={this.updateUser}
+                updateSeller={this.updateSeller}
+              />
+            );
           }}
         />
 
@@ -80,7 +110,14 @@ class ApplicationViews extends Component {
           exact
           path="/sellers"
           render={props => {
-            return <UserList {...props} updateSeller={this.updateSeller} />;
+            return (
+              <UserList
+                {...props}
+                users={this.state.users}
+                updateUser={this.updateUser}
+                updateSeller={this.updateSeller}
+              />
+            );
           }}
         />
 
@@ -93,11 +130,12 @@ class ApplicationViews extends Component {
         />
 
         <Route
-          path="/profile/:userId(\d+)"
-          render={(props) => {
-            let user = this.state.users.find(user => user.id === parseInt(props.match.params.userId)
-            )
-            console.log(user)
+          exact path="/profile/:userId(\d+)"
+          render={props => {
+            let user = this.state.users.find(
+              user => user.id === parseInt(props.match.params.userId)
+            );
+            console.log(user);
             if (!user) {
               user = { id: 404, username: "404" };
             }

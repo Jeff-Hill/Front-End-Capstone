@@ -1,21 +1,29 @@
-import React, { Component } from 'react'
-import { withRouter } from "react-router-dom"
-import BuyerCard from "./BuyerCard"
-class UserList extends Component {
-    render() {
-        return (
-            <React.Fragment>
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import BuyerCard from "./BuyerCard";
+import SellerCard from "./SellerCard";
 
-                <section className="buyers">
-                {
-                    this.props.users.map(user =>
-                        <BuyerCard key={user.id} user={user} {...this.props} />
-                    )
-                }
-                </section>
-            </React.Fragment>
+export default class UserList extends Component {
+  render() {
+    if (<Route exact path></Route> === "/buyers") {
+      return (
+
+          <section className="users">
+            {this.props.users.map(user => (
+              <BuyerCard key={user.id} user={user} {...this.props} />
+            ))}
+          </section>
+
+      )
+    } else {
+        return (
+        <section className="users">
+          {this.props.users.map(user => (
+            <SellerCard key={user.id} user={user} {...this.props} />
+          ))}
+        </section>
         )
     }
+  }
 }
 
-export default withRouter(UserList)
