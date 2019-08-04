@@ -3,11 +3,10 @@
     {
       "id": 1,
       "username": "jeff",
-      "pasword": "jeff",
-      "phoneNumber": "561-262-1469",
+      "phoneNumber": "561-262-5678",
       "userSeller": false,
       "userNeedsWood": true,
-      "cityId": 1
+      "cityId": 3
     },
     {
       "id": 2,
@@ -20,30 +19,45 @@
     },
     {
       "id": 3,
-      "username": "bob",
-      "password": "bob",
-      "phoneNumber": "",
-      "userSeller": false,
+      "username": "jack",
+      "password": "jack",
+      "phoneNumber": "654-987-9874",
+      "userSeller": true,
       "userNeedsWood": false,
-      "cityId": 1
+      "cityId": 2
     },
     {
       "id": 4,
-      "username": "jim",
-      "password": "jim",
-      "phoneNumber": "",
-      "userSeller": false,
+      "username": "blah",
+      "password": "blah",
+      "phoneNumber": "123-456-7890",
+      "userSeller": true,
       "userNeedsWood": false,
-      "cityId": 1
+      "cityId": 7
     },
     {
       "id": 5,
-      "username": "bill",
-      "password": "bill",
-      "phoneNumber": "",
-      "userSeller": false,
+      "username": "phil",
+      "password": "phil",
+      "phoneNumber": "561-261-4569",
+      "userSeller": true,
       "userNeedsWood": false,
-      "cityId": 2
+      "cityId": 3
+    },
+    {
+      "id": 6,
+      "username": "james",
+      "password": "james",
+      "phoneNumber": "654-654-9874",
+      "userSeller": true,
+      "userNeedsWood": false,
+      "cityId": 4
+    },
+    {
+      "username": "wayne",
+      "password": "wayne",
+      "userSeller": true,
+      "id": 7
     }
   ],
   "sellerProfiles": [
@@ -57,6 +71,17 @@
       "pricePerFullCord": "100",
       "sellerDelivers": true,
       "readyToSell": true
+    },
+    {
+      "userId": 5,
+      "locationCrossStreetOne": "lkj",
+      "locationCrossStreetTwo": "123",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "1",
+      "pricePerFullCord": "1",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 2
     }
   ],
   "favorites": [

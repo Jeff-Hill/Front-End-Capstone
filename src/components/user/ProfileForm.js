@@ -1,32 +1,25 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import {
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText
-} from "reactstrap";
-import { stringify } from "querystring";
+import SellerProfileManager from "../../modules/SellerProfileManager";
+import UserManager from "../../modules/UserManager";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 let currentUser = sessionStorage.getItem("userId");
 class ProfileForm extends Component {
   state = {
     username: this.props.user.username,
+    userId: this.props.user.id,
     phoneNumber: "",
-    userId: currentUser,
+    userSeller: this.props.user.userSeller,
     userNeedsWood: false,
     cityId: "",
-    userId: currentUser,
     locationCrossStreetOne: "",
     locationCrossStreetTwo: "",
     pricePerLog: "",
     pricePerHalfCord: "",
     pricePerFullCord: "",
     sellerDelivers: false,
-    readyToSell: false
+    readyToSell: false,
   };
 
   handleFieldChange = evt => {
@@ -41,25 +34,16 @@ class ProfileForm extends Component {
     this.setState(stateToChange);
   };
 
-  addPaymentType = () => {
-    this.setState(state => {
-      const paymentAccepted = [...state.paymentAccepted]
-      return{
-        paymentAccepted
-      }
-    })
-  }
-
-
-
-  // handleUserNeedsWoodChange = evt => {
-  //   // The string of yes is set below as the id of the radio buttons
-  //   if (evt.target.id === "yes") {
-  //     this.setState({ userNeedsWood: true });
-  //   } else {
-  //     this.setState({ userNeedsWood: false });
-  //   }
-  // };
+  handleUserNeedsWoodChange = evt => {
+    // The string of seller is set below as the id of the radio buttons
+    if (evt.target.id === "yes") {
+      this.setState({
+        userNeedsWood: true
+      });
+    } else {
+      this.setState({ userNeedsWood: false });
+    }
+  };
 
   updateBuyerProfile = evt => {
     evt.preventDefault();
@@ -80,7 +64,7 @@ class ProfileForm extends Component {
   updateSellerProfile = evt => {
     evt.preventDefault();
     const editedSeller = {
-    //   id: this.props.match.params.userId,
+      // id: this.props.match.params.userId,
       userId: parseInt(this.state.userId),
       locationCrossStreetOne: this.state.locationCrossStreetOne,
       locationCrossStreetTwo: this.state.locationCrossStreetTwo,
@@ -89,7 +73,6 @@ class ProfileForm extends Component {
       pricePerFullCord: this.state.pricePerFullCord,
       sellerDelivers: this.state.sellerDelivers,
       readyToSell: this.state.readyToSell,
-      paymentAccepted: this.state.paymentAccepted
     };
     const editedBuyer = {
       id: this.props.match.params.userId,
@@ -125,9 +108,8 @@ class ProfileForm extends Component {
               className="name-to-edit"
               name="username"
               id="username"
-              placeholder="Username"
+              value={this.props.user.username}
               onChange={this.handleFieldChange}
-              value={this.state.username.status}
             />
           </FormGroup>
           <FormGroup>
@@ -141,23 +123,27 @@ class ProfileForm extends Component {
               name="user-phonenumber"
               id="phoneNumber"
               placeholder="--- --- ----"
+              defaultValue={this.props.user.phoneNumber}
               onChange={this.handleFieldChange}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city-select" color="dark" />
+            <Label for="city-select" color="dark">
+
+            </Label>
             <select
               type="select"
               name="city-select"
               id="cityId"
+              defaultValue={this.props.user.cityId}
               onChange={this.handleFieldChange}
             >
               <option value="">Select Your City</option>
-              {this.props.cities.map(city => (
-                <option key={city.id} id={city.id} value={city.id}>
-                  {city.cityName}
-                </option>
-              ))}
+                {this.props.cities.map(city => (
+                  <option key={city.id} id={city.id} value={city.id}>
+                    {city.cityName}
+                  </option>
+                  ))}
             </select>
           </FormGroup>
           <FormGroup tag="fieldset">
@@ -167,9 +153,10 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="userNeedsWood"
-                name="userNeedsWood"
-                onChange={this.handleRadioBtnChange}
+                id="yes"
+                name="user-needs-wood"
+                defaultChecked={this.props.user.userNeedsWood}
+                onChange={this.handleUserNeedsWoodChange}
               />
               Yes
             </Label>
@@ -178,9 +165,10 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="userNeedsWood"
-                name="userNeedsWood"
-                onChange={this.handleRadioBtnChange}
+                id="no"
+                name="user-needs-wood"
+                defaultChecked={this.props.userNeedsWood}
+                onChange={this.handleUserNeedsWoodChange}
               />
               No
             </Label>
@@ -204,7 +192,6 @@ class ProfileForm extends Component {
         </Form>
       );
     } else {
-      console.log(this.props.user)
       return (
         <Form>
           <FormText color="dark">
@@ -364,35 +351,6 @@ class ProfileForm extends Component {
               />
               No
             </Label>
-          </FormGroup>
-          <FormGroup tag="fieldset">
-            <legend>Payments Accepted</legend>
-            <Col sm="10">
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" onChange={this.addPaymentType} />
-                  Card
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" onChange={this.addPaymentType}/>
-                  Cash
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" onChange={this.addPaymentType} />
-                  Venmo
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" onChange={this.addPaymentType} />
-                  PayPal
-                </Label>
-              </FormGroup>
-            </Col>
           </FormGroup>
           <FormGroup>
             <Label for="profile-photo">Profile Photo (optional)</Label>
