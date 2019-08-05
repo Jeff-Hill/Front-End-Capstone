@@ -3,61 +3,28 @@
     {
       "id": 1,
       "username": "jeff",
-      "phoneNumber": "561-262-5678",
       "userSeller": false,
-      "userNeedsWood": true,
-      "cityId": 3
+      "cityId": null
     },
     {
       "id": 2,
-      "username": "renee",
-      "pasword": "renee",
-      "phoneNumber": "954-263-2963",
+      "username": "RENEE",
+      "phoneNumber": "561-263-2963",
       "userSeller": true,
       "userNeedsWood": false,
-      "cityId": 1
+      "cityId": 5
     },
     {
-      "id": 3,
-      "username": "jack",
-      "password": "jack",
-      "phoneNumber": "654-987-9874",
-      "userSeller": true,
-      "userNeedsWood": false,
-      "cityId": 2
+      "username": "mike",
+      "password": "mike",
+      "userSeller": false,
+      "id": 3
     },
     {
-      "id": 4,
-      "username": "blah",
-      "password": "blah",
-      "phoneNumber": "123-456-7890",
+      "username": "bob",
+      "password": "bob",
       "userSeller": true,
-      "userNeedsWood": false,
-      "cityId": 7
-    },
-    {
-      "id": 5,
-      "username": "phil",
-      "password": "phil",
-      "phoneNumber": "561-261-4569",
-      "userSeller": true,
-      "userNeedsWood": false,
-      "cityId": 3
-    },
-    {
-      "id": 6,
-      "username": "james",
-      "password": "james",
-      "phoneNumber": "654-654-9874",
-      "userSeller": true,
-      "userNeedsWood": false,
-      "cityId": 4
-    },
-    {
-      "username": "wayne",
-      "password": "wayne",
-      "userSeller": true,
-      "id": 7
+      "id": 4
     }
   ],
   "sellerProfiles": [
@@ -65,23 +32,12 @@
       "id": 1,
       "userId": 2,
       "locationCrossStreetOne": "US 70",
-      "locationCrossStreetTwo": "Old Hickory Blvd",
-      "pricePerLog": "1",
+      "locationCrossStreetTwo": "Plus park blvd",
+      "pricePerLog": "100",
       "pricePerHalfCord": "50",
       "pricePerFullCord": "100",
       "sellerDelivers": true,
       "readyToSell": true
-    },
-    {
-      "userId": 5,
-      "locationCrossStreetOne": "lkj",
-      "locationCrossStreetTwo": "123",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "1",
-      "pricePerFullCord": "1",
-      "sellerDelivers": true,
-      "readyToSell": true,
-      "id": 2
     }
   ],
   "favorites": [

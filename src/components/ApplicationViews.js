@@ -57,8 +57,18 @@ class ApplicationViews extends Component {
       .then(() => this.updateUser(editedUserObject));
   };
 
+  editSeller = (editedSellerObject, editedUserObject) => {
+    return SellerProfileManager.put("sellerProfiles", editedSellerObject)
+      .then(() => SellerProfileManager.getAll("sellerProfiles"))
+      .then(sellerProfiles => {
+        this.setState({
+          sellerProfiles: sellerProfiles
+        });
+      })
+      .then(() => this.updateUser(editedUserObject));
+  };
+
   render() {
-    console.log(this.state.users);
     return (
       <React.Fragment>
         <Route
@@ -86,21 +96,16 @@ class ApplicationViews extends Component {
         <Route
           exact path="/profile/:userId(\d+)/edit"
           render={props => {
-            let user = this.state.users.find(
-              user => user.id === parseInt(props.match.params.userId)
-            );
-            console.log(user);
-            if (!user) {
-              user = { id: 404, username: "404" };
-            }
+
             return (
               <ProfileEditForm
                 {...props}
-                user={user}
+
+
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
-                updateSeller={this.updateSeller}
+                editSeller={this.editSeller}
               />
             );
           }}
@@ -114,6 +119,7 @@ class ApplicationViews extends Component {
               <UserList
                 {...props}
                 users={this.state.users}
+                sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 updateSeller={this.updateSeller}
               />
@@ -134,11 +140,7 @@ class ApplicationViews extends Component {
           render={props => {
             let user = this.state.users.find(
               user => user.id === parseInt(props.match.params.userId)
-            );
-            console.log(user);
-            if (!user) {
-              user = { id: 404, username: "404" };
-            }
+            )
             return (
               <ProfileForm
                 {...props}
