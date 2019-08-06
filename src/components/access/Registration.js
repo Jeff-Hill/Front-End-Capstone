@@ -19,6 +19,7 @@ class Registration extends Component {
     return LoginManager.post(user)
       .then(newUser => {
         sessionStorage.setItem("userId", newUser.id);
+        this.props.isUserLoggedIn()
         //   console.log(newUser.id)
         //   alert("Thank you for Registering")
       })

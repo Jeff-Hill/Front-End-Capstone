@@ -4,10 +4,10 @@ import SellerProfileManager from "../../modules/SellerProfileManager";
 import UserManager from "../../modules/UserManager";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
-let currentUser = sessionStorage.getItem("userId");
 class ProfileEditForm extends Component {
   state = {
     username: "",
+    password: this.props.password,
     userId: "",
     phoneNumber: "",
     userNeedsWood: "",
@@ -23,10 +23,11 @@ class ProfileEditForm extends Component {
   };
 
   componentDidMount() {
-    UserManager.getWithSellerProfile("users", currentUser).then(user =>
-
+    UserManager.getWithSellerProfile("users", sessionStorage.getItem("userId")).then(user => {
+      if(user.userSeller === true) {
       this.setState({
         username: user.username,
+        password: user.password,
         userId: user.id,
         userNeedsWood: user.userNeedsWood,
         phoneNumber: user.phoneNumber,
@@ -41,8 +42,20 @@ class ProfileEditForm extends Component {
         sellerDelivers: user.sellerProfiles[0].sellerDelivers,
         readyToSell: user.sellerProfiles[0].readyToSell
       }
-    )
-    )
+      )
+    } else {
+      this.setState({
+        username: user.username,
+        password: user.password,
+        userId: user.id,
+        userNeedsWood: user.userNeedsWood,
+        phoneNumber: user.phoneNumber,
+        userSeller: user.userSeller,
+        cityId: user.cityId
+    }
+      )
+    }
+  })
   }
 
 
@@ -60,12 +73,34 @@ class ProfileEditForm extends Component {
 
   handleUserNeedsWoodChange = evt => {
     // The string of seller is set below as the id of the radio buttons
+    console.log(evt.target.id)
     if (evt.target.id === "yes") {
       this.setState({
+
         userNeedsWood: true
       });
     } else {
       this.setState({ userNeedsWood: false });
+    }
+  };
+  handleUserReadyToSellChange = evt => {
+    // The string of seller is set below as the id of the radio buttons
+    if (evt.target.id === "yes") {
+      this.setState({
+        readyToSell: true
+      });
+    } else {
+      this.setState({ readyToSell: false });
+    }
+  };
+  handleUserWillDeliverChange = evt => {
+    // The string of seller is set below as the id of the radio buttons
+    if (evt.target.id === "yes") {
+      this.setState({
+        sellerDelivers: true
+      });
+    } else {
+      this.setState({ sellerDelivers: false });
     }
   };
 
@@ -73,10 +108,10 @@ class ProfileEditForm extends Component {
     evt.preventDefault();
     const editedBuyer = {
       id: this.props.match.params.userId,
-      username: this.state.user.username,
-      password: this.state.user.password,
+      username: this.state.username,
+      password: this.state.password,
       phoneNumber: this.state.phoneNumber,
-      userSeller: this.state.user.userSeller,
+      userSeller: this.state.userSeller,
       userNeedsWood: this.state.userNeedsWood,
       cityId: parseInt(this.state.cityId)
     };
@@ -112,6 +147,7 @@ class ProfileEditForm extends Component {
       .then(() => this.props.history.push("/sellers"));
   };
 
+
   render() {
     if (this.state.userSeller === false) {
       return (
@@ -129,7 +165,7 @@ class ProfileEditForm extends Component {
               className="name-to-edit"
               name="username"
               id="username"
-              defaultValue={this.state.username}
+              value={this.state.username}
               onChange={this.handleFieldChange}
             />
           </FormGroup>
@@ -144,7 +180,7 @@ class ProfileEditForm extends Component {
               name="user-phonenumber"
               id="phoneNumber"
               placeholder="--- --- ----"
-              defaultValue={this.state.phoneNumber}
+              value={this.state.phoneNumber}
               onChange={this.handleFieldChange}
             />
           </FormGroup>
@@ -154,7 +190,7 @@ class ProfileEditForm extends Component {
               type="select"
               name="city-select"
               id="cityId"
-              defaultValue={this.state.cityId}
+              value={this.state.cityId}
               onChange={this.handleFieldChange}
             >
               <option value="">Select Your City</option>
@@ -173,8 +209,8 @@ class ProfileEditForm extends Component {
               <Input
                 type="radio"
                 id="yes"
-                name="user-needs-wood"
-                defaultChecked={this.state.userNeedsWood}
+                name="userNeedsWood"
+                value={this.state.userNeedsWood}
                 onChange={this.handleUserNeedsWoodChange}
               />
               Yes
@@ -185,8 +221,8 @@ class ProfileEditForm extends Component {
               <Input
                 type="radio"
                 id="no"
-                name="user-needs-wood"
-                defaultChecked={this.state.userNeedsWood}
+                name="userNeedsWood"
+                value={this.state.userNeedsWood}
                 onChange={this.handleUserNeedsWoodChange}
               />
               No
@@ -206,7 +242,13 @@ class ProfileEditForm extends Component {
             onClick={this.updateBuyerProfile}
             className="btn btn-primary"
           >
-            Create Profile
+            Update Buyer Profile
+          </Button>
+          <Button
+            onClick={() => this.props.deleteUserProfile(this.state.userId)}
+            className="btn btn-primary"
+          >
+            Delete Profile
           </Button>
         </Form>
       );
@@ -335,10 +377,10 @@ class ProfileEditForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="readyToSell"
+                id="yes"
                 name="readyToSell"
                 value={this.state.readyToSell}
-                onChange={this.handleRadioBtnChange}
+                onChange={this.handleUserReadyToSellChange}
               />
               Yes
             </Label>
@@ -347,10 +389,10 @@ class ProfileEditForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="readyToSell"
+                id="no"
                 name="readyToSell"
                 value={this.state.readyToSell}
-                onChange={this.handleRadioBtnChange}
+                onChange={this.handleUserReadyToSellChange}
               />
               No
             </Label>
@@ -360,10 +402,10 @@ class ProfileEditForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="sellerDelivers"
+                id="yes"
                 name="sellerDelivers"
                 value={this.state.sellerDelivers}
-                onChange={this.handleRadioBtnChange}
+                onChange={this.handleUserWillDeliverChange}
               />
               Yes
             </Label>
@@ -371,10 +413,10 @@ class ProfileEditForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="sellerDelivers"
+                id="no"
                 name="sellerDelivers"
                 value={this.state.sellerDelivers}
-                onChange={this.handleRadioBtnChange}
+                onChange={this.handleUserWillDeliverChange}
               />
               No
             </Label>
@@ -394,6 +436,12 @@ class ProfileEditForm extends Component {
             className="btn btn-primary"
           >
             Edit Seller Profile
+          </Button>
+          <Button
+            onClick={() => {this.props.deleteSellerProfile(this.state.sellerProfileId)}}
+            className="btn btn-primary"
+          >
+            Delete Profile
           </Button>
         </Form>
       );

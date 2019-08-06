@@ -31,6 +31,7 @@ export default {
             return fetch(`${remoteURL}/${resource}/${id}`, {
                 method: "DELETE"
                 })
+                .then(response => response.json())
         },
 
     put(resource, editedObj) {

@@ -20,6 +20,11 @@ export default {
         .then( () => this.getAll(resource))
   },
 
+  delete(resource, id) {
+        return APIManager.delete(resource, id)
+      //   .then( () => this.getAll(resource))
+  },
+
   put(resource, resourceObjId) {
     return APIManager.put(resource, resourceObjId)
   },

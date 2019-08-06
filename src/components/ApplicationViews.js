@@ -22,7 +22,6 @@ class ApplicationViews extends Component {
 
   componentDidMount() {
     const newState = {};
-
     UserManager.getAll("users")
       .then(users => (newState.users = users))
       .then(() => CityManager.getAll("cities"))
@@ -38,7 +37,6 @@ class ApplicationViews extends Component {
     return UserManager.put("users", editedUserObject)
       .then(() => UserManager.getAll("users"))
       .then(users => {
-        // this.props.history.push("/buyers");
         this.setState({
           users: users
         });
@@ -49,7 +47,6 @@ class ApplicationViews extends Component {
     return SellerProfileManager.post("sellerProfiles", editedSellerObject)
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
       .then(sellerProfiles => {
-        // this.props.history.push("/sellers");
         this.setState({
           sellerProfiles: sellerProfiles
         });
@@ -68,6 +65,18 @@ class ApplicationViews extends Component {
       .then(() => this.updateUser(editedUserObject));
   };
 
+  deleteUserProfile = id => {
+    return UserManager.delete("users", id)
+      .then(() => sessionStorage.clear())
+      .then(() => this.props.history.push("/"))
+      .then(() => this.props.isUserLoggedIn())
+  };
+
+  deleteSellerProfile = id => {
+    return SellerProfileManager.delete("sellerProfiles", id)
+      .then(() => this.deleteUserProfile(+sessionStorage.getItem("userId")))
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -75,7 +84,14 @@ class ApplicationViews extends Component {
           exact
           path="/home"
           render={props => {
-            return <HomeList {...props} />;
+            return (
+              <HomeList
+                users={this.state.user}
+                cities={this.state.cites}
+                sellerProfiles={this.state.sellerProfiles}
+                {...props}
+              />
+            );
           }}
         />
 
@@ -150,6 +166,8 @@ class ApplicationViews extends Component {
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 editSeller={this.editSeller}
+                deleteSellerProfile={this.deleteSellerProfile}
+                deleteUserProfile={this.deleteUserProfile}
               />
             );
           }}

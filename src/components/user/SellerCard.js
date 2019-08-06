@@ -35,9 +35,9 @@ export default class SellerCard extends Component {
                         <h5>Price Per FullCord: ${this.props.profile.pricePerFullCord}</h5>
                         <h5>I have wood to sell: {this.userReadyToSell()}</h5>
                         <h5>I will deliver: {this.userWillDeliver()}</h5>
-                        <Button
+                        {/* <Button
                             onClick={() => this.props.deleteUser(this.props.user.id)}
-                            className="card-link">Delete Profile</Button>
+                            className="card-link">Delete Profile</Button> */}
                     </CardTitle>
                 </CardBody>
             </Card>

@@ -8,6 +8,7 @@ import { Col, Row, Card, CardImg, CardText, CardBody, Container,
 
 export default class NavBar extends Component {
     render() {
+        const currentUser = sessionStorage.getItem("userId");
         return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,12 +29,12 @@ export default class NavBar extends Component {
             </ul>
             <Button outline size="sm" >
             <Link className="btn-logout my-2 my-sm-0"
-            outline to={`/profile/${sessionStorage.getItem("userId")}/edit`} >Edit Profile</Link>
+             to={`/profile/${currentUser}/edit`} >Edit Profile</Link>
             </Button>
             <Button outline size="sm">
 
             <Link className="btn-logout my-2 my-sm-0"
-            outline to="/" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
+             to="/" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
             </Button>
         </div>
         </nav>

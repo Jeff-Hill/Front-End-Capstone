@@ -23,9 +23,9 @@ export default class BuyerCard extends Component {
                         <h5>City: {this.props.city.cityName}</h5>
                         <h5>Phone #: {this.props.user.phoneNumber}</h5>
                         <h5>I need wood: {this.userNeedsWood()}</h5>
-                        <Button
+                        {/* <Button
                             onClick={() => this.props.deleteUser(this.props.user.id)}
-                            className="card-link">Delete Profile</Button>
+                            className="card-link">Delete Profile</Button> */}
                     </CardTitle>
                 </CardBody>
             </Card>

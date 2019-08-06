@@ -11,6 +11,7 @@ class ProfileForm extends Component {
     userId: "",
     phoneNumber: "",
     userNeedsWood: "",
+    password: this.props.password,
     userSeller: this.props.userSeller,
     cityId: "",
     locationCrossStreetOne: "",
@@ -28,6 +29,7 @@ class ProfileForm extends Component {
       console.log(user)
       this.setState({
         username: user.username,
+        password: user.password,
         userId: user.id,
         userNeedsWood: user.userNeedsWood,
         phoneNumber: user.phoneNumber,
@@ -161,7 +163,7 @@ class ProfileForm extends Component {
               name="user-phonenumber"
               id="phoneNumber"
               placeholder="--- --- ----"
-              defaultValue={this.state.phoneNumber}
+              value={this.state.phoneNumber}
               onChange={this.handleFieldChange}
             />
           </FormGroup>
@@ -173,7 +175,7 @@ class ProfileForm extends Component {
               type="select"
               name="city-select"
               id="cityId"
-              defaultValue={this.state.cityId}
+              value={this.state.cityId}
               onChange={this.handleFieldChange}
             >
               <option value="">Select Your City</option>
@@ -193,7 +195,7 @@ class ProfileForm extends Component {
                 type="radio"
                 id="yes"
                 name="user-needs-wood"
-                defaultChecked={this.state.userNeedsWood}
+                value={this.state.userNeedsWood}
                 onChange={this.handleFieldChange}
               />
               Yes
@@ -205,7 +207,7 @@ class ProfileForm extends Component {
                 type="radio"
                 id="no"
                 name="user-needs-wood"
-                defaultChecked={this.state.userNeedsWood}
+                value={this.state.userNeedsWood}
                 onChange={this.handleFieldChange}
               />
               No
