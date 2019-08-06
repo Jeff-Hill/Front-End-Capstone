@@ -87,25 +87,8 @@ class ApplicationViews extends Component {
               <UserList
                 {...props}
                 users={this.state.users}
-                updateUser={this.updateUser}
-              />
-            );
-          }}
-        />
-
-        <Route
-          exact path="/profile/:userId(\d+)/edit"
-          render={props => {
-
-            return (
-              <ProfileEditForm
-                {...props}
-
-
-                cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
-                editSeller={this.editSeller}
               />
             );
           }}
@@ -136,19 +119,35 @@ class ApplicationViews extends Component {
         />
 
         <Route
-          exact path="/profile/:userId(\d+)"
+          exact
+          path="/profile/:userId(\d+)"
           render={props => {
             let user = this.state.users.find(
               user => user.id === parseInt(props.match.params.userId)
-            )
+            );
             return (
               <ProfileForm
                 {...props}
-                user={user}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 updateSeller={this.updateSeller}
+              />
+            );
+          }}
+        />
+
+        <Route
+          exact
+          path="/profile/:userId(\d+)/edit"
+          render={props => {
+            return (
+              <ProfileEditForm
+                {...props}
+                cities={this.state.cities}
+                sellerProfiles={this.state.sellerProfiles}
+                updateUser={this.updateUser}
+                editSeller={this.editSeller}
               />
             );
           }}

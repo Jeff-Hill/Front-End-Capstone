@@ -16,6 +16,7 @@ export default {
     },
 
     post (resource, resourceObj) {
+      console.log("API Manager", resource, resourceObj)
             return fetch(`${remoteURL}/${resource}`, {
                 method: "POST",
                 headers: {

@@ -24,9 +24,11 @@ export default {
   put(resource, resourceObjId) {
     return APIManager.put(resource, resourceObjId)
   },
+
   expandCity(resource) {
         return APIManager.allWithCity(resource)
   },
+
   getWithSellerProfile (resource, id) {
 
       return fetch(`${remoteURL}/${resource}/${id}?_embed=sellerProfiles`).then(e => e.json())

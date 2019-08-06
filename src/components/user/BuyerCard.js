@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+    CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
 import CityManager from '../../modules/CityManager';
 
 export default class BuyerCard extends Component {
@@ -13,6 +13,8 @@ export default class BuyerCard extends Component {
     }
     render() {
         return (
+            <Row form>
+                <Col lg={{ size: "auto", offset: 4 }}>
             <Card key={this.props.user.id} className="card">
                 <CardBody className="buyer-card-body">
                     <CardTitle className="buyer-card-title">
@@ -36,6 +38,8 @@ export default class BuyerCard extends Component {
                     </CardTitle>
                 </CardBody>
             </Card>
+            </Col>
+            </Row>
         )
     }
 }

@@ -1,4 +1,5 @@
 import APIManager from "./APIManager.js"
+const remoteURL = "http://localhost:5002"
 
 
 export default {
@@ -21,7 +22,13 @@ export default {
 
   put(resource, resourceObjId) {
     return APIManager.put(resource, resourceObjId)
-  }
+  },
+
+  getWithUserProfiles(resource, id) {
+
+      return fetch(`${remoteURL}/${resource}/?_embed=users`).then(e => e.json())
+
+}
 
 
 }

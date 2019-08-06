@@ -3,8 +3,10 @@
     {
       "id": 1,
       "username": "jeff",
+      "phoneNumber": "561-263-2963",
       "userSeller": false,
-      "cityId": null
+      "userNeedsWood": true,
+      "cityId": 1
     },
     {
       "id": 2,
@@ -15,16 +17,33 @@
       "cityId": 5
     },
     {
-      "username": "mike",
-      "password": "mike",
+      "id": 4,
+      "username": "matthew",
+      "phoneNumber": "561-561-5647",
       "userSeller": false,
-      "id": 3
+      "userNeedsWood": true,
+      "cityId": 3
     },
     {
-      "username": "bob",
-      "password": "bob",
+      "id": 5,
+      "username": "johnathan",
+      "phoneNumber": "561-654-8794",
       "userSeller": true,
-      "id": 4
+      "cityId": 3
+    },
+    {
+      "id": 6,
+      "username": "misty D",
+      "phoneNumber": "564-987-8974",
+      "userSeller": true,
+      "cityId": 4
+    },
+    {
+      "id": 7,
+      "username": "walter",
+      "phoneNumber": "654-987-9854",
+      "userSeller": true,
+      "cityId": 9
     }
   ],
   "sellerProfiles": [
@@ -38,6 +57,28 @@
       "pricePerFullCord": "100",
       "sellerDelivers": true,
       "readyToSell": true
+    },
+    {
+      "userId": 6,
+      "locationCrossStreetOne": "asdf",
+      "locationCrossStreetTwo": "1234",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "2",
+      "pricePerFullCord": "3",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 2
+    },
+    {
+      "userId": 7,
+      "locationCrossStreetOne": "asdf",
+      "locationCrossStreetTwo": "23432",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "2",
+      "pricePerFullCord": "3",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 3
     }
   ],
   "favorites": [
