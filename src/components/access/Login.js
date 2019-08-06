@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import LoginManager from "../../modules/LoginManager";
+import { Col, Row, Card, CardImg, CardText, CardBody, Container,
+  CardTitle, CardSubtitle, Button, ButtonGroup, Media, Image,
+  Jumbotron, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
 class Login extends Component {
   // Set initial state
@@ -44,12 +47,19 @@ class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleLogin}>
-        <h1 className="h3 mb-3 font-weight-normal">
-          Welcome to FireFuel Please Login
-        </h1>
-        <label htmlFor="inputUsername">Username</label>
-        <input
+      <Row form>
+      <Col lg={{ size: "auto", offset: 4 }}>
+      <Card  color="warning">
+
+        <CardBody className="h2 mb-3 font-weight-normal">
+          Welcome Back to FireFuel Please Login
+        </CardBody>
+
+
+          <CardText>
+        <Label htmlFor="inputUsername">Username</Label>
+
+        <Input
           onChange={this.handleFieldChange}
           type="username"
           id="username"
@@ -57,16 +67,23 @@ class Login extends Component {
           required=""
           autoFocus=""
         />
-        <label htmlFor="inputPassword">Password</label>
-        <input
+        </CardText>
+        <CardText>
+        <Label htmlFor="inputPassword">Password</Label>
+        <Input
           onChange={this.handleFieldChange}
           type="password"
           id="password"
           placeholder="Password"
           required=""
         />
-        <button type="submit">Login</button>
-      </form>
+        </CardText>
+
+
+        <Button type="submit" onClick={this.handleLogin}>Login</Button>
+      </Card>
+      </Col>
+      </Row>
     );
   }
 }

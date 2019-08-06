@@ -1,4 +1,6 @@
 import APIManager from "./APIManager.js"
+const remoteURL = "http://localhost:5002"
+
 
 
 export default {
@@ -18,13 +20,24 @@ export default {
         return APIManager.delete(resource, id)
         .then( () => this.getAll(resource))
   },
+  delete(resource, id) {
+        return APIManager.delete(resource, id)
+
+  },
 
   put(resource, resourceObjId) {
     return APIManager.put(resource, resourceObjId)
   },
+
   expandCity(resource) {
         return APIManager.allWithCity(resource)
-  }
+  },
+
+  getWithSellerProfile (resource, id) {
+
+      return fetch(`${remoteURL}/${resource}/${id}?_embed=sellerProfiles`).then(e => e.json())
+
+},
 
 
 }

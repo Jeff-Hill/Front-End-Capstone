@@ -5,25 +5,49 @@ import SellerCard from "./SellerCard";
 
 export default class UserList extends Component {
   render() {
-    if (<Route exact path></Route> === "/buyers") {
+    if (window.location.pathname === "/buyers") {
       return (
-
-          <section className="users">
-            {this.props.users.map(user => (
-              <BuyerCard key={user.id} user={user} {...this.props} />
-            ))}
-          </section>
-
-      )
-    } else {
-        return (
         <section className="users">
-          {this.props.users.map(user => (
-            <SellerCard key={user.id} user={user} {...this.props} />
-          ))}
+          {this.props.users
+            .filter(user => user.userSeller === false)
+            .map(user =>
+              this.props.cities
+                .filter(city => user.cityId === city.id)
+                .map(city => (
+                  <BuyerCard
+                    key={user.id}
+                    user={user}
+                    city={city}
+                    {...this.props}
+                  />
+                ))
+            )}
         </section>
-        )
+      );
+    } else {
+      return (
+        <section className="users">
+          {this.props.users
+            .filter(user => user.userSeller === true)
+            .map(user =>
+              this.props.sellerProfiles
+                .filter(profile => profile.userId === user.id)
+                .map(profile =>
+                  this.props.cities
+                    .filter(city => user.cityId === city.id)
+                    .map(city => (
+                      <SellerCard
+                        key={user.id}
+                        user={user}
+                        city={city}
+                        profile={profile}
+                        {...this.props}
+                      />
+                    ))
+                )
+            )}
+        </section>
+      );
     }
   }
 }
-

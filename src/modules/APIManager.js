@@ -6,6 +6,7 @@ export default {
             return fetch(`${remoteURL}/${resource}/${id}`).then(e => e.json())
 
     },
+
     all (resource) {
             return fetch(`${remoteURL}/${resource}`).then(e => e.json())
         },
@@ -15,6 +16,7 @@ export default {
     },
 
     post (resource, resourceObj) {
+      console.log("API Manager", resource, resourceObj)
             return fetch(`${remoteURL}/${resource}`, {
                 method: "POST",
                 headers: {
@@ -29,6 +31,7 @@ export default {
             return fetch(`${remoteURL}/${resource}/${id}`, {
                 method: "DELETE"
                 })
+                .then(response => response.json())
         },
 
     put(resource, editedObj) {

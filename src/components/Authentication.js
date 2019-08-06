@@ -22,6 +22,7 @@ class Authentication extends Component {
       .then(() => this.setState(newState));
   }
   render() {
+    console.log("render login shit")
     return (
       <React.Fragment>
         <Route exact path="/" component={Welcome} />

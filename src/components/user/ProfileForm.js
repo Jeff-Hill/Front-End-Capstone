@@ -7,20 +7,50 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 let currentUser = sessionStorage.getItem("userId");
 class ProfileForm extends Component {
   state = {
-    username: this.props.user.username,
-    userId: this.props.user.id,
+    username: "",
+    userId: "",
     phoneNumber: "",
-    userSeller: this.props.user.userSeller,
-    userNeedsWood: false,
+    userNeedsWood: "",
+    password: this.props.password,
+    userSeller: this.props.userSeller,
     cityId: "",
     locationCrossStreetOne: "",
     locationCrossStreetTwo: "",
     pricePerLog: "",
     pricePerHalfCord: "",
     pricePerFullCord: "",
-    sellerDelivers: false,
-    readyToSell: false,
-  };
+    sellerDelivers: "",
+    readyToSell: ""
+  }
+
+  componentDidMount() {
+    console.log("profile form mounted")
+    UserManager.get("users", sessionStorage.getItem("userId")).then(user =>{
+      console.log(user)
+      this.setState({
+        username: user.username,
+        password: user.password,
+        userId: user.id,
+        userNeedsWood: user.userNeedsWood,
+        phoneNumber: user.phoneNumber,
+        userSeller: user.userSeller,
+        cityId: user.cityId,
+      //   sellerProfileId: user.sellerProfiles[0].id,
+      //   locationCrossStreetOne: user.sellerProfiles[0].locationCrossStreetOne,
+      //   locationCrossStreetTwo: user.sellerProfiles[0].locationCrossStreetTwo,
+      //   pricePerLog: user.sellerProfiles[0].pricePerLog,
+      //   pricePerHalfCord: user.sellerProfiles[0].pricePerHalfCord,
+      //   pricePerFullCord: user.sellerProfiles[0].pricePerFullCord,
+      //   sellerDelivers: user.sellerProfiles[0].sellerDelivers,
+      //   readyToSell: user.sellerProfiles[0].readyToSell
+      }
+    )
+    }
+
+    )
+  }
+
+
 
   handleFieldChange = evt => {
     const stateToChange = {};
@@ -44,15 +74,25 @@ class ProfileForm extends Component {
       this.setState({ userNeedsWood: false });
     }
   };
+  handleUserReadyToSell = evt => {
+    // The string of seller is set below as the id of the radio buttons
+    if (evt.target.id === "yes") {
+      this.setState({
+        userReadyToSell: true
+      });
+    } else {
+      this.setState({ userReadyToSell: false });
+    }
+  };
 
   updateBuyerProfile = evt => {
     evt.preventDefault();
     const editedBuyer = {
       id: this.props.match.params.userId,
-      username: this.props.user.username,
-      password: this.props.user.password,
+      username: this.state.username,
+      password: this.state.password,
       phoneNumber: this.state.phoneNumber,
-      userSeller: this.props.user.userSeller,
+      userSeller: this.state.userSeller,
       userNeedsWood: this.state.userNeedsWood,
       cityId: parseInt(this.state.cityId)
     };
@@ -65,7 +105,7 @@ class ProfileForm extends Component {
     evt.preventDefault();
     const editedSeller = {
       // id: this.props.match.params.userId,
-      userId: parseInt(this.state.userId),
+      userId: this.state.userId,
       locationCrossStreetOne: this.state.locationCrossStreetOne,
       locationCrossStreetTwo: this.state.locationCrossStreetTwo,
       pricePerLog: this.state.pricePerLog,
@@ -76,10 +116,10 @@ class ProfileForm extends Component {
     };
     const editedBuyer = {
       id: this.props.match.params.userId,
-      username: this.props.user.username,
-      password: this.props.user.password,
+      username: this.state.username,
+      password: this.state.password,
       phoneNumber: this.state.phoneNumber,
-      userSeller: this.props.user.userSeller,
+      userSeller: this.state.userSeller,
       userNeedsWood: this.state.userNeedsWood,
       cityId: parseInt(this.state.cityId)
     };
@@ -89,7 +129,7 @@ class ProfileForm extends Component {
   };
 
   render() {
-    if (this.props.user.userSeller === false) {
+    if (this.state.userSeller === false) {
       return (
         <Form>
           <FormText color="dark">
@@ -108,7 +148,7 @@ class ProfileForm extends Component {
               className="name-to-edit"
               name="username"
               id="username"
-              value={this.props.user.username}
+              value={this.state.username}
               onChange={this.handleFieldChange}
             />
           </FormGroup>
@@ -123,7 +163,7 @@ class ProfileForm extends Component {
               name="user-phonenumber"
               id="phoneNumber"
               placeholder="--- --- ----"
-              defaultValue={this.props.user.phoneNumber}
+              value={this.state.phoneNumber}
               onChange={this.handleFieldChange}
             />
           </FormGroup>
@@ -135,7 +175,7 @@ class ProfileForm extends Component {
               type="select"
               name="city-select"
               id="cityId"
-              defaultValue={this.props.user.cityId}
+              value={this.state.cityId}
               onChange={this.handleFieldChange}
             >
               <option value="">Select Your City</option>
@@ -155,8 +195,8 @@ class ProfileForm extends Component {
                 type="radio"
                 id="yes"
                 name="user-needs-wood"
-                defaultChecked={this.props.user.userNeedsWood}
-                onChange={this.handleUserNeedsWoodChange}
+                value={this.state.userNeedsWood}
+                onChange={this.handleFieldChange}
               />
               Yes
             </Label>
@@ -167,8 +207,8 @@ class ProfileForm extends Component {
                 type="radio"
                 id="no"
                 name="user-needs-wood"
-                defaultChecked={this.props.userNeedsWood}
-                onChange={this.handleUserNeedsWoodChange}
+                value={this.state.userNeedsWood}
+                onChange={this.handleFieldChange}
               />
               No
             </Label>
@@ -187,7 +227,7 @@ class ProfileForm extends Component {
             onClick={this.updateBuyerProfile}
             className="btn btn-primary"
           >
-            Create Profile
+            Create Buyer Profile
           </Button>
         </Form>
       );
@@ -211,7 +251,7 @@ class ProfileForm extends Component {
               name="username"
               id="username"
               onChange={this.handleFieldChange}
-              value={this.props.user.username}
+              value={this.state.username}
             />
           </FormGroup>
           <FormGroup>

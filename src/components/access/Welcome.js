@@ -1,25 +1,42 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import {withRouter} from 'react-router-dom'
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+import "./Access.css"
+import fireplace from "./fireplace.jpg"
+import { DiCodeigniter } from "react-icons/di";
+import { Col, Row, Card, CardImg, CardText, CardBody, Container,
+    CardTitle, CardSubtitle, Button, ButtonGroup, Media, Image, Jumbotron} from 'reactstrap';
 
 class Welcome extends Component {
     render() {
         return (
-            <div>
-                <Card>
+
+            <Row form>
+                <Col lg={{ size: "auto", offset: 4 }}>
+                <Card className="welcome-card" color="warning">
+                    <Row>
                     <CardBody>
-                        <CardTitle className="h1 mb-3 font-weight-normal">Welcome to FireFuel Please Register or Login</CardTitle>
-                        <CardText>New User</CardText>
-                        <Button outline><Link to="/register">Register</Link></Button>
-
-                        <CardText>Already Have Profile?</CardText>
-                        <Button outline><Link to="/login">Login</Link></Button>
-
+                        <CardTitle className="h1 mb-3 font-weight-normal">Welcome to FireFuel</CardTitle>
+                        <CardTitle className="h2 mb-3 font-weight-normal"> Please Register or Login</CardTitle>
+                        <CardBody><DiCodeigniter/></CardBody>
                     </CardBody>
+                    </Row>
+                    <Row>
+                    <ButtonGroup vertical size="lg">
+                    <CardBody>
+                        <CardText>New User</CardText>
+                        <Button color="danger"><Link to="/register" style={{ color: 'black', alignContent: "center" }}>Register<DiCodeigniter/></Link></Button>
+                    </CardBody>
+                    <CardBody>
+                        <CardText>Already Have Profile?</CardText>
+                        <Button color="danger"><Link to="/login" style={{ color: 'black' }}>Login</Link></Button>
+                    </CardBody>
+                    </ButtonGroup>
+                    </Row>
                 </Card>
-            </div>
+                </Col>
+             </Row>
+
         )
     }
 }

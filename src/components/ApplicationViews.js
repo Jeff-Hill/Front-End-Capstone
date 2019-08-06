@@ -22,13 +22,12 @@ class ApplicationViews extends Component {
 
   componentDidMount() {
     const newState = {};
-
     UserManager.getAll("users")
       .then(users => (newState.users = users))
       .then(() => CityManager.getAll("cities"))
       .then(cities => (newState.cities = cities))
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
-      .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles))
+      .then(sellerProfiles => (newState.sellerProfiles = sellerProfiles))
       .then(() => FavoriteManager.getAll("favorites"))
       .then(favorites => (newState.favorites = favorites))
       .then(() => this.setState(newState));
@@ -38,7 +37,6 @@ class ApplicationViews extends Component {
     return UserManager.put("users", editedUserObject)
       .then(() => UserManager.getAll("users"))
       .then(users => {
-        // this.props.history.push("/buyers");
         this.setState({
           users: users
         });
@@ -49,7 +47,6 @@ class ApplicationViews extends Component {
     return SellerProfileManager.post("sellerProfiles", editedSellerObject)
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
       .then(sellerProfiles => {
-        // this.props.history.push("/sellers");
         this.setState({
           sellerProfiles: sellerProfiles
         });
@@ -57,15 +54,44 @@ class ApplicationViews extends Component {
       .then(() => this.updateUser(editedUserObject));
   };
 
+  editSeller = (editedSellerObject, editedUserObject) => {
+    return SellerProfileManager.put("sellerProfiles", editedSellerObject)
+      .then(() => SellerProfileManager.getAll("sellerProfiles"))
+      .then(sellerProfiles => {
+        this.setState({
+          sellerProfiles: sellerProfiles
+        });
+      })
+      .then(() => this.updateUser(editedUserObject));
+  };
+
+  deleteUserProfile = id => {
+    return UserManager.delete("users", id)
+      .then(() => sessionStorage.clear())
+      .then(() => this.props.history.push("/"))
+      .then(() => this.props.isUserLoggedIn())
+  };
+
+  deleteSellerProfile = id => {
+    return SellerProfileManager.delete("sellerProfiles", id)
+      .then(() => this.deleteUserProfile(+sessionStorage.getItem("userId")))
+  };
+
   render() {
-    console.log(this.state.users);
     return (
       <React.Fragment>
         <Route
           exact
           path="/home"
           render={props => {
-            return <HomeList {...props} />;
+            return (
+              <HomeList
+                users={this.state.user}
+                cities={this.state.cites}
+                sellerProfiles={this.state.sellerProfiles}
+                {...props}
+              />
+            );
           }}
         />
 
@@ -77,30 +103,9 @@ class ApplicationViews extends Component {
               <UserList
                 {...props}
                 users={this.state.users}
-                updateUser={this.updateUser}
-              />
-            );
-          }}
-        />
-
-        <Route
-          exact path="/profile/:userId(\d+)/edit"
-          render={props => {
-            let user = this.state.users.find(
-              user => user.id === parseInt(props.match.params.userId)
-            );
-            console.log(user);
-            if (!user) {
-              user = { id: 404, username: "404" };
-            }
-            return (
-              <ProfileEditForm
-                {...props}
-                user={user}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
-                updateSeller={this.updateSeller}
               />
             );
           }}
@@ -114,6 +119,8 @@ class ApplicationViews extends Component {
               <UserList
                 {...props}
                 users={this.state.users}
+                cities={this.state.cities}
+                sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 updateSeller={this.updateSeller}
               />
@@ -130,23 +137,37 @@ class ApplicationViews extends Component {
         />
 
         <Route
-          exact path="/profile/:userId(\d+)"
+          exact
+          path="/profile/:userId(\d+)"
           render={props => {
             let user = this.state.users.find(
               user => user.id === parseInt(props.match.params.userId)
             );
-            console.log(user);
-            if (!user) {
-              user = { id: 404, username: "404" };
-            }
             return (
               <ProfileForm
                 {...props}
-                user={user}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 updateSeller={this.updateSeller}
+              />
+            );
+          }}
+        />
+
+        <Route
+          exact
+          path="/profile/:userId(\d+)/edit"
+          render={props => {
+            return (
+              <ProfileEditForm
+                {...props}
+                cities={this.state.cities}
+                sellerProfiles={this.state.sellerProfiles}
+                updateUser={this.updateUser}
+                editSeller={this.editSeller}
+                deleteSellerProfile={this.deleteSellerProfile}
+                deleteUserProfile={this.deleteUserProfile}
               />
             );
           }}

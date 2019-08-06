@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Col, Row, Card, CardImg, CardText, CardBody, Container,
+    CardTitle, CardSubtitle, Button, ButtonGroup, Media, Image,
+    Jumbotron, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
 
 export default class NavBar extends Component {
     render() {
+        const currentUser = sessionStorage.getItem("userId");
         return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,9 +27,15 @@ export default class NavBar extends Component {
                 <Link className="nav-link" to="/favorites">Favorites</Link>
             </li>
             </ul>
+            <Button outline size="sm" >
             <Link className="btn-logout my-2 my-sm-0"
-            outline to="/" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
+             to={`/profile/${currentUser}/edit`} >Edit Profile</Link>
+            </Button>
+            <Button outline size="sm">
 
+            <Link className="btn-logout my-2 my-sm-0"
+             to="/" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
+            </Button>
         </div>
         </nav>
         )
