@@ -28,7 +28,7 @@ class ApplicationViews extends Component {
       .then(() => CityManager.getAll("cities"))
       .then(cities => (newState.cities = cities))
       .then(() => SellerProfileManager.getAll("sellerProfiles"))
-      .then(sellerProfiles => (newState.sellerProfiless = sellerProfiles))
+      .then(sellerProfiles => (newState.sellerProfiles = sellerProfiles))
       .then(() => FavoriteManager.getAll("favorites"))
       .then(favorites => (newState.favorites = favorites))
       .then(() => this.setState(newState));
@@ -87,6 +87,7 @@ class ApplicationViews extends Component {
               <UserList
                 {...props}
                 users={this.state.users}
+                cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
               />
@@ -102,6 +103,7 @@ class ApplicationViews extends Component {
               <UserList
                 {...props}
                 users={this.state.users}
+                cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 updateSeller={this.updateSeller}

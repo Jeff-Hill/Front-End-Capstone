@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Col, Row, Card, CardImg, CardText, CardBody, Container,
+    CardTitle, CardSubtitle, Button, ButtonGroup, Media, Image,
+    Jumbotron, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
 
 
 export default class NavBar extends Component {
@@ -23,9 +26,15 @@ export default class NavBar extends Component {
                 <Link className="nav-link" to="/favorites">Favorites</Link>
             </li>
             </ul>
+            <Button outline size="sm" >
+            <Link className="btn-logout my-2 my-sm-0"
+            outline to={`/profile/${sessionStorage.getItem("userId")}/edit`} >Edit Profile</Link>
+            </Button>
+            <Button outline size="sm">
+
             <Link className="btn-logout my-2 my-sm-0"
             outline to="/" onClick={() => {sessionStorage.clear(); this.props.isUserLoggedIn()}}>Logout</Link>
-
+            </Button>
         </div>
         </nav>
         )

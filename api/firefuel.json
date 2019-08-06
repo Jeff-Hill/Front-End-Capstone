@@ -34,9 +34,9 @@
     {
       "id": 6,
       "username": "misty D",
-      "phoneNumber": "564-987-8974",
+      "phoneNumber": "123-456-7890",
       "userSeller": true,
-      "cityId": 4
+      "cityId": 10
     },
     {
       "id": 7,
@@ -44,6 +44,26 @@
       "phoneNumber": "654-987-9854",
       "userSeller": true,
       "cityId": 9
+    },
+    {
+      "username": "johnson",
+      "password": "johnson",
+      "userSeller": false,
+      "id": 8
+    },
+    {
+      "username": "bobby",
+      "password": "bobby",
+      "userSeller": false,
+      "id": 9
+    },
+    {
+      "id": 10,
+      "username": "maximus",
+      "password": "maximus",
+      "phoneNumber": "587-987-8521",
+      "userSeller": false,
+      "cityId": 2
     }
   ],
   "sellerProfiles": [
@@ -59,15 +79,15 @@
       "readyToSell": true
     },
     {
+      "id": 2,
       "userId": 6,
-      "locationCrossStreetOne": "asdf",
-      "locationCrossStreetTwo": "1234",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "2",
-      "pricePerFullCord": "3",
-      "sellerDelivers": true,
-      "readyToSell": true,
-      "id": 2
+      "locationCrossStreetOne": "Misty Ave",
+      "locationCrossStreetTwo": "Roll Tide Lane",
+      "pricePerLog": "10",
+      "pricePerHalfCord": "20",
+      "pricePerFullCord": "30",
+      "sellerDelivers": false,
+      "readyToSell": false
     },
     {
       "userId": 7,
