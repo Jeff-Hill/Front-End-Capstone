@@ -11,7 +11,6 @@ import FavoriteManager from "../modules/FavoriteManager";
 import ProfileForm from "./user/ProfileForm";
 import ProfileEditForm from "./user/ProfileEditForm";
 
-let currentUser = sessionStorage.getItem("userId");
 class ApplicationViews extends Component {
   state = {
     users: [],
@@ -21,6 +20,7 @@ class ApplicationViews extends Component {
   };
 
   componentDidMount() {
+    console.log("component mounted")
     const newState = {};
     UserManager.getAll("users")
       .then(users => (newState.users = users))
@@ -33,6 +33,20 @@ class ApplicationViews extends Component {
       .then(() => this.setState(newState));
   }
 
+  filterUserByCity = evt => {
+    console.log(evt.target.value)
+    UserManager.getUserByCity("users", evt.target.value).then((user) =>  {
+      console.log(user);
+
+      if (user.length > 0) {
+        this.setState({
+          users: user
+        })
+      } else {
+        alert("No users in that city");
+      }
+    });
+  };
   updateUser = editedUserObject => {
     return UserManager.put("users", editedUserObject)
       .then(() => UserManager.getAll("users"))
@@ -82,26 +96,12 @@ class ApplicationViews extends Component {
       <React.Fragment>
         <Route
           exact
-          path="/home"
-          render={props => {
-            return (
-              <HomeList
-                users={this.state.user}
-                cities={this.state.cites}
-                sellerProfiles={this.state.sellerProfiles}
-                {...props}
-              />
-            );
-          }}
-        />
-
-        <Route
-          exact
           path="/buyers"
           render={props => {
             return (
               <UserList
                 {...props}
+                filterUserByCity={this.filterUserByCity}
                 users={this.state.users}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
@@ -118,6 +118,7 @@ class ApplicationViews extends Component {
             return (
               <UserList
                 {...props}
+                filterUserByCity={this.filterUserByCity}
                 users={this.state.users}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
