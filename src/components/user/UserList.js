@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import {Link, Route } from "react-router-dom";
 import BuyerCard from "./BuyerCard";
 import SellerCard from "./SellerCard";
 import {
@@ -17,26 +17,15 @@ import {
   FormGroup,
   Input
 } from "reactstrap";
-import UserManager from "../../modules/UserManager";
 
 export default class UserList extends Component {
   state = {
     cityUsers: [],
     userNeedWood: "",
-    userWillDeliver: ""
+    userWillDeliver: "",
+    filtered: []
   };
 
-
-
-//   filterUserNeedsWood = evt => {
-//     this.props.users.filter(user => {
-//       if (user.userNeedsWood === evt.target.value) {
-//         this.setState({
-//           userNeedsWood: user.user
-//         });
-//       }
-//     });
-//   };
 
   render() {
     if (window.location.pathname === "/buyers") {
@@ -68,10 +57,10 @@ export default class UserList extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="yes"
-                name="user-needs-wood"
+                id="true"
+                name="userNeedsWood"
                 value={this.props.userNeedsWood}
-                onChange={this.filterUserNeedsWood}
+                onChange={this.props.filterUserNeedsWood}
               />
               Yes
             </Label>
@@ -80,14 +69,25 @@ export default class UserList extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="no"
-                name="user-needs-wood"
+                id="false"
+                name="userNeedsWood"
                 value={this.props.userNeedsWood}
-                onChange={this.filterUserNeedsWood}
+                onChange={this.props.filterUserNeedsWood}
               />
               No
             </Label>
           </FormGroup>
+          <Button
+            type=""
+            onClick={this.props.resetFilter}
+            className="btn btn-primary"
+          >
+            Reset Filter
+          </Button>
+
+
+
+
           {this.props.users
             .filter(user => user.userSeller === false)
             .map(user =>
@@ -116,7 +116,7 @@ export default class UserList extends Component {
               name="city-select"
               id="cityId"
               value={this.props.cityId}
-              onChange={this.handleFieldChange}
+              onChange={this.props.filterUserByCity}
             >
               <option value="">Select City</option>
               {this.props.cities.map(city => (
@@ -133,10 +133,10 @@ export default class UserList extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="sellerDelivers"
+                id="true"
                 name="sellerDelivers"
                 value={this.props.sellerDelivers}
-                onChange={this.handleRadioBtnChange}
+                onChange={this.props.filterUserWillDeliver}
               />
               Yes
             </Label>
@@ -145,10 +145,10 @@ export default class UserList extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="sellerDelivers"
+                id="false"
                 name="sellerDelivers"
                 value={this.props.sellerDelivers}
-                onChange={this.handleRadioBtnChange}
+                onChange={this.props.filterUserWillDeliver}
               />
               No
             </Label>

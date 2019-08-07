@@ -39,8 +39,15 @@ export default {
       e.json()
     );
   },
-  getUserByCity(resource, cityId) {
-      return fetch(`${remoteURL}/${resource}?cityId=${cityId}`).then(e =>
+
+  getUserByNeedsWood(resource, userNeedsWood) {
+      return fetch(`${remoteURL}/${resource}?userNeedsWood=${userNeedsWood}`).then(e =>
+        e.json()
+      );
+    },
+
+  getUserByType(resource, userSeller) {
+      return fetch(`${remoteURL}/${resource}?userSeller=${userSeller}`).then(e =>
         e.json()
       );
     }

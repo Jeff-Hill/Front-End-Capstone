@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+    CardTitle, CardSubtitle, Button, FormGroup, Label, Input } from 'reactstrap';
 import CityManager from '../../modules/CityManager';
 
 export default class SellerCard extends Component {
@@ -35,9 +35,18 @@ export default class SellerCard extends Component {
                         <h5>Price Per FullCord: ${this.props.profile.pricePerFullCord}</h5>
                         <h5>I have wood to sell: {this.userReadyToSell()}</h5>
                         <h5>I will deliver: {this.userWillDeliver()}</h5>
-                        {/* <Button
-                            onClick={() => this.props.deleteUser(this.props.user.id)}
-                            className="card-link">Delete Profile</Button> */}
+                        <FormGroup check>
+                  <Label check>
+                    <Input
+                      type="radio"
+                      id="favorite"
+                      name="favorite"
+                    //   value={this.state.userNeedsWood}
+                    //   onChange={this.handleFieldChange}
+                    />
+                    Favorite This User
+                  </Label>
+                </FormGroup>
                     </CardTitle>
                 </CardBody>
             </Card>

@@ -15,7 +15,7 @@
       "password": "john",
       "phoneNumber": "-123-4456",
       "userSeller": false,
-      "userNeedsWood": false,
+      "userNeedsWood": true,
       "cityId": 1
     },
     {
@@ -63,7 +63,7 @@
       "pricePerLog": "1",
       "pricePerHalfCord": "2",
       "pricePerFullCord": "3",
-      "sellerDelivers": true,
+      "sellerDelivers": false,
       "readyToSell": true,
       "id": 2
     }
