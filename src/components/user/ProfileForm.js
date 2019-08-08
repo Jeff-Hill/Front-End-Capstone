@@ -98,7 +98,7 @@ class ProfileForm extends Component {
     };
     this.props
       .updateUser(editedBuyer)
-      .then(() => this.props.history.push("/buyers"));
+      .then(() => this.props.history.push("/sellers"));
   };
 
   updateSellerProfile = evt => {
@@ -125,7 +125,7 @@ class ProfileForm extends Component {
     };
     this.props
       .updateSeller(editedSeller, editedBuyer)
-      .then(() => this.props.history.push("/sellers"));
+      .then(() => this.props.history.push("/buyers"));
   };
 
   render() {

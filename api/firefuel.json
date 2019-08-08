@@ -3,23 +3,11 @@
     {
       "id": 10,
       "username": "maximus",
-      "password": "maximu",
+      "password": "maximus",
       "phoneNumber": "587-987-8521",
       "userSeller": false,
       "userNeedsWood": false,
       "cityId": 2
-    },
-    {
-      "username": "buyerman",
-      "password": "buyer",
-      "userSeller": false,
-      "id": 11
-    },
-    {
-      "username": "buyman",
-      "password": "me",
-      "userSeller": false,
-      "id": 12
     },
     {
       "id": 13,
@@ -27,11 +15,59 @@
       "password": "john",
       "phoneNumber": "-123-4456",
       "userSeller": false,
-      "userNeedsWood": false,
+      "userNeedsWood": true,
       "cityId": 1
+    },
+    {
+      "id": 14,
+      "username": "renee",
+      "password": "renee",
+      "phoneNumber": "954-263-6542",
+      "userSeller": false,
+      "userNeedsWood": false,
+      "cityId": 4
+    },
+    {
+      "id": 15,
+      "username": "john",
+      "password": "john",
+      "phoneNumber": "561-262-1469",
+      "userSeller": true,
+      "cityId": 3
+    },
+    {
+      "id": 16,
+      "username": "bobby smalls",
+      "password": "bobby",
+      "phoneNumber": "561-262-1698",
+      "userSeller": true,
+      "cityId": 4
     }
   ],
-  "sellerProfiles": [],
+  "sellerProfiles": [
+    {
+      "userId": 15,
+      "locationCrossStreetOne": "70 s",
+      "locationCrossStreetTwo": "Old Hickory Blvd",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "40",
+      "pricePerFullCord": "80",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 1
+    },
+    {
+      "userId": 16,
+      "locationCrossStreetOne": "asdfsdf",
+      "locationCrossStreetTwo": "asdfasdf",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "2",
+      "pricePerFullCord": "3",
+      "sellerDelivers": false,
+      "readyToSell": true,
+      "id": 2
+    }
+  ],
   "favorites": [
     {
       "id": 1,

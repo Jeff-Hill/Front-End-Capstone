@@ -33,6 +33,12 @@ export default {
 
       return fetch(`${remoteURL}/${resource}/?_embed=users`).then(e => e.json())
 
+},
+
+  getSellerDelivers(resource, sellerDelivers) {
+
+      return fetch(`${remoteURL}/${resource}/?sellerDelivers=${sellerDelivers}`).then(e => e.json())
+
 }
 
 

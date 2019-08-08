@@ -1,37 +1,67 @@
 import React, { Component } from "react";
+import BuyerCard from "../user/BuyerCard";
+import SellerCard from "../user/SellerCard";
+import UserManager from "../../modules/UserManager"
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Row, Col, Label, Container } from 'reactstrap';
+    CardTitle, CardSubtitle, Button, Row, Col, Label, Container, FormGroup, Input } from 'reactstrap';
 
 export default class HomeList extends Component {
+
+    state = {
+
+        userSeller: this.props.userSeller,
+
+      }
+
+      componentDidMount() {
+        console.log("profile form mounted")
+        UserManager.get("users", sessionStorage.getItem("userId")).then(user =>{
+          console.log(user)
+          this.setState({
+            username: user.username,
+            password: user.password,
+            userSeller: user.userSeller,
+          }
+        )
+        }
+
+        )
+      }
   render() {
-    return (
-        <h1>HomeList</h1>
-    //   <Container>
-    //     <Row>
-    //         <Col><h4>Filter</h4></Col>
-    //       <Col xs="6" sm="4">
-    //       <Label for="city-select" color="dark" />
-    //         <select
-    //           type="select"
-    //           name="city-select"
-    //           id="cityId"
-    //           defaultValue={this.props.cityId}
-    //           onChange={this.handleFieldChange}
-    //         >
-    //           <option value="">Select Your City</option>
-    //           {this.props.cities.map(city => (
-    //             <option key={city.id} id={city.id} value={city.id}>
-    //               {city.cityName}
-    //             </option>
-    //           ))}
-    //         </select>
-    //       </Col>
-    //       <Col xs="6" sm="4">
-    //         .col-6 .col-sm-4
-    //       </Col>
-    //       <Col sm="4">.col-sm-4</Col>
-    //     </Row>
-    //   </Container>
-    )
+    if (this.state.userSeller === false) {
+      return (
+        <section className="users">
+
+                  <BuyerCard
+
+                    {...this.props}
+                  />
+        </section>
+      )
+    } else {
+      return (
+        <section className="users">
+          {this.props.users
+            .filter(user => user.userSeller === true)
+            .map(user =>
+              this.props.sellerProfiles
+                .filter(profile => profile.userId === user.id)
+                .map(profile =>
+                  this.props.cities
+                    .filter(city => user.cityId === city.id)
+                    .map(city => (
+                      <SellerCard
+                        key={user.id}
+                        user={user}
+                        city={city}
+                        profile={profile}
+                        {...this.props}
+                      />
+                    ))
+                )
+            )}
+        </section>
+      );
+    }
   }
 }

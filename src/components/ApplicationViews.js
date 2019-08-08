@@ -11,7 +11,6 @@ import FavoriteManager from "../modules/FavoriteManager";
 import ProfileForm from "./user/ProfileForm";
 import ProfileEditForm from "./user/ProfileEditForm";
 
-let currentUser = sessionStorage.getItem("userId");
 class ApplicationViews extends Component {
   state = {
     users: [],
@@ -21,6 +20,7 @@ class ApplicationViews extends Component {
   };
 
   componentDidMount() {
+    console.log("component mounted");
     const newState = {};
     UserManager.getAll("users")
       .then(users => (newState.users = users))
@@ -31,6 +31,70 @@ class ApplicationViews extends Component {
       .then(() => FavoriteManager.getAll("favorites"))
       .then(favorites => (newState.favorites = favorites))
       .then(() => this.setState(newState));
+  }
+
+  filterUserByCity = evt => {
+    console.log(evt.target.value);
+    UserManager.getUserByCity("users", evt.target.value).then(user => {
+      console.log(user);
+
+      if (user.length > 0) {
+        this.setState({
+          users: user
+        });
+      } else {
+        alert("No users in that city");
+      }
+    })
+  };
+
+  filterUserNeedsWood = evt => {
+    console.log(evt.target.id);
+    const woodFilter = evt.target.id
+    UserManager.getUserByNeedsWood("users", evt.target.id).then(user => {
+      console.log(user);
+      if (woodFilter === "true") {
+        this.setState({
+          users: user
+        });
+      } else {
+        this.setState({
+          users: user
+        });
+      }
+    });
+  };
+
+  filterUserWillDeliver = evt => {
+    console.log(evt.target.id);
+    const deliverFilter = evt.target.id
+    SellerProfileManager.getSellerDelivers("sellerProfiles", evt.target.id).then(user => {
+      console.log(user);
+      if (deliverFilter === "true") {
+        this.setState({
+          sellerProfiles: user
+        });
+      } else {
+        this.setState({
+          sellerProfiles: user
+        });
+      }
+    });
+  };
+
+  resetFilter = (userSeller) => {
+    UserManager.getUserByType("users", userSeller).then(user => {
+      // console.log(user)
+      if(userSeller === false) {
+        return (this.setState({
+          users: user
+        }))
+      } else {
+        this.setState({
+          users: user
+        })
+      }
+    })
   }
 
   updateUser = editedUserObject => {
@@ -69,12 +133,13 @@ class ApplicationViews extends Component {
     return UserManager.delete("users", id)
       .then(() => sessionStorage.clear())
       .then(() => this.props.history.push("/"))
-      .then(() => this.props.isUserLoggedIn())
+      .then(() => this.props.isUserLoggedIn());
   };
 
   deleteSellerProfile = id => {
-    return SellerProfileManager.delete("sellerProfiles", id)
-      .then(() => this.deleteUserProfile(+sessionStorage.getItem("userId")))
+    return SellerProfileManager.delete("sellerProfiles", id).then(() =>
+      this.deleteUserProfile(+sessionStorage.getItem("userId"))
+    );
   };
 
   render() {
@@ -82,26 +147,14 @@ class ApplicationViews extends Component {
       <React.Fragment>
         <Route
           exact
-          path="/home"
-          render={props => {
-            return (
-              <HomeList
-                users={this.state.user}
-                cities={this.state.cites}
-                sellerProfiles={this.state.sellerProfiles}
-                {...props}
-              />
-            );
-          }}
-        />
-
-        <Route
-          exact
           path="/buyers"
           render={props => {
             return (
               <UserList
                 {...props}
+                filterUserByCity={this.filterUserByCity}
+                filterUserNeedsWood={this.filterUserNeedsWood}
+                resetFilter={this.resetFilter}
                 users={this.state.users}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
@@ -118,6 +171,8 @@ class ApplicationViews extends Component {
             return (
               <UserList
                 {...props}
+                filterUserByCity={this.filterUserByCity}
+                filterUserWillDeliver={this.filterUserWillDeliver}
                 users={this.state.users}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}

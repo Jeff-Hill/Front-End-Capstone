@@ -9,7 +9,8 @@ class Login extends Component {
   // Set initial state
   state = {
     username: "",
-    password: ""
+    password: "",
+    userSeller: false
   };
 
   // Update state whenever an input field is edited
@@ -32,8 +33,11 @@ class Login extends Component {
           });
 
           alert("Welcome Back");
-
-          this.props.history.push("/home");
+        if(this.state.userSeller === true){
+          this.props.history.push("/sellers")
+        } else {
+          this.props.history.push("/buyers")
+        }
         } else {
           alert("Please Register");
           this.props.history.push("/register");
