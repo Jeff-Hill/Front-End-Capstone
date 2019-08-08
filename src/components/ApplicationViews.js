@@ -10,7 +10,6 @@ import SellerProfileManager from "../modules/SellerProfileManager";
 import FavoriteManager from "../modules/FavoriteManager";
 import ProfileForm from "./user/ProfileForm";
 import ProfileEditForm from "./user/ProfileEditForm";
-import { UV_UDP_REUSEADDR } from "constants";
 
 class ApplicationViews extends Component {
   state = {
@@ -33,32 +32,21 @@ class ApplicationViews extends Component {
       .then(sellerProfiles => (newState.sellerProfiles = sellerProfiles))
       .then(() => FavoriteManager.getAll("favorites"))
       .then(favorites => (newState.favorites = favorites))
+      .then(() => UserManager.getUserBuyer("users"))
+      .then(userBuyer => (newState.userBuyer = userBuyer))
+      .then(() => UserManager.getUserSeller("users"))
+      .then(userSeller => (newState.userSeller = userSeller))
       .then(() => this.setState(newState));
   }
 
   filterUserByCity = evt => {
-
-    UserManager.getUserByCity("users", evt.target.value).then(user => {
-      if(user.length > 0) {
-        this.setState({
-          users: user
-        })
-      } else {
-        alert("No users in that city")
-      }
-
-    })
-
-  };
-
-  filterSellerByCity = evt => {
     console.log(evt.target.value);
-    UserManager.getUserByCity("users", evt.target.value).then(user => {
+    UserManager.getBuyerByCity("users", evt.target.value).then(user => {
       console.log(user);
 
       if (user.length > 0) {
         this.setState({
-          users: user
+          userBuyer: user
         });
       } else {
         alert("No users in that city");
@@ -66,18 +54,35 @@ class ApplicationViews extends Component {
     })
   };
 
+  filterSellerByCity = evt => {
+    console.log(evt.target.value);
+    UserManager.getSellerByCity("users", evt.target.value).then(user => {
+      console.log(user);
+
+      if (user.length > 0) {
+        this.setState({
+          userSeller: user
+        });
+      } else {
+        alert("No users in that city");
+      }
+    })
+  };
+
+
+
   filterUserNeedsWood = evt => {
     console.log(evt.target.id);
     const woodFilter = evt.target.id
-    UserManager.getUserByNeedsWood("users", evt.target.id).then(user => {
+    UserManager.getBuyerNeedsWood("users", evt.target.id).then(user => {
       console.log(user);
       if (woodFilter === "true") {
         this.setState({
-          users: user
+          userBuyer: user
         });
       } else {
         this.setState({
-          users: user
+          userBuyer: user
         });
       }
     });
@@ -102,9 +107,9 @@ class ApplicationViews extends Component {
 
   resetFilter = (userSeller) => {
     UserManager.getUserByType("users", userSeller).then(user => {
-      console.log(user)
+      // console.log(user)
       if(userSeller === false) {
-        (this.setState({
+        return (this.setState({
           users: user
         }))
       } else {
@@ -173,8 +178,7 @@ class ApplicationViews extends Component {
                 filterUserByCity={this.filterUserByCity}
                 filterUserNeedsWood={this.filterUserNeedsWood}
                 resetFilter={this.resetFilter}
-                users={this.state.users}
-                // userBuyer={this.state.userBuyer}
+                userBuyer={this.state.userBuyer}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
@@ -182,24 +186,6 @@ class ApplicationViews extends Component {
             );
           }}
         />
-        {/* <Route
-          exact
-          path="/buyers/filter"
-          render={props => {
-            return (
-              <UserList
-                {...props}
-                // filterUserByCity={this.filterUserByCity}
-                // filterUserNeedsWood={this.filterUserNeedsWood}
-                // resetFilter={this.resetFilter}
-                users={this.state.users}
-                cities={this.state.cities}
-                sellerProfiles={this.state.sellerProfiles}
-                updateUser={this.updateUser}
-              />
-            );
-          }}
-        /> */}
 
         <Route
           exact
@@ -210,7 +196,7 @@ class ApplicationViews extends Component {
                 {...props}
                 filterSellerByCity={this.filterSellerByCity}
                 filterUserWillDeliver={this.filterUserWillDeliver}
-                users={this.state.users}
+                userSeller={this.state.userSeller}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}

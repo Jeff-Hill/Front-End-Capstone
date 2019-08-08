@@ -50,5 +50,35 @@ export default {
       return fetch(`${remoteURL}/${resource}?userSeller=${userSeller}`).then(e =>
         e.json()
       );
+    },
+
+  getUserBuyer(resource) {
+      return fetch(`${remoteURL}/${resource}?userSeller=false`).then(e =>
+        e.json()
+      );
+    },
+
+  getBuyerByCity(resource, cityId) {
+      return fetch(`${remoteURL}/${resource}?userSeller=false&cityId=${cityId}`).then(e =>
+        e.json()
+      );
+    },
+
+  getBuyerNeedsWood(resource, userNeedsWood) {
+      return fetch(`${remoteURL}/${resource}?userSeller=false&userNeedsWood=${userNeedsWood}`).then(e =>
+        e.json()
+      );
+    },
+
+  getUserSeller(resource) {
+      return fetch(`${remoteURL}/${resource}?userSeller=true`).then(e =>
+        e.json()
+      );
+    },
+
+  getSellerByCity(resource, cityId) {
+      return fetch(`${remoteURL}/${resource}?userSeller=true&cityId=${cityId}`).then(e =>
+        e.json()
+      );
     }
 };

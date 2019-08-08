@@ -27,7 +27,7 @@ export default class BuyerCard extends Component {
     return (
       <Row form>
         <Col lg={{ size: "auto", offset: 4 }}>
-          <Card key={this.props.user.id} className="card">
+          <Card key={this.props.userBuyer.id} className="card">
             <CardBody className="buyer-card-body">
               <CardTitle className="buyer-card-title">
                 {/* <img src={dog} className="icon--dog" alt="dog-icon" /> */}
