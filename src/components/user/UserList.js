@@ -32,8 +32,9 @@ export default class UserList extends Component {
       return (
         <section className="users">
           <FormGroup for="city-select" color="dark">
-            <strong>Filter</strong>
+            <strong>Filter buyers by your city or if they are looking for wood</strong>
           </FormGroup>
+            {/* <Row> */}
           <FormGroup>
             <select
               type="select"
@@ -84,19 +85,20 @@ export default class UserList extends Component {
           >
             Reset Filter
           </Button>
+          {/* </Row> */}
 
 
 
 
-          {this.props.users
-            .filter(user => user.userSeller === false)
-            .map(user =>
+          {this.props.userBuyer
+            .filter(userBuyer => userBuyer.userSeller === false)
+            .map(userBuyer =>
               this.props.cities
-                .filter(city => user.cityId === city.id)
+                .filter(city => userBuyer.cityId === city.id)
                 .map(city => (
                   <BuyerCard
-                    key={user.id}
-                    user={user}
+                    key={userBuyer.id}
+                    user={userBuyer}
                     city={city}
                     {...this.props}
                   />
@@ -108,7 +110,7 @@ export default class UserList extends Component {
       return (
         <section className="users">
           <FormGroup for="city-select" color="dark">
-            <strong>Filter</strong>
+            <strong>Filter sellers by your city or those willing to deliver</strong>
           </FormGroup>
           <FormGroup>
             <select
@@ -116,7 +118,7 @@ export default class UserList extends Component {
               name="city-select"
               id="cityId"
               value={this.props.cityId}
-              onChange={this.props.filterUserByCity}
+              onChange={this.props.filterSellerByCity}
             >
               <option value="">Select City</option>
               {this.props.cities.map(city => (
@@ -153,18 +155,25 @@ export default class UserList extends Component {
               No
             </Label>
           </FormGroup>
-          {this.props.users
-            .filter(user => user.userSeller === true)
-            .map(user =>
+          <Button
+            type="submit"
+            onClick={this.props.resetFilter}
+            className="btn btn-primary"
+          >
+            Reset Filter
+          </Button>
+          {this.props.userSeller
+            .filter(userSeller => userSeller.userSeller === true)
+            .map(userSeller =>
               this.props.sellerProfiles
-                .filter(profile => profile.userId === user.id)
+                .filter(profile => profile.userId === userSeller.id)
                 .map(profile =>
                   this.props.cities
-                    .filter(city => user.cityId === city.id)
+                    .filter(city => userSeller.cityId === city.id)
                     .map(city => (
                       <SellerCard
-                        key={user.id}
-                        user={user}
+                        key={userSeller.id}
+                        user={userSeller}
                         city={city}
                         profile={profile}
                         {...this.props}

@@ -63,7 +63,7 @@
     {
       "id": 19,
       "username": "Christy F.",
-       "password": "christy",
+      "password": "christy",
       "phoneNumber": "654-987-9872",
       "userSeller": false,
       "userNeedsWood": true,
@@ -84,6 +84,39 @@
       "phoneNumber": "654-521-5623",
       "userSeller": true,
       "cityId": 28
+    },
+    {
+      "id": 22,
+      "username": "Andy T",
+      "password": "andy",
+      "phoneNumber": "654-987-6231",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 2
+    },
+    {
+      "id": 23,
+      "username": "jackson",
+      "password": "jackson",
+      "phoneNumber": "564-987-9874",
+      "userSeller": true,
+      "cityId": 2
+    },
+    {
+      "id": 24,
+      "username": "joe",
+      "password": "joe",
+      "phoneNumber": "654-987-8974",
+      "userSeller": true,
+      "cityId": 3
+    },
+    {
+      "id": 25,
+      "username": "Cindy Q",
+      "password": "Cindy",
+      "phoneNumber": "654-985-7452",
+      "userSeller": true,
+      "cityId": 16
     }
   ],
   "sellerProfiles": [
@@ -141,6 +174,39 @@
       "pricePerFullCord": "6",
       "sellerDelivers": false,
       "readyToSell": true
+    },
+    {
+      "userId": 23,
+      "locationCrossStreetOne": "sdfgds",
+      "locationCrossStreetTwo": "sdfg",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "2",
+      "pricePerFullCord": "3",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 6
+    },
+    {
+      "userId": 24,
+      "locationCrossStreetOne": "sdfg",
+      "locationCrossStreetTwo": "adsfg",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "2",
+      "pricePerFullCord": "3",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 7
+    },
+    {
+      "userId": 25,
+      "locationCrossStreetOne": "sdfgsg",
+      "locationCrossStreetTwo": "sdfgdsf",
+      "pricePerLog": "2",
+      "pricePerHalfCord": "4",
+      "pricePerFullCord": "8",
+      "sellerDelivers": false,
+      "readyToSell": false,
+      "id": 8
     }
   ],
   "favorites": [
