@@ -35,14 +35,6 @@ class ProfileForm extends Component {
         phoneNumber: user.phoneNumber,
         userSeller: user.userSeller,
         cityId: user.cityId,
-      //   sellerProfileId: user.sellerProfiles[0].id,
-      //   locationCrossStreetOne: user.sellerProfiles[0].locationCrossStreetOne,
-      //   locationCrossStreetTwo: user.sellerProfiles[0].locationCrossStreetTwo,
-      //   pricePerLog: user.sellerProfiles[0].pricePerLog,
-      //   pricePerHalfCord: user.sellerProfiles[0].pricePerHalfCord,
-      //   pricePerFullCord: user.sellerProfiles[0].pricePerFullCord,
-      //   sellerDelivers: user.sellerProfiles[0].sellerDelivers,
-      //   readyToSell: user.sellerProfiles[0].readyToSell
       }
     )
     }
@@ -78,10 +70,21 @@ class ProfileForm extends Component {
     // The string of seller is set below as the id of the radio buttons
     if (evt.target.id === "yes") {
       this.setState({
-        userReadyToSell: true
+        readyToSell: true
       });
     } else {
-      this.setState({ userReadyToSell: false });
+      this.setState({ readyToSell: false });
+    }
+  };
+
+  handleUserWillDeliverChange = evt => {
+    // The string of seller is set below as the id of the radio buttons
+    if (evt.target.id === "yes") {
+      this.setState({
+        sellerDelivers: true
+      });
+    } else {
+      this.setState({ sellerDelivers: false });
     }
   };
 
@@ -196,7 +199,7 @@ class ProfileForm extends Component {
                 id="yes"
                 name="user-needs-wood"
                 value={this.state.userNeedsWood}
-                onChange={this.handleFieldChange}
+                onChange={this.handleUserNeedsWoodChange}
               />
               Yes
             </Label>
@@ -208,7 +211,7 @@ class ProfileForm extends Component {
                 id="no"
                 name="user-needs-wood"
                 value={this.state.userNeedsWood}
-                onChange={this.handleFieldChange}
+                onChange={this.handleUserNeedsWoodChange}
               />
               No
             </Label>
@@ -352,9 +355,10 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="readyToSell"
+                id="yes"
                 name="readyToSell"
-                onChange={this.handleRadioBtnChange}
+                value={this.state.readyToSell}
+                onChange={this.handleUserReadyToSell}
               />
               Yes
             </Label>
@@ -363,9 +367,9 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="readyToSell"
+                id="no"
                 name="readyToSell"
-                onChange={this.handleRadioBtnChange}
+                onChange={this.handleUserReadyToSell}
               />
               No
             </Label>
@@ -375,9 +379,9 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="sellerDelivers"
+                id="yes"
                 name="sellerDelivers"
-                onChange={this.handleRadioBtnChange}
+                onChange={this.handleUserWillDeliverChange}
               />
               Yes
             </Label>
@@ -385,9 +389,9 @@ class ProfileForm extends Component {
             <Label check>
               <Input
                 type="radio"
-                id="sellerDelivers"
+                id="no"
                 name="sellerDelivers"
-                onChange={this.handleRadioBtnChange}
+                onChange={this.handleUserWillDeliverChange}
               />
               No
             </Label>

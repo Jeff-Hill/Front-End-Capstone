@@ -10,13 +10,16 @@ import SellerProfileManager from "../modules/SellerProfileManager";
 import FavoriteManager from "../modules/FavoriteManager";
 import ProfileForm from "./user/ProfileForm";
 import ProfileEditForm from "./user/ProfileEditForm";
+import { UV_UDP_REUSEADDR } from "constants";
 
 class ApplicationViews extends Component {
   state = {
     users: [],
     favorites: [],
     cities: [],
-    sellerProfiles: []
+    sellerProfiles: [],
+    userBuyer: [],
+    userSeller: []
   };
 
   componentDidMount() {
@@ -34,6 +37,21 @@ class ApplicationViews extends Component {
   }
 
   filterUserByCity = evt => {
+
+    UserManager.getUserByCity("users", evt.target.value).then(user => {
+      if(user.length > 0) {
+        this.setState({
+          users: user
+        })
+      } else {
+        alert("No users in that city")
+      }
+
+    })
+
+  };
+
+  filterSellerByCity = evt => {
     console.log(evt.target.value);
     UserManager.getUserByCity("users", evt.target.value).then(user => {
       console.log(user);
@@ -84,9 +102,9 @@ class ApplicationViews extends Component {
 
   resetFilter = (userSeller) => {
     UserManager.getUserByType("users", userSeller).then(user => {
-      // console.log(user)
+      console.log(user)
       if(userSeller === false) {
-        return (this.setState({
+        (this.setState({
           users: user
         }))
       } else {
@@ -156,6 +174,7 @@ class ApplicationViews extends Component {
                 filterUserNeedsWood={this.filterUserNeedsWood}
                 resetFilter={this.resetFilter}
                 users={this.state.users}
+                // userBuyer={this.state.userBuyer}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
@@ -163,6 +182,24 @@ class ApplicationViews extends Component {
             );
           }}
         />
+        {/* <Route
+          exact
+          path="/buyers/filter"
+          render={props => {
+            return (
+              <UserList
+                {...props}
+                // filterUserByCity={this.filterUserByCity}
+                // filterUserNeedsWood={this.filterUserNeedsWood}
+                // resetFilter={this.resetFilter}
+                users={this.state.users}
+                cities={this.state.cities}
+                sellerProfiles={this.state.sellerProfiles}
+                updateUser={this.updateUser}
+              />
+            );
+          }}
+        /> */}
 
         <Route
           exact
@@ -171,7 +208,7 @@ class ApplicationViews extends Component {
             return (
               <UserList
                 {...props}
-                filterUserByCity={this.filterUserByCity}
+                filterSellerByCity={this.filterSellerByCity}
                 filterUserWillDeliver={this.filterUserWillDeliver}
                 users={this.state.users}
                 cities={this.state.cities}

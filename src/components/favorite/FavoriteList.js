@@ -34,6 +34,20 @@ export default class FavoriteList extends Component {
 
       }
 
+      saveNewUser = () => {
+
+        const user = {
+          username: this.state.username,
+          password: this.state.password,
+          userSeller: this.state.userSeller,
+          userId: this.state.currentUser
+        };
+
+        // Add a .then onto this function to trigger the re-render of FireFuel.js
+        this.addNewUser(user).then(() => this.props.isUserLoggedIn());
+
+      };
+
     render() {
         return (
             <div>
