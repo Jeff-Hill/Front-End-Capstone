@@ -105,18 +105,21 @@ class ApplicationViews extends Component {
     });
   };
 
-  resetFilter = (userSeller) => {
-    UserManager.getUserByType("users", userSeller).then(user => {
-      // console.log(user)
-      if(userSeller === false) {
-        return (this.setState({
-          users: user
-        }))
-      } else {
-        this.setState({
-          users: user
+  resetSellerFilter = (user) => {
+    UserManager.getUserSeller("users").then(user => {
+      console.log("reset filter", user)
+      this.setState({
+          userSeller: user
         })
-      }
+    })
+  }
+
+  resetBuyerFilter = (user) => {
+    UserManager.getUserBuyer("users").then(user => {
+      console.log("reset buyer filter", user)
+      this.setState({
+          userBuyer: user
+        })
     })
   }
 
@@ -177,7 +180,7 @@ class ApplicationViews extends Component {
                 {...props}
                 filterUserByCity={this.filterUserByCity}
                 filterUserNeedsWood={this.filterUserNeedsWood}
-                resetFilter={this.resetFilter}
+                resetBuyerFilter={this.resetBuyerFilter}
                 userBuyer={this.state.userBuyer}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
@@ -197,6 +200,7 @@ class ApplicationViews extends Component {
                 filterSellerByCity={this.filterSellerByCity}
                 filterUserWillDeliver={this.filterUserWillDeliver}
                 userSeller={this.state.userSeller}
+                resetSellerFilter={this.resetSellerFilter}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
