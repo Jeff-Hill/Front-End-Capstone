@@ -78,7 +78,7 @@ export default class UserList extends Component {
             </Label>
           </FormGroup>
           <Button
-            type=""
+            type="submit"
             onClick={this.props.resetFilter}
             className="btn btn-primary"
           >

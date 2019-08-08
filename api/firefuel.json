@@ -42,6 +42,48 @@
       "phoneNumber": "561-262-1698",
       "userSeller": true,
       "cityId": 4
+    },
+    {
+      "id": 17,
+      "username": "Jackie S.",
+      "password": "jackie",
+      "phoneNumber": "654-954-9874",
+      "userSeller": true,
+      "cityId": 9
+    },
+    {
+      "id": 18,
+      "username": "Hank W.",
+      "password": "hank",
+      "phoneNumber": "654-987-9523",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 8
+    },
+    {
+      "id": 19,
+      "username": "Christy F.",
+       "password": "christy",
+      "phoneNumber": "654-987-9872",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 27
+    },
+    {
+      "id": 20,
+      "username": "Manny P",
+      "password": "manny",
+      "phoneNumber": "654-987-8521",
+      "userSeller": true,
+      "cityId": 10
+    },
+    {
+      "id": 21,
+      "username": "Benny",
+      "password": "ben",
+      "phoneNumber": "654-521-5623",
+      "userSeller": true,
+      "cityId": 28
     }
   ],
   "sellerProfiles": [
@@ -66,6 +108,39 @@
       "sellerDelivers": false,
       "readyToSell": true,
       "id": 2
+    },
+    {
+      "id": 3,
+      "userId": 17,
+      "locationCrossStreetOne": "123 Main Street",
+      "locationCrossStreetTwo": "456 Cross Street",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "2",
+      "pricePerFullCord": "4",
+      "sellerDelivers": false,
+      "readyToSell": false
+    },
+    {
+      "id": 4,
+      "userId": 20,
+      "locationCrossStreetOne": "kjh",
+      "locationCrossStreetTwo": "lkjlk",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "2",
+      "pricePerFullCord": "3",
+      "sellerDelivers": true,
+      "readyToSell": true
+    },
+    {
+      "id": 5,
+      "userId": 21,
+      "locationCrossStreetOne": "sdgf",
+      "locationCrossStreetTwo": "erte",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "3",
+      "pricePerFullCord": "6",
+      "sellerDelivers": false,
+      "readyToSell": true
     }
   ],
   "favorites": [
