@@ -14,9 +14,9 @@ export default {
         return APIManager.post(resource, resourceObj)
   },
 
-  removeAndList(resource, id) {
+  remove(resource, id) {
         return APIManager.delete(resource, id)
-        .then( () => this.getAll(resource))
+
   },
 
   put(resource, resourceObjId) {

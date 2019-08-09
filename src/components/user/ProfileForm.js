@@ -107,7 +107,6 @@ class ProfileForm extends Component {
   updateSellerProfile = evt => {
     evt.preventDefault();
     const editedSeller = {
-      // id: this.props.match.params.userId,
       userId: this.state.userId,
       locationCrossStreetOne: this.state.locationCrossStreetOne,
       locationCrossStreetTwo: this.state.locationCrossStreetTwo,
