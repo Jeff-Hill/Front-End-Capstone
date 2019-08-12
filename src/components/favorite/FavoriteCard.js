@@ -13,23 +13,16 @@ import {
   Label,
   Input
 } from "reactstrap";
-import CityManager from "../../modules/CityManager";
 
-export default class BuyerCard extends Component {
-  userNeedsWood = () => {
-    if (this.props.user.userNeedsWood === true) {
-      return "Yes";
-    } else {
-      return "No";
-    }
-  };
+export default class FavoriteCard extends Component {
+
   render() {
     return (
       <Row form>
         <Col lg={{ size: "auto", offset: 4 }}>
-          <Card key={this.props.userBuyer.id} className="card">
-            <CardBody className="buyer-card-body">
-              <CardTitle className="buyer-card-title">
+          <Card key={this.props.user.id} className="card">
+            <CardBody className="favorite-card-body">
+              <CardTitle className="favorite-card-title">
                 {/* <img src={dog} className="icon--dog" alt="dog-icon" /> */}
                 <h4>Name: {this.props.user.username}</h4>
                 <h5>City: {this.props.city.cityName}</h5>

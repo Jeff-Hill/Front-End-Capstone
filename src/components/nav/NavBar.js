@@ -21,7 +21,7 @@ export default class NavBar extends Component {
                 <Link className="nav-link" to="/sellers">Sellers</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/favorites">Favorites</Link>
+                <Link className="nav-link" to="/favorites" onClick={this.displayFavoritesByUser}>Favorites</Link>
             </li>
             </ul>
             <Button outline size="sm" >

@@ -38,7 +38,7 @@ export default class SellerCard extends Component {
                         <FormGroup check>
                   <Label check>
                     <Input
-                      type="radio"
+                      type="checkbox"
                       id="favorite"
                       name="favorite"
                     //   value={this.state.userNeedsWood}

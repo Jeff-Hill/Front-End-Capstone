@@ -34,9 +34,10 @@ class Login extends Component {
 
           alert("Welcome Back");
         if(this.state.userSeller === true){
-          this.props.history.push("/sellers")
-        } else {
+          console.log("login userSeller is", this.state.userSeller)
           this.props.history.push("/buyers")
+        } else {
+          this.props.history.push("/sellers")
         }
         } else {
           alert("Please Register");
