@@ -41,8 +41,9 @@ export default class BuyerCard extends Component {
                       type="radio"
                       id="favorite"
                       name="favorite"
+
                     //   value={this.state.userNeedsWood}
-                    //   onChange={this.handleFieldChange}
+                      onChange={() => this.props.saveNewFavoritePair(this.props.user)}
                     />
                     Favorite This User
                   </Label>

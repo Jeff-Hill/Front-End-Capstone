@@ -80,7 +80,7 @@ export default class UserList extends Component {
           </FormGroup>
           <Button
             type="submit"
-            onClick={this.props.resetFilter}
+            onClick={this.props.resetBuyerFilter}
             className="btn btn-primary"
           >
             Reset Filter
@@ -157,7 +157,7 @@ export default class UserList extends Component {
           </FormGroup>
           <Button
             type="submit"
-            onClick={this.props.resetFilter}
+            onClick={this.props.resetSellerFilter}
             className="btn btn-primary"
           >
             Reset Filter

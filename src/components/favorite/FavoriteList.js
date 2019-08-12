@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import FavoriteManager from '../../modules/FavoriteManager';
 
+let currentUser = sessionStorage.getItem("userId")
 export default class FavoriteList extends Component {
 
     State = {
-        user_favoriter: "",
-        user_favorited: ""
+        favoriter: "",
+        favorited: ""
     }
 
     // componentDidMount() {
@@ -22,31 +23,7 @@ export default class FavoriteList extends Component {
     //     )
     //   }
 
-    addNewFavorite = user => {
 
-        return FavoriteManager.post(user)
-          .then(newFavorite => {
-              this.setState({
-
-              })
-
-          })
-
-      }
-
-      saveNewUser = () => {
-
-        const user = {
-          username: this.state.username,
-          password: this.state.password,
-          userSeller: this.state.userSeller,
-          userId: this.state.currentUser
-        };
-
-        // Add a .then onto this function to trigger the re-render of FireFuel.js
-        this.addNewUser(user).then(() => this.props.isUserLoggedIn());
-
-      };
 
     render() {
         return (

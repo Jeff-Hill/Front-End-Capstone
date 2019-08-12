@@ -6,7 +6,7 @@
       "password": "maximus",
       "phoneNumber": "587-987-8521",
       "userSeller": false,
-      "userNeedsWood": false,
+      "userNeedsWood": true,
       "cityId": 2
     },
     {
@@ -26,14 +26,6 @@
       "userSeller": false,
       "userNeedsWood": false,
       "cityId": 4
-    },
-    {
-      "id": 15,
-      "username": "john",
-      "password": "john",
-      "phoneNumber": "561-262-1469",
-      "userSeller": true,
-      "cityId": 3
     },
     {
       "id": 16,
@@ -68,14 +60,6 @@
       "userSeller": false,
       "userNeedsWood": true,
       "cityId": 27
-    },
-    {
-      "id": 20,
-      "username": "Manny P",
-      "password": "manny",
-      "phoneNumber": "654-987-8521",
-      "userSeller": true,
-      "cityId": 10
     },
     {
       "id": 21,
@@ -117,20 +101,44 @@
       "phoneNumber": "654-985-7452",
       "userSeller": true,
       "cityId": 16
+    },
+    {
+      "id": 26,
+      "username": "jeff H",
+      "password": "jeff",
+      "phoneNumber": "564-654-9874",
+      "userSeller": false,
+      "userNeedsWood": false,
+      "cityId": 11
+    },
+    {
+      "id": 27,
+      "username": "nick R",
+      "password": "nick",
+      "phoneNumber": "654-987-9874",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 23
+    },
+    {
+      "id": 28,
+      "username": "erin R",
+      "password": "erin",
+      "phoneNumber": "654-654-9874",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 6
+    },
+    {
+      "id": 29,
+      "username": "randy T",
+      "password": "randy",
+      "phoneNumber": "654-987-9874",
+      "userSeller": true,
+      "cityId": 5
     }
   ],
   "sellerProfiles": [
-    {
-      "userId": 15,
-      "locationCrossStreetOne": "70 s",
-      "locationCrossStreetTwo": "Old Hickory Blvd",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "40",
-      "pricePerFullCord": "80",
-      "sellerDelivers": true,
-      "readyToSell": true,
-      "id": 1
-    },
     {
       "userId": 16,
       "locationCrossStreetOne": "asdfsdf",
@@ -152,17 +160,6 @@
       "pricePerFullCord": "4",
       "sellerDelivers": false,
       "readyToSell": false
-    },
-    {
-      "id": 4,
-      "userId": 20,
-      "locationCrossStreetOne": "kjh",
-      "locationCrossStreetTwo": "lkjlk",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "2",
-      "pricePerFullCord": "3",
-      "sellerDelivers": true,
-      "readyToSell": true
     },
     {
       "id": 5,
@@ -207,6 +204,17 @@
       "sellerDelivers": false,
       "readyToSell": false,
       "id": 8
+    },
+    {
+      "userId": 29,
+      "locationCrossStreetOne": "qerw",
+      "locationCrossStreetTwo": "dfsdf",
+      "pricePerLog": "2",
+      "pricePerHalfCord": "4",
+      "pricePerFullCord": "8",
+      "sellerDelivers": false,
+      "readyToSell": false,
+      "id": 9
     }
   ],
   "favorites": [
@@ -219,6 +227,18 @@
       "id": 2,
       "favoriterId": 2,
       "favoritedId": 1
+    },
+    {
+      "id": 3
+    },
+    {
+      "favoriterId": "23",
+      "id": 4
+    },
+    {
+      "favoriterId": "23",
+      "favoritedId": 10,
+      "id": 5
     }
   ],
   "cities": [

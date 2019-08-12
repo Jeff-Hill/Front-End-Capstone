@@ -11,6 +11,7 @@ import FavoriteManager from "../modules/FavoriteManager";
 import ProfileForm from "./user/ProfileForm";
 import ProfileEditForm from "./user/ProfileEditForm";
 
+let currentUser = sessionStorage.getItem("userId")
 class ApplicationViews extends Component {
   state = {
     users: [],
@@ -18,7 +19,8 @@ class ApplicationViews extends Component {
     cities: [],
     sellerProfiles: [],
     userBuyer: [],
-    userSeller: []
+    userSeller: [],
+    currentUser: sessionStorage.getItem("userId")
   };
 
   componentDidMount() {
@@ -51,7 +53,7 @@ class ApplicationViews extends Component {
       } else {
         alert("No users in that city");
       }
-    })
+    });
   };
 
   filterSellerByCity = evt => {
@@ -66,14 +68,12 @@ class ApplicationViews extends Component {
       } else {
         alert("No users in that city");
       }
-    })
+    });
   };
-
-
 
   filterUserNeedsWood = evt => {
     console.log(evt.target.id);
-    const woodFilter = evt.target.id
+    const woodFilter = evt.target.id;
     UserManager.getBuyerNeedsWood("users", evt.target.id).then(user => {
       console.log(user);
       if (woodFilter === "true") {
@@ -90,8 +90,11 @@ class ApplicationViews extends Component {
 
   filterUserWillDeliver = evt => {
     console.log(evt.target.id);
-    const deliverFilter = evt.target.id
-    SellerProfileManager.getSellerDelivers("sellerProfiles", evt.target.id).then(user => {
+    const deliverFilter = evt.target.id;
+    SellerProfileManager.getSellerDelivers(
+      "sellerProfiles",
+      evt.target.id
+    ).then(user => {
       console.log(user);
       if (deliverFilter === "true") {
         this.setState({
@@ -105,27 +108,30 @@ class ApplicationViews extends Component {
     });
   };
 
-  resetFilter = (userSeller) => {
-    UserManager.getUserByType("users", userSeller).then(user => {
-      // console.log(user)
-      if(userSeller === false) {
-        return (this.setState({
-          users: user
-        }))
-      } else {
-        this.setState({
-          users: user
-        })
-      }
-    })
-  }
+  resetBuyerFilter = user => {
+    UserManager.getUserBuyer("users").then(user => {
+      console.log("reset filter", user);
+      this.setState({
+        userBuyer: user
+      });
+    });
+  };
+  resetSellerFilter = user => {
+    UserManager.getUserSeller("users").then(user => {
+      console.log("reset filter", user);
+      this.setState({
+        userSeller: user
+      });
+    });
+  };
 
   updateUser = editedUserObject => {
     return UserManager.put("users", editedUserObject)
       .then(() => UserManager.getAll("users"))
       .then(users => {
         this.setState({
-          users: users
+          userBuyer: users,
+          userSeller: users
         });
       });
   };
@@ -165,6 +171,35 @@ class ApplicationViews extends Component {
     );
   };
 
+  addNewFavorite = user => {
+    return FavoriteManager.post("favorites", user).then(() => {
+      this.setState({
+        favorites: user
+      });
+    });
+  };
+
+  deleteNewFavorite = id => {
+    return FavoriteManager.post("favorites", id).then(() => {
+      this.setState({
+        favorites: user
+      });
+    });
+  };
+
+  saveNewFavoritePair = (favoritedUser) => {
+    const user = {
+      favoriterId: this.state.currentUser,
+      favoritedId: favoritedUser.id
+    };
+    if(event.target.checked === true) {
+      this.addNewFavorite(user)
+      console.log(user)
+    } else {
+      this.deleteNewFavorite(user)
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -177,11 +212,12 @@ class ApplicationViews extends Component {
                 {...props}
                 filterUserByCity={this.filterUserByCity}
                 filterUserNeedsWood={this.filterUserNeedsWood}
-                resetFilter={this.resetFilter}
+                resetBuyerFilter={this.resetBuyerFilter}
                 userBuyer={this.state.userBuyer}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
+                saveNewFavoritePair={this.saveNewFavoritePair}
               />
             );
           }}
@@ -197,10 +233,12 @@ class ApplicationViews extends Component {
                 filterSellerByCity={this.filterSellerByCity}
                 filterUserWillDeliver={this.filterUserWillDeliver}
                 userSeller={this.state.userSeller}
+                resetSellerFilter={this.resetSellerFilter}
                 cities={this.state.cities}
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 updateSeller={this.updateSeller}
+                saveNewFavoritePair={this.saveNewFavoritePair}
               />
             );
           }}
