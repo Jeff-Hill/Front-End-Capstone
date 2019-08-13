@@ -141,7 +141,7 @@ class ProfileForm extends Component {
             <h2>Please create your profile</h2>
           </FormText>
           <FormGroup>
-            <Label for="edit-user-name" color="dark">
+            <Label className="edit-user-name" color="dark">
               User Name
             </Label>
             <Input
@@ -155,7 +155,7 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-user-phonenumber" color="dark">
+            <Label className="edit-user-phonenumber" color="dark">
               Phone Number
             </Label>
             <Input
@@ -170,7 +170,7 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city-select" color="dark">
+            <Label className="city-select" color="dark">
 
             </Label>
             <select
@@ -215,15 +215,7 @@ class ProfileForm extends Component {
               No
             </Label>
           </FormGroup>
-          <FormGroup>
-            <Label for="profile-photo">Profile Photo (optional)</Label>
-            <Input
-              type="file"
-              name="file"
-              id="profile-photo"
-              onChange={this.handleFieldChange}
-            />
-          </FormGroup>
+
           <Button
             type="submit"
             onClick={this.updateBuyerProfile}
@@ -231,6 +223,7 @@ class ProfileForm extends Component {
           >
             Create Buyer Profile
           </Button>
+          alert("Your profile has been created")
         </Form>
       );
     } else {
@@ -243,7 +236,7 @@ class ProfileForm extends Component {
             <h2>Please create your profile</h2>
           </FormText>
           <FormGroup>
-            <Label for="edit-user-name" color="dark">
+            <Label className="edit-user-name" color="dark">
               User Name
             </Label>
             <Input
@@ -257,7 +250,7 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-user-phonenumber" color="dark">
+            <Label className="edit-user-phonenumber" color="dark">
               Phone Number
             </Label>
             <Input
@@ -271,7 +264,7 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city-select" color="dark" />
+            <Label className="city-select" color="dark" />
             <select
               type="select"
               name="city-select"
@@ -287,7 +280,7 @@ class ProfileForm extends Component {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="edit-location-one" color="dark">
+            <Label className="edit-location-one" color="dark">
               Location you sell your wood
             </Label>
             <Input
@@ -312,7 +305,7 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-price-per-log" color="dark">
+            <Label className="edit-price-per-log" color="dark">
               Price Per Log
               <Input
                 type="number"
@@ -324,7 +317,7 @@ class ProfileForm extends Component {
                 onChange={this.handleFieldChange}
               />
             </Label>
-            <Label for="edit-price-per-halfcord" color="dark">
+            <Label className="edit-price-per-halfcord" color="dark">
               Price Per Half Cord
               <Input
                 type="number"
@@ -336,7 +329,7 @@ class ProfileForm extends Component {
                 onChange={this.handleFieldChange}
               />
             </Label>
-            <Label for="edit-price-per-fullcord" color="dark">
+            <Label className="edit-price-per-fullcord" color="dark">
               Price Per Full Cord
               <Input
                 type="number"
@@ -396,7 +389,7 @@ class ProfileForm extends Component {
             </Label>
           </FormGroup>
           <FormGroup>
-            <Label for="profile-photo">Profile Photo (optional)</Label>
+            <Label className="profile-photo">Profile Photo (optional)</Label>
             <Input
               type="file"
               name="file"

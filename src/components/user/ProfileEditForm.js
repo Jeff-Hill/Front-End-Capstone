@@ -156,7 +156,7 @@ class ProfileEditForm extends Component {
             <h2>Edit your buyer profile</h2>
           </FormText>
           <FormGroup>
-            <Label for="edit-user-name" color="dark">
+            <Label className="edit-user-name" color="dark">
               User Name
             </Label>
             <Input
@@ -170,7 +170,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-user-phonenumber" color="dark">
+            <Label className="edit-user-phonenumber" color="dark">
               Phone Number
             </Label>
             <Input
@@ -185,7 +185,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city-select" color="dark" />
+            <Label className="city-select" color="dark" />
             <select
               type="select"
               name="city-select"
@@ -228,15 +228,6 @@ class ProfileEditForm extends Component {
               No
             </Label>
           </FormGroup>
-          <FormGroup>
-            <Label for="profile-photo">Profile Photo (optional)</Label>
-            <Input
-              type="file"
-              name="file"
-              id="profile-photo"
-              onChange={this.handleFieldChange}
-            />
-          </FormGroup>
           <Button
             type="submit"
             onClick={this.updateBuyerProfile}
@@ -259,7 +250,7 @@ class ProfileEditForm extends Component {
             <h2>Edit your seller profile</h2>
           </FormText>
           <FormGroup>
-            <Label for="edit-user-name" color="dark">
+            <Label className="edit-user-name" color="dark">
               User Name
             </Label>
             <Input
@@ -273,7 +264,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-user-phonenumber" color="dark">
+            <Label className="edit-user-phonenumber" color="dark">
               Phone Number
             </Label>
             <Input
@@ -288,7 +279,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city-select" color="dark" />
+            <Label className="city-select" color="dark" />
             <select
               type="select"
               name="city-select"
@@ -305,7 +296,7 @@ class ProfileEditForm extends Component {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="edit-location-one" color="dark">
+            <Label className="edit-location-one" color="dark">
               Location you sell your wood
             </Label>
             <Input
@@ -332,7 +323,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-price-per-log" color="dark">
+            <Label className="edit-price-per-log" color="dark">
               Price Per Log
               <Input
                 type="number"
@@ -345,7 +336,7 @@ class ProfileEditForm extends Component {
                 onChange={this.handleFieldChange}
               />
             </Label>
-            <Label for="edit-price-per-halfcord" color="dark">
+            <Label className="edit-price-per-halfcord" color="dark">
               Price Per Half Cord
               <Input
                 type="number"
@@ -358,7 +349,7 @@ class ProfileEditForm extends Component {
                 onChange={this.handleFieldChange}
               />
             </Label>
-            <Label for="edit-price-per-fullcord" color="dark">
+            <Label className="edit-price-per-fullcord" color="dark">
               Price Per Full Cord
               <Input
                 type="number"
@@ -420,15 +411,6 @@ class ProfileEditForm extends Component {
               />
               No
             </Label>
-          </FormGroup>
-          <FormGroup>
-            <Label for="profile-photo">Profile Photo (optional)</Label>
-            <Input
-              type="file"
-              name="file"
-              id="profile-photo"
-              onChange={this.handleFieldChange}
-            />
           </FormGroup>
           <Button
             type="submit"

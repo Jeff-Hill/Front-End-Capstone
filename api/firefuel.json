@@ -136,6 +136,15 @@
       "phoneNumber": "654-987-9874",
       "userSeller": true,
       "cityId": 5
+    },
+    {
+      "id": 30,
+      "username": "mandy Y",
+      "password": "mandy",
+      "phoneNumber": "654-987-9874",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 14
     }
   ],
   "sellerProfiles": [
@@ -257,11 +266,6 @@
       "favoriterId": 23,
       "favoritedId": 13,
       "id": 25
-    },
-    {
-      "favoriterId": 22,
-      "favoritedId": 17,
-      "id": 27
     },
     {
       "favoriterId": 22,

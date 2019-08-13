@@ -32,7 +32,7 @@ export default class UserList extends Component {
     if (window.location.pathname === "/buyers") {
       return (
         <section className="users">
-          <FormGroup for="city-select" color="dark">
+          <FormGroup className="city-select" color="dark">
             <strong>Filter buyers by your city or if they are looking for wood</strong>
           </FormGroup>
             {/* <Row> */}
@@ -110,7 +110,7 @@ export default class UserList extends Component {
     } else {
       return (
         <section className="users">
-          <FormGroup for="city-select" color="dark">
+          <FormGroup className="city-select" color="dark">
             <strong>Filter sellers by your city or those willing to deliver</strong>
           </FormGroup>
           <FormGroup>
