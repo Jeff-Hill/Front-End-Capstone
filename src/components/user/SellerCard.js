@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ax from "./ax.jpg"
 import { Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, FormGroup, Label, Input } from 'reactstrap';
 import CityManager from '../../modules/CityManager';
@@ -24,7 +25,7 @@ export default class SellerCard extends Component {
             <Card key={this.props.userSeller.id} className="card">
                 <CardBody className="seller-card-body">
                     <CardTitle className="seller-card-title">
-                        {/* <img src={dog} className="icon--dog" alt="dog-icon" /> */}
+                        <img src={ax} className="icon--ax" alt="ax-icon" />
                         <h4>Name: {this.props.user.username}</h4>
                         <h5>City: {this.props.city.cityName}</h5>
                         <h5>Phone #: {this.props.user.phoneNumber}</h5>

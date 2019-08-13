@@ -16,12 +16,21 @@ import {
 
 export default class FavoriteCard extends Component {
 
+    userNeedsWood = () => {
+        if (this.props.user.userNeedsWood === true) {
+          return "Yes";
+        } else {
+          return "No";
+        }
+      }
+
   render() {
     return (
-      <Row form>
+        <Row form>
         <Col lg={{ size: "auto", offset: 4 }}>
           <Card key={this.props.user.id} className="card">
             <CardBody className="favorite-card-body">
+
               <CardTitle className="favorite-card-title">
                 {/* <img src={dog} className="icon--dog" alt="dog-icon" /> */}
                 <h4>Name: {this.props.user.username}</h4>
@@ -35,10 +44,12 @@ export default class FavoriteCard extends Component {
                       id="favorite"
                       name="favorite"
 
+
                     //   value={this.state.userNeedsWood}
-                      onChange={(event) => this.props.saveNewFavoritePair(this.props.user, event)}
+                     onChange={() => this.props.deleteNewFavorite(this.props.user.id)}
+
                     />
-                    Favorite This User
+                    Remove Favorite
                   </Label>
                 </FormGroup>
               </CardTitle>

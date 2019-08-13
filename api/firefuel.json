@@ -13,7 +13,7 @@
       "id": 13,
       "username": "johnathan",
       "password": "john",
-      "phoneNumber": "-123-4456",
+      "phoneNumber": "548-123-4456",
       "userSeller": false,
       "userNeedsWood": true,
       "cityId": 1
@@ -257,6 +257,36 @@
       "favoriterId": 25,
       "favoritedId": 28,
       "id": 10
+    },
+    {
+      "favoriterId": 25,
+      "favoritedId": 22,
+      "id": 11
+    },
+    {
+      "favoriterId": 25,
+      "favoritedId": 28,
+      "id": 12
+    },
+    {
+      "favoriterId": 25,
+      "favoritedId": 27,
+      "id": 13
+    },
+    {
+      "favoriterId": 25,
+      "favoritedId": 19,
+      "id": 14
+    },
+    {
+      "favoriterId": 25,
+      "favoritedId": 10,
+      "id": 15
+    },
+    {
+      "favoriterId": 25,
+      "favoritedId": 10,
+      "id": 16
     }
   ],
   "cities": [

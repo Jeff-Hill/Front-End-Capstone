@@ -173,15 +173,17 @@ class ApplicationViews extends Component {
   };
 
   addNewFavorite = user => {
-    return FavoriteManager.post("favorites", user).then(() => {
-      this.setState({
-        favorites: user
+    return FavoriteManager.post("favorites", user)
+      .then(() => FavoriteManager.getAllByUser("favorites"))
+      .then(allUserFavorites => {
+        this.setState({
+          favorites: allUserFavorites
+        });
       });
-    });
   };
 
   deleteNewFavorite = id => {
-    return FavoriteManager.remove("favorites", id).then(user => {
+    return  FavoriteManager.remove("favorites", id).then(user => {
       this.setState({
         favorites: user
       });
@@ -193,27 +195,36 @@ class ApplicationViews extends Component {
       favoriterId: parseInt(this.state.currentUser),
       favoritedId: favoritedUser.id
     };
-    if (event.target.checked === true) {
-      this.addNewFavorite(user);
-      console.log(user);
-    } else {
-      this.deleteNewFavorite(this.props.id);
-    }
+    this.addNewFavorite(user);
+    console.log(user);
   };
+
+  // saveNewFavoritePair = (favoritedUser, event) => {
+  //   const user = {
+  //     favoriterId: parseInt(this.state.currentUser),
+  //     favoritedId: favoritedUser.id
+  //   };
+  //   if (event.target.checked === true) {
+  //     this.addNewFavorite(user);
+  //     console.log(user);
+  //   } else {
+  //     this.deleteNewFavorite(this.props.id);
+  //   }
+  // };
 
   displayFavoritesByUser = () => {
     const userFavorites = this.state.favorites;
-    let promises = []
+    let promises = [];
     if (userFavorites.length > 0) {
       for (let i = 0; i < userFavorites.length; i++) {
-        promises.push(UserManager.get("users", userFavorites[i].favoritedId))
+        promises.push(UserManager.get("users", userFavorites[i].favoritedId));
       }
-      Promise.all(promises)
-      .then(allFavoritedUsers =>
-        this.setState({allFavoritedUsers: allFavoritedUsers}))
-
-      } else {
-      alert("You Have No Favorites")
+      Promise.all(promises).then(allFavoritedUsers => {
+        console.log(allFavoritedUsers);
+        this.setState({ allFavoritedUsers: allFavoritedUsers });
+      });
+    } else {
+      alert("You Have No Favorites");
     }
   };
 
@@ -235,7 +246,6 @@ class ApplicationViews extends Component {
                 sellerProfiles={this.state.sellerProfiles}
                 updateUser={this.updateUser}
                 saveNewFavoritePair={this.saveNewFavoritePair}
-
               />
             );
           }}
@@ -266,14 +276,15 @@ class ApplicationViews extends Component {
           exact
           path="/favorites"
           render={props => {
-
             return (
               <FavoriteList
                 {...props}
                 users={this.state.users}
+                cities={this.state.cities}
                 userBuyer={this.state.userBuyer}
                 userSeller={this.state.userSeller}
                 favorites={this.state.favorites}
+                deleteNewFavorite={this.deleteNewFavorite}
                 allFavoritedUsers={this.state.allFavoritedUsers}
                 displayFavoritesByUser={this.displayFavoritesByUser}
               />

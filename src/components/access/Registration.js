@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import LoginManager from "../../modules/LoginManager";
-import { Button } from "reactstrap";
+import { Button, Row, Col, Card, CardBody, CardText } from "reactstrap";
 
 let currentUser = sessionStorage.getItem("userId");
 class Registration extends Component {
@@ -62,10 +62,13 @@ class Registration extends Component {
   };
   render() {
     return (
-      <form className="container RegisterForm">
-        <h1 className="h3 mb-3 font-weight-normal">
+      <Row form>
+      <Col lg={{ size: "auto", offset: 4 }}>
+      <Card className="container RegisterForm">
+        <CardBody className="h3 mb-3 font-weight-normal">
           Welcome to FireFuel Please Register
-        </h1>
+        </CardBody>
+        <CardBody>
         <div className="container">
           <label className="reg-user-btn">
             Are you a
@@ -75,7 +78,7 @@ class Registration extends Component {
               type="radio"
               name="reg-user-type"
             />{" "}
-            Buyer
+            Burner
           </label>
           <label className="reg-user-btn">
             OR a
@@ -85,9 +88,10 @@ class Registration extends Component {
               name="reg-user-type"
               id="seller"
             />{" "}
-            Seller
+            Chopper
           </label>
         </div>
+        </CardBody>
         <div className="container">
           <label htmlFor="inputUsername">Username</label>
           <input
@@ -124,7 +128,9 @@ class Registration extends Component {
             </Button>
           </div>
         </div>
-      </form>
+      </Card>
+      </Col>
+      </Row>
     );
   }
 }
