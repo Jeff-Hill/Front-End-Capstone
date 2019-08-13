@@ -1,31 +1,70 @@
 import React, { Component } from "react";
-import FavoriteManager from "../../modules/FavoriteManager";
-import FavoriteCard from "../favorite/FavoriteCard";
+import UserManager from "../../modules/UserManager";
+import FavoriteBuyerCard from "./FavoriteBuyerCard";
+
 
 export default class FavoriteList extends Component {
+  state = {
+    user: {},
+  };
 
   componentDidMount() {
-    this.props.displayFavoritesByUser(sessionStorage.getItem("userId"));
     console.log("favorite list mounted");
+    UserManager.get("users", sessionStorage.getItem("userId"))
+    .then(user =>
+        this.setState({
+            user: user,
+        }))
   }
 
   render() {
-    return (
-      <section className="favorites">
-           <h4>Your Favorites</h4>
-        {this.props.allFavoritedUsers.map(user =>
-          this.props.cities
-            .filter(city => user.cityId === city.id)
-            .map(city => (
-              <FavoriteCard
-                key={user.id}
-                user={user}
-                city={city}
-                {...this.props}
-              />
-            ))
-        )}
-      </section>
-    );
-  }
+
+      if (this.state.user.userSeller === true) {
+        console.log("favorites rendered")
+      return (
+        <section className="favorites">
+          <h4>Your Favorite Buyers</h4>
+          {this.props.userFavorites.map(user =>
+            this.props.cities
+              .filter(city => user.cityId === city.id)
+              .map(city => (
+                <FavoriteBuyerCard
+                  key={user.id}
+                  user={user}
+                  city={city}
+                  {...this.props}
+                />
+              ))
+          )}
+        </section>
+      );
+    } else {
+      return (
+    //       <section className="favorites">
+    <h1>Your Favorite Sellers</h1>
+    //   {this.props.allFavoritedUsers.map(user =>
+    //           this.props.sellerProfiles
+    //             .filter(profile => profile.userId === user.id)
+    //             .map(profile =>
+    //               this.props.cities
+    //                 .filter(city => user .cityId === city.id)
+    //                 .map(city => (
+    //                   <SellerCard
+    //                     key={userSeller.id}
+    //                     user={userSeller}
+    //                     city={city}
+    //                     profile={profile}
+    //                     {...this.props}
+    //                   />
+    //                 ))
+    //             )
+    //         )}
+    //   </section>
+      )}
+
+
+
+
+
+}
 }

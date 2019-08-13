@@ -14,7 +14,6 @@ import {
   Label,
   Input
 } from "reactstrap";
-import CityManager from "../../modules/CityManager";
 
 export default class BuyerCard extends Component {
   userNeedsWood = () => {

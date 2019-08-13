@@ -11,7 +11,6 @@ import FavoriteManager from "../modules/FavoriteManager";
 import ProfileForm from "./user/ProfileForm";
 import ProfileEditForm from "./user/ProfileEditForm";
 
-let currentUser = sessionStorage.getItem("userId");
 class ApplicationViews extends Component {
   state = {
     users: [],
@@ -39,7 +38,7 @@ class ApplicationViews extends Component {
       .then(userBuyer => (newState.userBuyer = userBuyer))
       .then(() => UserManager.getUserSeller("users"))
       .then(userSeller => (newState.userSeller = userSeller))
-      .then(() => this.setState(newState));
+      .then(() => this.setState(newState, () => this.displayFavoritesByUser()));
   }
 
   filterUserByCity = evt => {
@@ -176,18 +175,34 @@ class ApplicationViews extends Component {
     return FavoriteManager.post("favorites", user)
       .then(() => FavoriteManager.getAllByUser("favorites"))
       .then(allUserFavorites => {
-        this.setState({
-          favorites: allUserFavorites
-        });
+        this.setState(
+          {
+            favorites: allUserFavorites
+          },
+          () => this.displayFavoritesByUser()
+        );
       });
   };
 
   deleteNewFavorite = id => {
-    return  FavoriteManager.remove("favorites", id).then(user => {
-      this.setState({
-        favorites: user
+    return FavoriteManager.getAllByUser("favorites")
+      .then(favorites =>
+        favorites.find(favorite => id === favorite.favoritedId)
+      )
+      .then(user => FavoriteManager.remove("favorites", user.id))
+      .then(() => {
+        console.log("delete console log");
+        return FavoriteManager.getAllByUser("favorites");
+      })
+      .then(allFavorites => {
+        console.log("all favorites in delete", allFavorites);
+        this.setState(
+          {
+            favorites: allFavorites
+          },
+          () => this.displayFavoritesByUser()
+        );
       });
-    });
   };
 
   saveNewFavoritePair = (favoritedUser, event) => {
@@ -199,36 +214,20 @@ class ApplicationViews extends Component {
     console.log(user);
   };
 
-  // saveNewFavoritePair = (favoritedUser, event) => {
-  //   const user = {
-  //     favoriterId: parseInt(this.state.currentUser),
-  //     favoritedId: favoritedUser.id
-  //   };
-  //   if (event.target.checked === true) {
-  //     this.addNewFavorite(user);
-  //     console.log(user);
-  //   } else {
-  //     this.deleteNewFavorite(this.props.id);
-  //   }
-  // };
-
   displayFavoritesByUser = () => {
     const userFavorites = this.state.favorites;
     let promises = [];
-    if (userFavorites.length > 0) {
-      for (let i = 0; i < userFavorites.length; i++) {
-        promises.push(UserManager.get("users", userFavorites[i].favoritedId));
-      }
-      Promise.all(promises).then(allFavoritedUsers => {
-        console.log(allFavoritedUsers);
-        this.setState({ allFavoritedUsers: allFavoritedUsers });
-      });
-    } else {
-      alert("You Have No Favorites");
+    for (let i = 0; i < userFavorites.length; i++) {
+      promises.push(UserManager.get("users", userFavorites[i].favoritedId));
     }
+    Promise.all(promises).then(allFavoritedUsers => {
+      console.log("all favorited users", allFavoritedUsers);
+      this.setState({ allFavoritedUsers: allFavoritedUsers });
+    });
   };
 
   render() {
+    console.log("App Views rendered");
     return (
       <React.Fragment>
         <Route
@@ -285,7 +284,7 @@ class ApplicationViews extends Component {
                 userSeller={this.state.userSeller}
                 favorites={this.state.favorites}
                 deleteNewFavorite={this.deleteNewFavorite}
-                allFavoritedUsers={this.state.allFavoritedUsers}
+                userFavorites={this.state.allFavoritedUsers}
                 displayFavoritesByUser={this.displayFavoritesByUser}
               />
             );
