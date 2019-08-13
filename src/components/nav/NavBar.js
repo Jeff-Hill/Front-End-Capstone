@@ -15,10 +15,10 @@ export default class NavBar extends Component {
         <Link className="navbar-brand" to="/">Welcome to FireFuel</Link>
             <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-                <Link className="nav-link" to="/buyers">Buyers</Link>
+                <Link className="nav-link" to="/buyers">Burners</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/sellers">Sellers</Link>
+                <Link className="nav-link" to="/sellers">Choppers</Link>
             </li>
             <li className="nav-item">
                 <Link className="nav-link" to="/favorites">Favorites</Link>

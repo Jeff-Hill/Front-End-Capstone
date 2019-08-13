@@ -257,6 +257,16 @@
       "favoriterId": 23,
       "favoritedId": 13,
       "id": 25
+    },
+    {
+      "favoriterId": 22,
+      "favoritedId": 17,
+      "id": 27
+    },
+    {
+      "favoriterId": 22,
+      "favoritedId": 21,
+      "id": 28
     }
   ],
   "cities": [

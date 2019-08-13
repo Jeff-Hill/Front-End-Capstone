@@ -280,8 +280,7 @@ class ApplicationViews extends Component {
                 {...props}
                 users={this.state.users}
                 cities={this.state.cities}
-                userBuyer={this.state.userBuyer}
-                userSeller={this.state.userSeller}
+                sellerProfiles={this.state.sellerProfiles}
                 favorites={this.state.favorites}
                 deleteNewFavorite={this.deleteNewFavorite}
                 userFavorites={this.state.allFavoritedUsers}

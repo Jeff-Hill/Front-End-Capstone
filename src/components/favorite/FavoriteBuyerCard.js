@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import fire from "./fire.jpg"
+
 import {
   Card,
   CardImg,
@@ -14,7 +16,7 @@ import {
   Input
 } from "reactstrap";
 
-export default class FavoriteCard extends Component {
+export default class FavoriteBuyerCard extends Component {
 
     userNeedsWood = () => {
         if (this.props.user.userNeedsWood === true) {
@@ -32,7 +34,7 @@ export default class FavoriteCard extends Component {
             <CardBody className="favorite-card-body">
 
               <CardTitle className="favorite-card-title">
-                {/* <img src={dog} className="icon--dog" alt="dog-icon" /> */}
+                <img src={fire} className="icon--fire" alt="fire-icon" />
                 <h4>Name: {this.props.user.username}</h4>
                 <h5>City: {this.props.city.cityName}</h5>
                 <h5>Phone #: {this.props.user.phoneNumber}</h5>
@@ -49,7 +51,7 @@ export default class FavoriteCard extends Component {
                      onChange={() => this.props.deleteNewFavorite(this.props.user.id)}
 
                     />
-                    Remove Favorite
+                    Remove from Favorites
                   </Label>
                 </FormGroup>
               </CardTitle>

@@ -3,7 +3,7 @@ import ax from "./ax.jpg"
 import { Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, FormGroup, Label, Input } from 'reactstrap';
 
-export default class SellerCard extends Component {
+export default class FavoriteSellerCard extends Component {
     userReadyToSell = () => {
         if(this.props.profile.readyToSell === true) {
             return ("Yes")
@@ -21,7 +21,7 @@ export default class SellerCard extends Component {
 
     render() {
         return (
-            <Card key={this.props.userSeller.id} className="card">
+            <Card key={this.props.user.id} className="card">
                 <CardBody className="seller-card-body">
                     <CardTitle className="seller-card-title">
                         <img src={ax} className="icon--ax" alt="ax-icon" />
@@ -42,9 +42,9 @@ export default class SellerCard extends Component {
                       id="favorite"
                       name="favorite"
                     //   value={this.state.userNeedsWood}
-                    //   onChange={this.handleFieldChange}
+                    onChange={() => this.props.deleteNewFavorite(this.props.user.id)}
                     />
-                    Favorite This User
+                    Remove from Favorites
                   </Label>
                 </FormGroup>
                     </CardTitle>
