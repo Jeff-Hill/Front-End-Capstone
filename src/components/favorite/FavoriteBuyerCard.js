@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import fire from "./fire.jpg"
+
 import {
   Card,
   CardImg,
@@ -15,22 +16,25 @@ import {
   Input
 } from "reactstrap";
 
-export default class BuyerCard extends Component {
-  userNeedsWood = () => {
-    if (this.props.user.userNeedsWood === true) {
-      return "Yes";
-    } else {
-      return "No";
-    }
-  };
+export default class FavoriteBuyerCard extends Component {
+
+    userNeedsWood = () => {
+        if (this.props.user.userNeedsWood === true) {
+          return "Yes";
+        } else {
+          return "No";
+        }
+      }
+
   render() {
     return (
-      <Row form>
+        <Row form>
         <Col lg={{ size: "auto", offset: 4 }}>
-          <Card key={this.props.userBuyer.id} className="card">
-            <CardBody className="buyer-card-body">
-              <CardTitle className="buyer-card-title">
-                <img src={fire} className="icon--fire" alt="fire-icon" size="xs"/>
+          <Card key={this.props.user.id} className="card">
+            <CardBody className="favorite-card-body">
+
+              <CardTitle className="favorite-card-title">
+                <img src={fire} className="icon--fire" alt="fire-icon" />
                 <h4>Name: {this.props.user.username}</h4>
                 <h5>City: {this.props.city.cityName}</h5>
                 <h5>Phone #: {this.props.user.phoneNumber}</h5>
@@ -42,10 +46,12 @@ export default class BuyerCard extends Component {
                       id="favorite"
                       name="favorite"
 
+
                     //   value={this.state.userNeedsWood}
-                      onChange={(event) => this.props.saveNewFavoritePair(this.props.user, event)}
+                     onChange={() => this.props.deleteNewFavorite(this.props.user.id)}
+
                     />
-                    Favorite This User
+                    Remove from Favorites
                   </Label>
                 </FormGroup>
               </CardTitle>

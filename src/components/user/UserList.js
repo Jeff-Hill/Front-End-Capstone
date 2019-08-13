@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link, Route } from "react-router-dom";
+import fire from "./fire.jpg"
 import BuyerCard from "./BuyerCard";
 import SellerCard from "./SellerCard";
 import {
