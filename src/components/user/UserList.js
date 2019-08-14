@@ -16,7 +16,8 @@ import {
   Label,
   Container,
   FormGroup,
-  Input
+  Input,
+  Form
 } from "reactstrap";
 
 export default class UserList extends Component {
@@ -31,12 +32,13 @@ export default class UserList extends Component {
   render() {
     if (window.location.pathname === "/buyers") {
       return (
-        <section className="users">
-          <FormGroup className="city-select" color="dark">
-            <strong>Filter buyers by your city or if they are looking for wood</strong>
+        <section >
+          <div className="filter">
+          <FormGroup className="city-select text-center" color="dark">
+            <strong><h4>Filter buyers by your city or if they are looking for wood</h4></strong>
           </FormGroup>
-            {/* <Row> */}
-          <FormGroup>
+        <Form inline>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <select
               type="select"
               name="city-select"
@@ -52,10 +54,9 @@ export default class UserList extends Component {
               ))}
             </select>
           </FormGroup>
-          <FormGroup tag="fieldset">
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <h4>Buyers that need wood?</h4>
-          </FormGroup>
-          <FormGroup check>
+
             <Label check>
               <Input
                 type="radio"
@@ -66,8 +67,7 @@ export default class UserList extends Component {
               />
               Yes
             </Label>
-          </FormGroup>
-          <FormGroup check>
+
             <Label check>
               <Input
                 type="radio"
@@ -79,6 +79,7 @@ export default class UserList extends Component {
               No
             </Label>
           </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Button
             type="submit"
             onClick={this.props.resetBuyerFilter}
@@ -86,34 +87,48 @@ export default class UserList extends Component {
           >
             Reset Filter
           </Button>
-          {/* </Row> */}
+          </FormGroup>
+          </Form>
+          </div>
 
 
 
-
+          <div className="users">
           {this.props.userBuyer
             .filter(userBuyer => userBuyer.userSeller === false)
             .map(userBuyer =>
               this.props.cities
                 .filter(city => userBuyer.cityId === city.id)
                 .map(city => (
+                  <Container fluid>
+                    <Row>
+                      <Col sm="4">
                   <BuyerCard
                     key={userBuyer.id}
                     user={userBuyer}
                     city={city}
                     {...this.props}
                   />
+                  </Col>
+                  </Row>
+                  </Container>
                 ))
             )}
+            </div>
         </section>
       );
     } else {
       return (
-        <section className="users">
-          <FormGroup className="city-select" color="dark">
-            <strong>Filter sellers by your city or those willing to deliver</strong>
+        <section >
+          <div className="filter">
+
+          <FormGroup className="city-select text-center" color="dark">
+            <strong><h3>Filter choppers by your city or those willing to deliver</h3></strong>
           </FormGroup>
-          <FormGroup>
+          <Form inline>
+
+
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <select
               type="select"
               name="city-select"
@@ -129,11 +144,11 @@ export default class UserList extends Component {
               ))}
             </select>
           </FormGroup>
-          <FormGroup tag="fieldset">
-            <h4>Sellers that deliver?</h4>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
+
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <h5>Sellers that deliver?</h5>
+
+            <Label >
               <Input
                 type="radio"
                 id="true"
@@ -143,9 +158,8 @@ export default class UserList extends Component {
               />
               Yes
             </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
+
+            <Label >
               <Input
                 type="radio"
                 id="false"
@@ -156,13 +170,20 @@ export default class UserList extends Component {
               No
             </Label>
           </FormGroup>
+                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Button
             type="submit"
             onClick={this.props.resetSellerFilter}
             className="btn btn-primary"
-          >
+            >
             Reset Filter
           </Button>
+          </FormGroup>
+
+            </Form>
+            </div>
+
+              <div className="users">
           {this.props.userSeller
             .filter(userSeller => userSeller.userSeller === true)
             .map(userSeller =>
@@ -182,6 +203,7 @@ export default class UserList extends Component {
                     ))
                 )
             )}
+            </div>
         </section>
       );
     }

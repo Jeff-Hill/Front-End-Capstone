@@ -1,7 +1,19 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import LoginManager from "../../modules/LoginManager";
-import { Button, Row, Col, Card, CardBody, CardText } from "reactstrap";
+import {
+  Button,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardText,
+  CardTitle,
+  Label,
+  Input,
+  ButtonGroup,
+  CardSubtitle
+} from "reactstrap";
 
 let currentUser = sessionStorage.getItem("userId");
 class Registration extends Component {
@@ -15,11 +27,10 @@ class Registration extends Component {
   };
 
   addNewUser = user => {
-
     return LoginManager.post(user)
       .then(newUser => {
         sessionStorage.setItem("userId", newUser.id);
-        this.props.isUserLoggedIn()
+        this.props.isUserLoggedIn();
         //   console.log(newUser.id)
         //   alert("Thank you for Registering")
       })
@@ -58,78 +69,95 @@ class Registration extends Component {
 
     // Add a .then onto this function to trigger the re-render of FireFuel.js
     this.addNewUser(user).then(() => this.props.isUserLoggedIn());
-
   };
   render() {
     return (
       <Row form>
-      <Col lg={{ size: "auto", offset: 4 }}>
-      <Card className="container RegisterForm">
-        <CardBody className="h3 mb-3 font-weight-normal">
-          Welcome to FireFuel Please Register
-        </CardBody>
-        <CardBody>
-        <div className="container">
-          <label className="reg-user-btn">
-            Are you a
-            <input
-              onClick={this.handleUserTypeChange}
-              id="buyer"
-              type="radio"
-              name="reg-user-type"
-            />{" "}
-            Burner
-          </label>
-          <label className="reg-user-btn">
-            OR a
-            <input
-              onClick={this.handleUserTypeChange}
-              type="radio"
-              name="reg-user-type"
-              id="seller"
-            />{" "}
-            Chopper
-          </label>
-        </div>
-        </CardBody>
-        <div className="container">
-          <label htmlFor="inputUsername">Username</label>
-          <input
-            onChange={this.handleFieldChange}
-            type="username"
-            id="username"
-            placeholder="Username"
-            required=""
-            autoFocus=""
-          />
-        </div>
-        <div className="container">
-          <label htmlFor="inputPassword">Password</label>
-          <input
-            onChange={this.handleFieldChange}
-            type="password"
-            id="password"
-            placeholder="Password"
-            required=""
-          />
-          <div className="container">
-            <Button
-              className="reg-link"
-              onClick={this.saveNewUser}
-              type="submit"
-            >
-              Register
-            </Button>
-            <label>
-              <strong>OR</strong>
-            </label>
-            <Button className="reg-link">
-              <Link to="/login">Login</Link>
-            </Button>
-          </div>
-        </div>
-      </Card>
-      </Col>
+        <Col lg={{ size: "auto", offset: 4 }}>
+          <Card color="warning" className="container RegisterForm">
+            <CardBody>
+              <CardTitle className="h3 mb-3 font-weight-normal">
+                Welcome to FireFuel Please Register
+              </CardTitle>
+            </CardBody>
+
+            <CardBody className="text-center" >
+              <CardTitle className="h3 mb-3 font-weight-normal">
+              <Label> Are you a</Label>
+               <CardText>
+                <Input
+                  onClick={this.handleUserTypeChange}
+                  id="buyer"
+                  type="radio"
+                  name="reg-user-type"
+                />
+                <Label>Burner</Label>
+                </CardText>
+
+                <Label>
+                OR a
+                </Label>
+
+                <CardText>
+                <Input
+                  onClick={this.handleUserTypeChange}
+                  type="radio"
+                  name="reg-user-type"
+                  id="seller"
+                />
+                <Label>Chopper</Label>
+                </CardText>
+              </CardTitle>
+            </CardBody>
+            <CardText>
+              <Label htmlFor="inputUsername">Username</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="username"
+                id="username"
+                placeholder="Username"
+                required=""
+                autoFocus=""
+              />
+            </CardText>
+            <CardText>
+              <Label htmlFor="inputPassword">Password</Label>
+              <Input
+                onChange={this.handleFieldChange}
+                type="password"
+                id="password"
+                placeholder="Password"
+                required=""
+              />
+            </CardText>
+
+            <ButtonGroup size="sm">
+              <CardBody>
+                <Button
+                  color="danger"
+                  className="reg-link"
+                  onClick={this.saveNewUser}
+                  type="submit"
+                  style={{ color: "black" }}
+                >
+                  Register
+                </Button>
+              </CardBody>
+              <CardBody>
+                <Label>
+                  <strong>OR</strong>
+                </Label>
+              </CardBody>
+              <CardBody>
+                <Button color="danger" className="reg-link">
+                  <Link to="/login" style={{ color: "black" }}>
+                    Login
+                  </Link>
+                </Button>
+              </CardBody>
+            </ButtonGroup>
+          </Card>
+        </Col>
       </Row>
     );
   }

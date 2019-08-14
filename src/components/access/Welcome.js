@@ -25,7 +25,7 @@ class Welcome extends Component {
                     <ButtonGroup vertical size="lg">
                     <CardBody>
                         <CardText>New User</CardText>
-                        <Button color="danger"><Link to="/register" style={{ color: 'black', alignContent: "center" }}>Register<DiCodeigniter/></Link></Button>
+                        <Button color="danger"><Link to="/register" style={{ color: 'black', alignContent: "center" }}>Register</Link></Button>
                     </CardBody>
                     <CardBody>
                         <CardText>Already Have Profile?</CardText>

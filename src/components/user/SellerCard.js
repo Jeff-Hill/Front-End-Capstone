@@ -22,9 +22,9 @@ export default class SellerCard extends Component {
     render() {
         return (
             <Card key={this.props.userSeller.id} className="card">
-                <CardBody className="seller-card-body">
-                    <CardTitle className="seller-card-title">
+                <CardBody className="card-body">
                         <img src={ax} className="icon--ax" alt="ax-icon" />
+                    <CardTitle className="card-title">
                         <h4>Name: {this.props.user.username}</h4>
                         <h5>City: {this.props.city.cityName}</h5>
                         <h5>Phone #: {this.props.user.phoneNumber}</h5>
