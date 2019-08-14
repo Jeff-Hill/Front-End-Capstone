@@ -145,6 +145,24 @@
       "userSeller": false,
       "userNeedsWood": true,
       "cityId": 14
+    },
+    {
+      "id": 31,
+      "username": "billy K",
+      "password": "billy",
+      "phoneNumber": "564-587-9852",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 28
+    },
+    {
+      "id": 32,
+      "username": "Leo H",
+      "password": "leo",
+      "phoneNumber": "587-874-9854",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 14
     }
   ],
   "sellerProfiles": [
@@ -271,6 +289,11 @@
       "favoriterId": 22,
       "favoritedId": 21,
       "id": 28
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 17,
+      "id": 30
     }
   ],
   "cities": [

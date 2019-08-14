@@ -117,6 +117,7 @@ class ProfileEditForm extends Component {
     };
     this.props
       .updateUser(editedBuyer)
+      .then(alert("Your profile has been updated"))
       .then(() => this.props.history.push("/sellers"));
   };
 
@@ -144,6 +145,7 @@ class ProfileEditForm extends Component {
     };
     this.props
       .editSeller(editedSeller, editedBuyer)
+      .then(alert("Your profile has been updated"))
       .then(() => this.props.history.push("/buyers"));
   };
 
@@ -153,7 +155,7 @@ class ProfileEditForm extends Component {
       return (
         <Form>
           <FormText color="dark">
-            <h2>Edit your buyer profile</h2>
+            <h2>Edit your burner profile</h2>
           </FormText>
           <FormGroup>
             <Label className="edit-user-name" color="dark">
@@ -233,7 +235,7 @@ class ProfileEditForm extends Component {
             onClick={this.updateBuyerProfile}
             className="btn btn-primary"
           >
-            Update Buyer Profile
+            Edit Your Profile
           </Button>
           <Button
             onClick={() => this.props.deleteUserProfile(this.state.userId)}
@@ -247,7 +249,7 @@ class ProfileEditForm extends Component {
       return (
         <Form>
           <FormText color="dark">
-            <h2>Edit your seller profile</h2>
+            <h2>Edit your chopper profile</h2>
           </FormText>
           <FormGroup>
             <Label className="edit-user-name" color="dark">
@@ -417,7 +419,7 @@ class ProfileEditForm extends Component {
             onClick={this.updateSellerProfile}
             className="btn btn-primary"
           >
-            Edit Seller Profile
+            Edit Your Profile
           </Button>
           <Button
             onClick={() => {this.props.deleteSellerProfile(this.state.sellerProfileId)}}

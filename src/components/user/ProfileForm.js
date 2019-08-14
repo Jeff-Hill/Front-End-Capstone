@@ -101,6 +101,7 @@ class ProfileForm extends Component {
     };
     this.props
       .updateUser(editedBuyer)
+      .then(alert("Your profile has been updated"))
       .then(() => this.props.history.push("/sellers"));
   };
 
@@ -127,6 +128,7 @@ class ProfileForm extends Component {
     };
     this.props
       .updateSeller(editedSeller, editedBuyer)
+      .then(alert("Your profile has been updated"))
       .then(() => this.props.history.push("/buyers"));
   };
 
@@ -220,10 +222,11 @@ class ProfileForm extends Component {
             type="submit"
             onClick={this.updateBuyerProfile}
             className="btn btn-primary"
+
           >
             Create Buyer Profile
           </Button>
-          alert("Your profile has been created")
+
         </Form>
       );
     } else {
@@ -254,7 +257,7 @@ class ProfileForm extends Component {
               Phone Number
             </Label>
             <Input
-              type="tel"
+              type="text"
               required
               className="phonenumber-to-edit"
               name="user-phonenumber"
@@ -387,15 +390,6 @@ class ProfileForm extends Component {
               />
               No
             </Label>
-          </FormGroup>
-          <FormGroup>
-            <Label className="profile-photo">Profile Photo (optional)</Label>
-            <Input
-              type="file"
-              name="file"
-              id="profile-photo"
-              onChange={this.handleFieldChange}
-            />
           </FormGroup>
           <Button
             type="submit"
