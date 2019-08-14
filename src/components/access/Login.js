@@ -26,6 +26,9 @@ class Login extends Component {
 
     LoginManager.get(this.state.username)
       .then(result => {
+        this.setState({
+          user: result[0]
+        })
         console.log("result", result);
         if (result.length > 0) {
           result.forEach(res => {
@@ -33,7 +36,7 @@ class Login extends Component {
           });
 
           alert("Welcome Back");
-        if(this.state.userSeller === true){
+        if(this.state.user.userSeller === true){
           console.log("login userSeller is", this.state.userSeller)
           this.props.history.push("/buyers")
         } else {
