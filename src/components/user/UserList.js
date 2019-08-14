@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {Link, Route } from "react-router-dom";
-import fire from "./fire.jpg"
 import BuyerCard from "./BuyerCard";
 import SellerCard from "./SellerCard";
 import {
@@ -84,6 +83,7 @@ export default class UserList extends Component {
             type="submit"
             onClick={this.props.resetBuyerFilter}
             className="btn btn-primary"
+            color="secondary"
           >
             Reset Filter
           </Button>
