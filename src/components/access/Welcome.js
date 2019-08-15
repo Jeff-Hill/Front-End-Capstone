@@ -13,25 +13,27 @@ class Welcome extends Component {
 
             <Row form>
                 <Col lg={{ size: "auto", offset: 4 }}>
-                <Card className="welcome-card" color="warning">
+                <Card className="authentication-card" color="warning">
                     <Row>
                     <CardBody>
                         <CardTitle className="h1 mb-3 font-weight-normal">Welcome to FireFuel</CardTitle>
                         <CardTitle className="h2 mb-3 font-weight-normal"> Please Register or Login</CardTitle>
-                        <CardBody><DiCodeigniter/></CardBody>
+
                     </CardBody>
                     </Row>
                     <Row>
-                    <ButtonGroup vertical size="lg">
+                    {/* <ButtonGroup vertical size="lg"> */}
+                        <div className="authentication-btns">
                     <CardBody>
                         <CardText>New User</CardText>
-                        <Button color="danger"><Link to="/register" style={{ color: 'black', alignContent: "center" }}>Register<DiCodeigniter/></Link></Button>
+                        <Button color="danger"><Link to="/register" style={{ color: 'black', alignContent: "center" }}>Register</Link></Button>
                     </CardBody>
                     <CardBody>
                         <CardText>Already Have Profile?</CardText>
                         <Button color="danger"><Link to="/login" style={{ color: 'black' }}>Login</Link></Button>
                     </CardBody>
-                    </ButtonGroup>
+                    </div>
+                    {/* </ButtonGroup> */}
                     </Row>
                 </Card>
                 </Col>

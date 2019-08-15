@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 10,
-      "username": "maximus",
+      "username": "Maximus",
       "password": "maximus",
       "phoneNumber": "587-987-8521",
       "userSeller": false,
@@ -11,7 +11,7 @@
     },
     {
       "id": 13,
-      "username": "johnathan",
+      "username": "Johnathan",
       "password": "john",
       "phoneNumber": "548-123-4456",
       "userSeller": false,
@@ -20,7 +20,7 @@
     },
     {
       "id": 14,
-      "username": "renee",
+      "username": "Renee",
       "password": "renee",
       "phoneNumber": "954-263-6542",
       "userSeller": false,
@@ -29,7 +29,7 @@
     },
     {
       "id": 16,
-      "username": "bobby smalls",
+      "username": "Bobby S",
       "password": "bobby",
       "phoneNumber": "561-262-1698",
       "userSeller": true,
@@ -70,29 +70,12 @@
       "cityId": 28
     },
     {
-      "id": 22,
-      "username": "Andy T",
-      "password": "andy",
-      "phoneNumber": "654-987-6231",
-      "userSeller": false,
-      "userNeedsWood": true,
-      "cityId": 2
-    },
-    {
       "id": 23,
-      "username": "jackson",
+      "username": "Jackson",
       "password": "jackson",
       "phoneNumber": "564-987-9874",
       "userSeller": true,
       "cityId": 2
-    },
-    {
-      "id": 24,
-      "username": "joe",
-      "password": "joe",
-      "phoneNumber": "654-987-8974",
-      "userSeller": true,
-      "cityId": 3
     },
     {
       "id": 25,
@@ -104,7 +87,7 @@
     },
     {
       "id": 26,
-      "username": "jeff H",
+      "username": "Jeff H",
       "password": "jeff",
       "phoneNumber": "564-654-9874",
       "userSeller": false,
@@ -113,7 +96,7 @@
     },
     {
       "id": 27,
-      "username": "nick R",
+      "username": "Nick R",
       "password": "nick",
       "phoneNumber": "654-987-9874",
       "userSeller": false,
@@ -122,7 +105,7 @@
     },
     {
       "id": 28,
-      "username": "erin R",
+      "username": "Erin R",
       "password": "erin",
       "phoneNumber": "654-654-9874",
       "userSeller": false,
@@ -130,22 +113,32 @@
       "cityId": 6
     },
     {
-      "id": 29,
-      "username": "randy T",
-      "password": "randy",
+      "id": 30,
+      "username": "Mandy Y",
+      "password": "mandy",
       "phoneNumber": "654-987-9874",
-      "userSeller": true,
-      "cityId": 5
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 14
+    },
+    {
+      "id": 32,
+      "username": "Leo H",
+      "password": "leo",
+      "phoneNumber": "587-874-9854",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 14
     }
   ],
   "sellerProfiles": [
     {
       "userId": 16,
-      "locationCrossStreetOne": "asdfsdf",
-      "locationCrossStreetTwo": "asdfasdf",
+      "locationCrossStreetOne": "367 Main St.",
+      "locationCrossStreetTwo": "123 1st Ave.",
       "pricePerLog": "1",
-      "pricePerHalfCord": "2",
-      "pricePerFullCord": "3",
+      "pricePerHalfCord": "40",
+      "pricePerFullCord": "80",
       "sellerDelivers": false,
       "readyToSell": true,
       "id": 2
@@ -156,65 +149,43 @@
       "locationCrossStreetOne": "123 Main Street",
       "locationCrossStreetTwo": "456 Cross Street",
       "pricePerLog": "1",
-      "pricePerHalfCord": "2",
-      "pricePerFullCord": "4",
+      "pricePerHalfCord": "20",
+      "pricePerFullCord": "40",
       "sellerDelivers": false,
       "readyToSell": false
     },
     {
       "id": 5,
       "userId": 21,
-      "locationCrossStreetOne": "sdgf",
-      "locationCrossStreetTwo": "erte",
+      "locationCrossStreetOne": "3890 Devonshire Ct.",
+      "locationCrossStreetTwo": "1300 70 S",
       "pricePerLog": "1",
-      "pricePerHalfCord": "3",
-      "pricePerFullCord": "6",
+      "pricePerHalfCord": "30",
+      "pricePerFullCord": "60",
       "sellerDelivers": false,
       "readyToSell": true
     },
     {
       "userId": 23,
-      "locationCrossStreetOne": "sdfgds",
-      "locationCrossStreetTwo": "sdfg",
+      "locationCrossStreetOne": "Old Hickory Blvd",
+      "locationCrossStreetTwo": "Lebanon Pike",
       "pricePerLog": "1",
-      "pricePerHalfCord": "2",
-      "pricePerFullCord": "3",
+      "pricePerHalfCord": "50",
+      "pricePerFullCord": "100",
       "sellerDelivers": true,
       "readyToSell": true,
       "id": 6
     },
     {
-      "userId": 24,
-      "locationCrossStreetOne": "sdfg",
-      "locationCrossStreetTwo": "adsfg",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "2",
-      "pricePerFullCord": "3",
-      "sellerDelivers": true,
-      "readyToSell": true,
-      "id": 7
-    },
-    {
       "userId": 25,
-      "locationCrossStreetOne": "sdfgsg",
-      "locationCrossStreetTwo": "sdfgdsf",
+      "locationCrossStreetOne": "3205 Hillmeade Ct.",
+      "locationCrossStreetTwo": "West End Ave.",
       "pricePerLog": "2",
-      "pricePerHalfCord": "4",
-      "pricePerFullCord": "8",
+      "pricePerHalfCord": "40",
+      "pricePerFullCord": "80",
       "sellerDelivers": false,
       "readyToSell": false,
       "id": 8
-    },
-    {
-      "userId": 29,
-      "locationCrossStreetOne": "qerw",
-      "locationCrossStreetTwo": "dfsdf",
-      "pricePerLog": "2",
-      "pricePerHalfCord": "4",
-      "pricePerFullCord": "8",
-      "sellerDelivers": false,
-      "readyToSell": false,
-      "id": 9
     }
   ],
   "favorites": [
@@ -260,13 +231,63 @@
     },
     {
       "favoriterId": 22,
-      "favoritedId": 17,
-      "id": 27
-    },
-    {
-      "favoriterId": 22,
       "favoritedId": 21,
       "id": 28
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 17,
+      "id": 30
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 16,
+      "id": 31
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 17,
+      "id": 32
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 21,
+      "id": 33
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 23,
+      "id": 34
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 24,
+      "id": 35
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 25,
+      "id": 36
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 29,
+      "id": 37
+    },
+    {
+      "favoriterId": 31,
+      "favoritedId": 16,
+      "id": 38
+    },
+    {
+      "favoriterId": 31,
+      "favoritedId": 17,
+      "id": 39
+    },
+    {
+      "favoriterId": 31,
+      "favoritedId": 29,
+      "id": 40
     }
   ],
   "cities": [

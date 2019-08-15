@@ -117,6 +117,7 @@ class ProfileEditForm extends Component {
     };
     this.props
       .updateUser(editedBuyer)
+      .then(alert("Your profile has been updated"))
       .then(() => this.props.history.push("/sellers"));
   };
 
@@ -144,6 +145,7 @@ class ProfileEditForm extends Component {
     };
     this.props
       .editSeller(editedSeller, editedBuyer)
+      .then(alert("Your profile has been updated"))
       .then(() => this.props.history.push("/buyers"));
   };
 
@@ -151,14 +153,14 @@ class ProfileEditForm extends Component {
   render() {
     if (this.state.userSeller === false) {
       return (
-        <Form>
-          <FormText color="dark">
-            <h2>Edit your buyer profile</h2>
+        <Form className="form">
+          <FormText color="light">
+            <h2>Edit your burner profile</h2>
           </FormText>
           <FormGroup>
-            <Label for="edit-user-name" color="dark">
+            <FormText className="edit-user-name" color="light">
               User Name
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -169,10 +171,10 @@ class ProfileEditForm extends Component {
               onChange={this.handleFieldChange}
             />
           </FormGroup>
-          <FormGroup>
-            <Label for="edit-user-phonenumber" color="dark">
+          <FormGroup color="light">
+            <FormText className="edit-user-phonenumber" color="light">
               Phone Number
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -185,7 +187,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city-select" color="dark" />
+            <Label className="city-select" color="light" />
             <select
               type="select"
               name="city-select"
@@ -202,10 +204,10 @@ class ProfileEditForm extends Component {
             </select>
           </FormGroup>
           <FormGroup tag="fieldset">
-            <legend>Do you currently need wood?</legend>
+            <FormText color="light">Do you currently need wood?</FormText>
           </FormGroup>
           <FormGroup check>
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="yes"
@@ -214,10 +216,10 @@ class ProfileEditForm extends Component {
                 onChange={this.handleUserNeedsWoodChange}
               />
               Yes
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="no"
@@ -226,42 +228,37 @@ class ProfileEditForm extends Component {
                 onChange={this.handleUserNeedsWoodChange}
               />
               No
-            </Label>
+            </FormText>
           </FormGroup>
-          <FormGroup>
-            <Label for="profile-photo">Profile Photo (optional)</Label>
-            <Input
-              type="file"
-              name="file"
-              id="profile-photo"
-              onChange={this.handleFieldChange}
-            />
-          </FormGroup>
+          <div className="edit-btns">
           <Button
+          size="md"
             type="submit"
             onClick={this.updateBuyerProfile}
             className="btn btn-primary"
           >
-            Update Buyer Profile
-          </Button>
+            Edit Your Profile
+          </Button>{' '}
           <Button
-            onClick={() => this.props.deleteUserProfile(this.state.userId)}
+          size="md"
+            onClick={() => {if (window.confirm('Are you sure you wish to delete your profile?'))this.props.deleteUserProfile(this.state.userId)}}
             className="btn btn-primary"
           >
             Delete Profile
           </Button>
+          </div>
         </Form>
       );
     } else {
       return (
-        <Form>
-          <FormText color="dark">
-            <h2>Edit your seller profile</h2>
+        <Form className="form">
+          <FormText color="light">
+            <h2>Edit your chopper profile</h2>
           </FormText>
           <FormGroup>
-            <Label for="edit-user-name" color="dark">
+            <FormText className="edit-user-name" color="light">
               User Name
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -273,9 +270,9 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-user-phonenumber" color="dark">
+            <FormText className="edit-user-phonenumber" color="light">
               Phone Number
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -288,7 +285,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city-select" color="dark" />
+            <FormText className="city-select" color="light" />
             <select
               type="select"
               name="city-select"
@@ -305,9 +302,9 @@ class ProfileEditForm extends Component {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label for="edit-location-one" color="dark">
+            <FormText className="edit-location-one" color="light">
               Location you sell your wood
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -332,7 +329,7 @@ class ProfileEditForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="edit-price-per-log" color="dark">
+            <FormText className="edit-price-per-log" color="light">
               Price Per Log
               <Input
                 type="number"
@@ -344,8 +341,8 @@ class ProfileEditForm extends Component {
                 value={this.state.pricePerLog}
                 onChange={this.handleFieldChange}
               />
-            </Label>
-            <Label for="edit-price-per-halfcord" color="dark">
+            </FormText>
+            <FormText className="edit-price-per-halfcord" color="light">
               Price Per Half Cord
               <Input
                 type="number"
@@ -357,8 +354,8 @@ class ProfileEditForm extends Component {
                 value={this.state.pricePerHalfCord}
                 onChange={this.handleFieldChange}
               />
-            </Label>
-            <Label for="edit-price-per-fullcord" color="dark">
+            </FormText>
+            <FormText className="edit-price-per-fullcord" color="light">
               Price Per Full Cord
               <Input
                 type="number"
@@ -370,11 +367,11 @@ class ProfileEditForm extends Component {
                 value={this.state.pricePerFullCord}
                 onChange={this.handleFieldChange}
               />
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <legend>Do you have wood ready to sell?</legend>
-            <Label check>
+            <FormText color="light">Do you have wood ready to sell?</FormText>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="yes"
@@ -383,10 +380,10 @@ class ProfileEditForm extends Component {
                 onChange={this.handleUserReadyToSellChange}
               />
               Yes
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="no"
@@ -395,11 +392,11 @@ class ProfileEditForm extends Component {
                 onChange={this.handleUserReadyToSellChange}
               />
               No
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <legend>Do you deliver?</legend>
-            <Label check>
+            <FormText color="light">Do you deliver?</FormText>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="yes"
@@ -408,9 +405,9 @@ class ProfileEditForm extends Component {
                 onChange={this.handleUserWillDeliverChange}
               />
               Yes
-            </Label>
+            </FormText>
             <FormGroup />
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="no"
@@ -419,26 +416,17 @@ class ProfileEditForm extends Component {
                 onChange={this.handleUserWillDeliverChange}
               />
               No
-            </Label>
-          </FormGroup>
-          <FormGroup>
-            <Label for="profile-photo">Profile Photo (optional)</Label>
-            <Input
-              type="file"
-              name="file"
-              id="profile-photo"
-              onChange={this.handleFieldChange}
-            />
+            </FormText>
           </FormGroup>
           <Button
             type="submit"
             onClick={this.updateSellerProfile}
             className="btn btn-primary"
           >
-            Edit Seller Profile
-          </Button>
+            Edit Your Profile
+          </Button>{' '}
           <Button
-            onClick={() => {this.props.deleteSellerProfile(this.state.sellerProfileId)}}
+            onClick={() => {if (window.confirm('Are you sure you wish to delete your profile?')) this.props.deleteSellerProfile(this.state.sellerProfileId)}}
             className="btn btn-primary"
           >
             Delete Profile
