@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import SellerProfileManager from "../../modules/SellerProfileManager";
 import UserManager from "../../modules/UserManager";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Input, FormText } from "reactstrap";
 
 let currentUser = sessionStorage.getItem("userId");
 class ProfileForm extends Component {
@@ -135,17 +135,17 @@ class ProfileForm extends Component {
   render() {
     if (this.state.userSeller === false) {
       return (
-        <Form>
-          <FormText color="dark">
+        <Form className="form">
+          <FormText color="light">
             <h2>Buyer Profile Form</h2>
           </FormText>
-          <FormText color="dark">
+          <FormText color="light">
             <h2>Please create your profile</h2>
           </FormText>
           <FormGroup>
-            <Label className="edit-user-name" color="dark">
+            <FormText className="edit-user-name" color="light">
               User Name
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -157,9 +157,9 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="edit-user-phonenumber" color="dark">
+            <FormText className="edit-user-phonenumber" color="light">
               Phone Number
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -172,9 +172,9 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="city-select" color="dark">
+            <FormText className="city-select" color="light">
 
-            </Label>
+            </FormText>
             <select
               type="select"
               name="city-select"
@@ -191,10 +191,10 @@ class ProfileForm extends Component {
             </select>
           </FormGroup>
           <FormGroup tag="fieldset">
-            <legend>Do you currently need wood?</legend>
+            <FormText color="light">Do you currently need wood?</FormText>
           </FormGroup>
           <FormGroup check>
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="yes"
@@ -203,10 +203,10 @@ class ProfileForm extends Component {
                 onChange={this.handleUserNeedsWoodChange}
               />
               Yes
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="no"
@@ -215,10 +215,11 @@ class ProfileForm extends Component {
                 onChange={this.handleUserNeedsWoodChange}
               />
               No
-            </Label>
+            </FormText>
           </FormGroup>
-
+            <div className="edit-btns">
           <Button
+
             type="submit"
             onClick={this.updateBuyerProfile}
             className="btn btn-primary"
@@ -226,22 +227,23 @@ class ProfileForm extends Component {
           >
             Create Buyer Profile
           </Button>
+          </div>
 
         </Form>
       );
     } else {
       return (
-        <Form>
-          <FormText color="dark">
+        <Form className="form">
+          <FormText color="light">
             <h2>Seller Profile Form</h2>
           </FormText>
-          <FormText color="dark">
+          <FormText color="light">
             <h2>Please create your profile</h2>
           </FormText>
           <FormGroup>
-            <Label className="edit-user-name" color="dark">
+            <FormText className="edit-user-name" color="light">
               User Name
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -253,9 +255,9 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="edit-user-phonenumber" color="dark">
+            <FormText className="edit-user-phonenumber" color="light">
               Phone Number
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -267,7 +269,7 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="city-select" color="dark" />
+            <FormText className="city-select" color="light" />
             <select
               type="select"
               name="city-select"
@@ -283,9 +285,9 @@ class ProfileForm extends Component {
             </select>
           </FormGroup>
           <FormGroup>
-            <Label className="edit-location-one" color="dark">
+            <FormText className="edit-location-one" color="light">
               Location you sell your wood
-            </Label>
+            </FormText>
             <Input
               type="text"
               required
@@ -308,7 +310,7 @@ class ProfileForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label className="edit-price-per-log" color="dark">
+            <FormText className="edit-price-per-log" color="light">
               Price Per Log
               <Input
                 type="number"
@@ -319,8 +321,8 @@ class ProfileForm extends Component {
                 placeholder="$0.00"
                 onChange={this.handleFieldChange}
               />
-            </Label>
-            <Label className="edit-price-per-halfcord" color="dark">
+            </FormText>
+            <FormText className="edit-price-per-halfcord" color="light">
               Price Per Half Cord
               <Input
                 type="number"
@@ -331,8 +333,8 @@ class ProfileForm extends Component {
                 placeholder="$0.00"
                 onChange={this.handleFieldChange}
               />
-            </Label>
-            <Label className="edit-price-per-fullcord" color="dark">
+            </FormText>
+            <FormText className="edit-price-per-fullcord" color="light">
               Price Per Full Cord
               <Input
                 type="number"
@@ -343,11 +345,11 @@ class ProfileForm extends Component {
                 placeholder="$0.00"
                 onChange={this.handleFieldChange}
               />
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <legend>Do you have wood ready to sell?</legend>
-            <Label check>
+            <FormText color="light">Do you have wood ready to sell?</FormText>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="yes"
@@ -356,10 +358,10 @@ class ProfileForm extends Component {
                 onChange={this.handleUserReadyToSell}
               />
               Yes
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="no"
@@ -367,11 +369,11 @@ class ProfileForm extends Component {
                 onChange={this.handleUserReadyToSell}
               />
               No
-            </Label>
+            </FormText>
           </FormGroup>
           <FormGroup check>
-            <legend>Do you deliver?</legend>
-            <Label check>
+            <FormText color="light">Do you deliver?</FormText>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="yes"
@@ -379,9 +381,9 @@ class ProfileForm extends Component {
                 onChange={this.handleUserWillDeliverChange}
               />
               Yes
-            </Label>
+            </FormText>
             <FormGroup />
-            <Label check>
+            <FormText color="light">
               <Input
                 type="radio"
                 id="no"
@@ -389,7 +391,7 @@ class ProfileForm extends Component {
                 onChange={this.handleUserWillDeliverChange}
               />
               No
-            </Label>
+            </FormText>
           </FormGroup>
           <Button
             type="submit"

@@ -30,7 +30,7 @@ export default class FavoriteBuyerCard extends Component {
     return (
         <Row form>
         <Col lg={{ size: "auto", offset: 4 }}>
-          <Card key={this.props.user.id} className="card">
+          <Card key={this.props.user.id} className="card" color="secondary">
             <CardBody className="favorite-card-body">
 
               <CardTitle className="favorite-card-title">

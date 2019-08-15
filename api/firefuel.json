@@ -129,6 +129,32 @@
       "userSeller": false,
       "userNeedsWood": true,
       "cityId": 14
+    },
+    {
+      "id": 33,
+      "username": "Blake H",
+      "password": "blake",
+      "phoneNumber": "564-987-8542",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 30
+    },
+    {
+      "id": 34,
+      "username": "Chad",
+      "password": "chad",
+      "phoneNumber": "584-987-3254",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 10
+    },
+    {
+      "id": 35,
+      "username": "Sandy",
+      "password": "sandy",
+      "phoneNumber": "652-654-9874",
+      "userSeller": true,
+      "cityId": 31
     }
   ],
   "sellerProfiles": [
@@ -186,6 +212,17 @@
       "sellerDelivers": false,
       "readyToSell": false,
       "id": 8
+    },
+    {
+      "userId": 35,
+      "locationCrossStreetOne": "3109 Highway 100",
+      "locationCrossStreetTwo": "Natchez Trace",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "50",
+      "pricePerFullCord": "100",
+      "sellerDelivers": false,
+      "readyToSell": true,
+      "id": 9
     }
   ],
   "favorites": [
@@ -288,6 +325,11 @@
       "favoriterId": 31,
       "favoritedId": 29,
       "id": 40
+    },
+    {
+      "favoriterId": 35,
+      "favoritedId": 10,
+      "id": 41
     }
   ],
   "cities": [
