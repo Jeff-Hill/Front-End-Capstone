@@ -74,7 +74,7 @@ class Registration extends Component {
     return (
       <Row form>
         <Col lg={{ size: "auto", offset: 4 }}>
-          <Card color="warning" className="container RegisterForm">
+          <Card color="warning" className="authentication-card">
             <CardBody>
               <CardTitle className="h3 mb-3 font-weight-normal">
                 Welcome to FireFuel Please Register
@@ -109,7 +109,7 @@ class Registration extends Component {
                 </CardText>
               </CardTitle>
             </CardBody>
-            <CardText>
+            <CardText className="authentication-btns">
               <Label htmlFor="inputUsername">Username</Label>
               <Input
                 onChange={this.handleFieldChange}
@@ -120,7 +120,7 @@ class Registration extends Component {
                 autoFocus=""
               />
             </CardText>
-            <CardText>
+            <CardText className="authentication-btns">
               <Label htmlFor="inputPassword">Password</Label>
               <Input
                 onChange={this.handleFieldChange}
@@ -131,14 +131,15 @@ class Registration extends Component {
               />
             </CardText>
 
-            <ButtonGroup size="sm">
+            <ButtonGroup>
               <CardBody>
                 <Button
+                size="lg"
                   color="danger"
                   className="reg-link"
                   onClick={this.saveNewUser}
                   type="submit"
-                  style={{ color: "black" }}
+                  style={{ color: "white" }}
                 >
                   Register
                 </Button>
@@ -149,8 +150,8 @@ class Registration extends Component {
                 </Label>
               </CardBody>
               <CardBody>
-                <Button color="danger" className="reg-link">
-                  <Link to="/login" style={{ color: "black" }}>
+                <Button size="lg" color="danger" className="reg-link">
+                  <Link to="/login" style={{ color: "white" }}>
                     Login
                   </Link>
                 </Button>

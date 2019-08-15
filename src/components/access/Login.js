@@ -57,14 +57,14 @@ class Login extends Component {
     return (
       <Row form>
       <Col lg={{ size: "auto", offset: 4 }}>
-      <Card  color="warning">
+      <Card  className="authentication-card" color="warning">
 
         <CardBody className="h2 mb-3 font-weight-normal">
           Welcome Back to FireFuel Please Login
         </CardBody>
 
 
-          <CardText>
+          <CardText className="authentication-btns">
         <Label htmlFor="inputUsername">Username</Label>
 
         <Input
@@ -76,7 +76,7 @@ class Login extends Component {
           autoFocus=""
         />
         </CardText>
-        <CardText>
+        <CardText className="authentication-btns">
         <Label htmlFor="inputPassword">Password</Label>
         <Input
           onChange={this.handleFieldChange}
@@ -88,7 +88,7 @@ class Login extends Component {
         </CardText>
 
 
-        <Button type="submit" onClick={this.handleLogin}>Login</Button>
+        <Button className="authentication-btns" type="submit" onClick={this.handleLogin} color="danger">Login</Button>
       </Card>
       </Col>
       </Row>

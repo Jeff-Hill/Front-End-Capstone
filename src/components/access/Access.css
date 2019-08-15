@@ -4,3 +4,11 @@
 
     background-color: #474545;
    } */
+
+   .authentication-card {
+       margin: 100px
+   }
+
+   .authentication-btns {
+       font-size: 20px
+   }

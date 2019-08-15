@@ -32,11 +32,11 @@ export default class BuyerCard extends Component {
       //  <Row noGutters>
       //   <Col sm="3">
 
-          <Card key={this.props.userBuyer.id} className="card">
+          <Card key={this.props.userBuyer.id} className="card" color="secondary">
             <CardBody className="card-body">
                 <img src={fire} className="icon--fire" alt="fire-icon" size="xs"/>
               <CardTitle className="card-title">
-                <h4>Name: {this.props.user.username}</h4>
+                <h5>Name: {this.props.user.username}</h5>
                 <h5>City: {this.props.city.cityName}</h5>
                 <h5>Phone #: {this.props.user.phoneNumber}</h5>
                 <h5>I need wood: {this.userNeedsWood()}</h5>

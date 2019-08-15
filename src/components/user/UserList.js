@@ -31,14 +31,14 @@ export default class UserList extends Component {
     if (window.location.pathname === "/buyers") {
       return (
         <section>
+            <div className="filter">
           <FormGroup className="city-select text-center" color="dark">
             <strong>
-              <h4>
+              <h3>
                 Filter buyers by your city or if they are looking for wood
-              </h4>
+              </h3>
             </strong>
           </FormGroup>
-            <div className="filter">
           <Form inline>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                 <select
@@ -87,10 +87,10 @@ export default class UserList extends Component {
 
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                 <Button
+                  color="danger"
                   type="submit"
                   onClick={this.props.resetBuyerFilter}
                   className="btn btn-primary"
-                  color="secondary"
                 >
                   Reset Filter
                 </Button>
@@ -178,6 +178,7 @@ export default class UserList extends Component {
               </FormGroup>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                 <Button
+                  color="danger"
                   type="submit"
                   onClick={this.props.resetSellerFilter}
                   className="btn btn-primary"
