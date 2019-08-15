@@ -51,7 +51,7 @@ export default class FavoriteBuyerCard extends Component {
                      onChange={() => this.props.deleteNewFavorite(this.props.user.id)}
 
                     />
-                    Remove from Favorites
+                   <h5> Remove from Favorites</h5>
                   </Label>
                 </FormGroup>
               </CardTitle>

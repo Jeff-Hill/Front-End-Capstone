@@ -294,6 +294,41 @@
       "favoriterId": 26,
       "favoritedId": 17,
       "id": 30
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 16,
+      "id": 31
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 17,
+      "id": 32
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 21,
+      "id": 33
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 23,
+      "id": 34
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 24,
+      "id": 35
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 25,
+      "id": 36
+    },
+    {
+      "favoriterId": 26,
+      "favoritedId": 29,
+      "id": 37
     }
   ],
   "cities": [

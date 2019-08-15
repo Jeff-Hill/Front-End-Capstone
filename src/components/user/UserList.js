@@ -32,11 +32,11 @@ export default class UserList extends Component {
     if (window.location.pathname === "/buyers") {
       return (
         <section >
-          <div className="filter">
           <FormGroup className="city-select text-center" color="dark">
             <strong><h4>Filter buyers by your city or if they are looking for wood</h4></strong>
           </FormGroup>
         <Form inline>
+          <div className="filter">
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <select
               type="select"
@@ -53,9 +53,15 @@ export default class UserList extends Component {
               ))}
             </select>
           </FormGroup>
+          </div>
+          <div className="filter">
+
+                </div>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <h4>Buyers that need wood?</h4>
-
+            </FormGroup>
+                <div className="filter">
+                  <FormGroup>
             <Label check>
               <Input
                 type="radio"
@@ -78,6 +84,8 @@ export default class UserList extends Component {
               No
             </Label>
           </FormGroup>
+          </div>
+          <div className="filter">
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Button
             type="submit"
@@ -88,8 +96,8 @@ export default class UserList extends Component {
             Reset Filter
           </Button>
           </FormGroup>
-          </Form>
           </div>
+          </Form>
 
 
 
