@@ -241,7 +241,7 @@ class ProfileEditForm extends Component {
           </Button>{' '}
           <Button
           size="md"
-            onClick={() => this.props.deleteUserProfile(this.state.userId)}
+            onClick={() => {if (window.confirm('Are you sure you wish to delete your profile?'))this.props.deleteUserProfile(this.state.userId)}}
             className="btn btn-primary"
           >
             Delete Profile
@@ -426,7 +426,7 @@ class ProfileEditForm extends Component {
             Edit Your Profile
           </Button>{' '}
           <Button
-            onClick={() => {this.props.deleteSellerProfile(this.state.sellerProfileId)}}
+            onClick={() => {if (window.confirm('Are you sure you wish to delete your profile?')) this.props.deleteSellerProfile(this.state.sellerProfileId)}}
             className="btn btn-primary"
           >
             Delete Profile

@@ -70,29 +70,12 @@
       "cityId": 28
     },
     {
-      "id": 22,
-      "username": "Andy T",
-      "password": "andy",
-      "phoneNumber": "654-987-6231",
-      "userSeller": false,
-      "userNeedsWood": true,
-      "cityId": 2
-    },
-    {
       "id": 23,
       "username": "Jackson",
       "password": "jackson",
       "phoneNumber": "564-987-9874",
       "userSeller": true,
       "cityId": 2
-    },
-    {
-      "id": 24,
-      "username": "Joe",
-      "password": "joe",
-      "phoneNumber": "654-987-8974",
-      "userSeller": true,
-      "cityId": 3
     },
     {
       "id": 25,
@@ -130,14 +113,6 @@
       "cityId": 6
     },
     {
-      "id": 29,
-      "username": "Randy T",
-      "password": "randy",
-      "phoneNumber": "654-987-9874",
-      "userSeller": true,
-      "cityId": 5
-    },
-    {
       "id": 30,
       "username": "Mandy Y",
       "password": "mandy",
@@ -145,15 +120,6 @@
       "userSeller": false,
       "userNeedsWood": true,
       "cityId": 14
-    },
-    {
-      "id": 31,
-      "username": "Billy K",
-      "password": "billy",
-      "phoneNumber": "564-587-9852",
-      "userSeller": false,
-      "userNeedsWood": true,
-      "cityId": 28
     },
     {
       "id": 32,
@@ -211,17 +177,6 @@
       "id": 6
     },
     {
-      "userId": 24,
-      "locationCrossStreetOne": "Plus Park Blvd",
-      "locationCrossStreetTwo": "Murfreesboro Pike",
-      "pricePerLog": "1",
-      "pricePerHalfCord": "40",
-      "pricePerFullCord": "80",
-      "sellerDelivers": true,
-      "readyToSell": true,
-      "id": 7
-    },
-    {
       "userId": 25,
       "locationCrossStreetOne": "3205 Hillmeade Ct.",
       "locationCrossStreetTwo": "West End Ave.",
@@ -231,17 +186,6 @@
       "sellerDelivers": false,
       "readyToSell": false,
       "id": 8
-    },
-    {
-      "userId": 29,
-      "locationCrossStreetOne": "1235 Shenandoah Ct.",
-      "locationCrossStreetTwo": "Bald Eagle Drive",
-      "pricePerLog": "2",
-      "pricePerHalfCord": "60",
-      "pricePerFullCord": "120",
-      "sellerDelivers": false,
-      "readyToSell": false,
-      "id": 9
     }
   ],
   "favorites": [

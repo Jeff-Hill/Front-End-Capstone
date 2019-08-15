@@ -35,7 +35,7 @@ export default class UserList extends Component {
           <FormGroup className="city-select text-center" color="dark">
             <strong>
               <h3>
-                Filter buyers by your city or if they are looking for wood
+                Filter burners by your city or if they are looking for wood
               </h3>
             </strong>
           </FormGroup>
@@ -58,7 +58,7 @@ export default class UserList extends Component {
               </FormGroup>
 
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-              <h4>Buyers that need wood?</h4>
+              <h4>Burners that need wood?</h4>
             </FormGroup>
 
               <FormGroup>
@@ -152,7 +152,7 @@ export default class UserList extends Component {
               </FormGroup>
 
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <h5>Sellers that deliver?</h5>
+                <h5>Choppers that deliver?</h5>
 
                 <Label>
                   <Input
