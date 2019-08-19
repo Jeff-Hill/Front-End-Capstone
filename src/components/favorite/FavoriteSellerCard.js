@@ -21,7 +21,7 @@ export default class FavoriteSellerCard extends Component {
 
     render() {
         return (
-            <Card key={this.props.user.id} className="card">
+            <Card key={this.props.user.id} className="card" color="secondary ">
                 <CardBody className="seller-card-body">
                     <CardTitle className="seller-card-title">
                         <img src={ax} className="icon--ax" alt="ax-icon" />

@@ -28,8 +28,7 @@ export default class FavoriteBuyerCard extends Component {
 
   render() {
     return (
-        <Row form>
-        <Col lg={{ size: "auto", offset: 4 }}>
+
           <Card key={this.props.user.id} className="card" color="secondary">
             <CardBody className="favorite-card-body">
 
@@ -57,8 +56,7 @@ export default class FavoriteBuyerCard extends Component {
               </CardTitle>
             </CardBody>
           </Card>
-        </Col>
-      </Row>
+
     );
   }
 }

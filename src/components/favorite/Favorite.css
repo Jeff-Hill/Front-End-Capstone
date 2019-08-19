@@ -1,0 +1,17 @@
+.users {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+
+
+}
+
+.filter {
+    margin: 10px;
+    padding: 30px;
+}
+
+.card {
+    width: 20rem;
+    color: white
+}

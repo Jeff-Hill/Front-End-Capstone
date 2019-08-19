@@ -44,7 +44,7 @@ export default class SellerCard extends Component {
                     //   value={this.state.userNeedsWood}
                     onChange={(event) => this.props.saveNewFavoritePair(this.props.user, event)}
                     />
-                    <h5>Favorite This User</h5>
+                    <h5>Favorite This Chopper</h5>
                   </Label>
                 </FormGroup>
                     </CardTitle>
