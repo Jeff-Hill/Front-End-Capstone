@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to FireFuel
 
-## Available Scripts
+Firefuel is an app to connect sellers of firewood with potential customers. The goal is to allow a seller to have access to customers and not have to sit on the side of the road waiting for a customer to pull over and purchase wood from them.
 
-In the project directory, you can run:
+**New User**
+As a first time user you will be asked to register as a Burner(Buyer) or Chopper(Seller).
 
-### `npm start`
+Depending on which type of user you register as you will be directed to a profile creation page where you can enter in your personal details.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Once your profile is created you will be directed to a page listing the users of the opposite type i.e. A burner(buyer) will be directed to the list of choppers(sellers).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The filter will allow you to find people located in your city. Choppers can be filtered by whether they are willing to deliver their wood and Burners can be filterd by whether they are looking to purchase wood.
 
-### `npm test`
+Checking the Favorite box will populate that user into your Favorites list
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To Edit your profile click on the Edit Profile button in the upper right corner.
 
-### `npm run build`
+You can Delete your profile from the Edit profile page as well.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Test and Develop
+You will need to NPM will to get the app to run on your machine. Fork this repository and clone it down
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Locally run:
+npm install
+in the root directory of the project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once everything has installed and updated:
+npm start
+You will also need json-server for the mock database. This can be installed via npm as well. From the root directory navigate to the directory titled api and execute the following to serve up the data for the app utilizing JSON server:
 
-### `npm run eject`
+json-server -p 5002 -w firefuel.json
+The database has been popluated with some starter data.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can also register a new user to get a blank canvas to work with if you wish to manipulate data.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Please feel free to contact me regarding any questions or concerns.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
