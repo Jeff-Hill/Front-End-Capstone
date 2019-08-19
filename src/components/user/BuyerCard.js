@@ -50,7 +50,7 @@ export default class BuyerCard extends Component {
                     //   value={this.state.userNeedsWood}
                       onChange={(event) => this.props.saveNewFavoritePair(this.props.user, event)}
                     />
-                   <h5> Favorite This User</h5>
+                   <h5> Favorite This Burner</h5>
                   </Label>
                 </FormGroup>
               </CardTitle>

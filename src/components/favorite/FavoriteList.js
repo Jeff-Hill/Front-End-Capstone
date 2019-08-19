@@ -25,9 +25,11 @@ export default class FavoriteList extends Component {
       console.log("favorites rendered");
       return (
         <section >
-          <FormGroup className="filter city-select text-center" color="dark">
+          <div className="filter">
+          <FormGroup className="city-select text-center" color="dark">
           <h4>Your Favorite Burners</h4>
           </FormGroup>
+          </div>
           <div className="users">
           {this.props.userFavorites.map(user =>
             this.props.cities
@@ -47,9 +49,11 @@ export default class FavoriteList extends Component {
     } else {
       return (
         <section >
-          <FormGroup className="filter city-select text-center" color="dark">
+          <div className="filter">
+          <FormGroup className="city-select text-center" color="dark">
           <h1>Your Favorite Choppers</h1>
           </FormGroup>
+          </div>
           <div className="users">
           {this.props.userFavorites.map(user =>
             this.props.sellerProfiles
