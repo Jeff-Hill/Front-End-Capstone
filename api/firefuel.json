@@ -164,6 +164,14 @@
       "userSeller": false,
       "userNeedsWood": false,
       "cityId": 29
+    },
+    {
+      "id": 37,
+      "username": "William",
+      "password": "willian",
+      "phoneNumber": "564-987-8542",
+      "userSeller": true,
+      "cityId": 8
     }
   ],
   "sellerProfiles": [
@@ -232,6 +240,17 @@
       "sellerDelivers": false,
       "readyToSell": true,
       "id": 9
+    },
+    {
+      "userId": 37,
+      "locationCrossStreetOne": "Nolensville Pike",
+      "locationCrossStreetTwo": "Woodycrest St.",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "40",
+      "pricePerFullCord": "80",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 10
     }
   ],
   "favorites": [
@@ -414,6 +433,11 @@
       "favoriterId": 37,
       "favoritedId": 26,
       "id": 57
+    },
+    {
+      "favoriterId": 37,
+      "favoritedId": 10,
+      "id": 58
     }
   ],
   "cities": [
