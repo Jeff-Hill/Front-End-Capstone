@@ -89,10 +89,10 @@
       "id": 26,
       "username": "Jeff H",
       "password": "jeff",
-      "phoneNumber": "564-654-9874",
+      "phoneNumber": "561-262-1469",
       "userSeller": false,
-      "userNeedsWood": false,
-      "cityId": 11
+      "userNeedsWood": true,
+      "cityId": 26
     },
     {
       "id": 27,
@@ -164,6 +164,31 @@
       "userSeller": false,
       "userNeedsWood": false,
       "cityId": 29
+    },
+    {
+      "id": 37,
+      "username": "Jan C",
+      "password": "jan",
+      "phoneNumber": "652-654-9852",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 12
+    },
+    {
+      "id": 38,
+      "username": "Maxwell W",
+      "password": "max",
+      "phoneNumber": "561-987-5421",
+      "userSeller": true,
+      "cityId": 8
+    },
+    {
+      "id": 39,
+      "username": "Jim M",
+      "password": "jim",
+      "phoneNumber": "615-654-9852",
+      "userSeller": true,
+      "cityId": 10
     }
   ],
   "sellerProfiles": [
@@ -232,6 +257,28 @@
       "sellerDelivers": false,
       "readyToSell": true,
       "id": 9
+    },
+    {
+      "userId": 38,
+      "locationCrossStreetOne": "West End",
+      "locationCrossStreetTwo": "Old Hickory Blvd",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "20",
+      "pricePerFullCord": "40",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 10
+    },
+    {
+      "userId": 39,
+      "locationCrossStreetOne": "West End Ave",
+      "locationCrossStreetTwo": "Old Hickory Blvd",
+      "pricePerLog": "1",
+      "pricePerHalfCord": "20",
+      "pricePerFullCord": "40",
+      "sellerDelivers": true,
+      "readyToSell": true,
+      "id": 11
     }
   ],
   "favorites": [
@@ -414,6 +461,31 @@
       "favoriterId": 37,
       "favoritedId": 26,
       "id": 57
+    },
+    {
+      "favoriterId": 37,
+      "favoritedId": 17,
+      "id": 58
+    },
+    {
+      "favoriterId": 39,
+      "favoritedId": 10,
+      "id": 59
+    },
+    {
+      "favoriterId": 39,
+      "favoritedId": 13,
+      "id": 60
+    },
+    {
+      "favoriterId": 40,
+      "favoritedId": 13,
+      "id": 61
+    },
+    {
+      "favoriterId": 40,
+      "favoritedId": 18,
+      "id": 62
     }
   ],
   "cities": [

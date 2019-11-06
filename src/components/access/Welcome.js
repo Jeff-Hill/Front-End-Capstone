@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import {withRouter} from 'react-router-dom'
 import "./Access.css"
-import fireplace from "./fireplace.jpg"
-import { DiCodeigniter } from "react-icons/di";
-import { Col, Row, Card, CardImg, CardText, CardBody, Container,
-    CardTitle, CardSubtitle, Button, ButtonGroup, Media, Image, Jumbotron} from 'reactstrap';
+import { Col, Row, Card, CardText, CardBody,
+    CardTitle, Button} from 'reactstrap';
 
 class Welcome extends Component {
     render() {
@@ -22,7 +20,6 @@ class Welcome extends Component {
                     </CardBody>
                     </Row>
                     <Row>
-                    {/* <ButtonGroup vertical size="lg"> */}
                         <div className="authentication-btns">
                     <CardBody>
                         <CardText>New User</CardText>
@@ -33,7 +30,6 @@ class Welcome extends Component {
                         <Button color="danger"><Link to="/login" style={{ color: 'black' }}>Login</Link></Button>
                     </CardBody>
                     </div>
-                    {/* </ButtonGroup> */}
                     </Row>
                 </Card>
                 </Col>

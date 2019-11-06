@@ -1,10 +1,8 @@
-import React, { Component } from "react";
+import {React,  Component } from "react";
 import { withRouter } from "react-router-dom";
-import SellerProfileManager from "../../modules/SellerProfileManager";
 import UserManager from "../../modules/UserManager";
 import { Button, Form, FormGroup, Input, FormText } from "reactstrap";
 
-let currentUser = sessionStorage.getItem("userId");
 class ProfileForm extends Component {
   state = {
     username: "",

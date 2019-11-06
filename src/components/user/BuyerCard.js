@@ -4,18 +4,11 @@ import "./User.css"
 
 import {
   Card,
-  CardImg,
-  CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
-  Button,
-  Row,
-  Col,
   FormGroup,
   Label,
   Input,
-  Container
 } from "reactstrap";
 
 export default class BuyerCard extends Component {
@@ -28,9 +21,6 @@ export default class BuyerCard extends Component {
   };
   render() {
     return (
-      // <Container fluid>
-      //  <Row noGutters>
-      //   <Col sm="3">
 
           <Card key={this.props.userBuyer.id} className="card" color="secondary">
             <CardBody className="card-body">
@@ -47,7 +37,6 @@ export default class BuyerCard extends Component {
                       id="favorite"
                       name="favorite"
 
-                    //   value={this.state.userNeedsWood}
                       onChange={(event) => this.props.saveNewFavoritePair(this.props.user, event)}
                     />
                    <h5> Favorite This Burner</h5>
@@ -57,9 +46,7 @@ export default class BuyerCard extends Component {
             </CardBody>
           </Card>
 
-      //   </Col>
-      // </Row>
-      // </Container>
+
     );
   }
 }

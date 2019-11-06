@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import SellerProfileManager from "../../modules/SellerProfileManager";
 import UserManager from "../../modules/UserManager";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 

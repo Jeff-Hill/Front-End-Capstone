@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./NavBar.css"
-
-import { Col, Row, Card, CardImg, CardText, CardBody, Container,
-    CardTitle, CardSubtitle, Button, ButtonGroup, Media, Image,
-    Jumbotron, Form, FormGroup, Label, Input, FormText, NavLink} from 'reactstrap';
+import { Button} from 'reactstrap';
 
 
 export default class NavBar extends Component {

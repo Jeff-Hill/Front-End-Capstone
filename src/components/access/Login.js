@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import LoginManager from "../../modules/LoginManager";
-import { Col, Row, Card, CardImg, CardText, CardBody, Container,
-  CardTitle, CardSubtitle, Button, ButtonGroup, Media, Image,
-  Jumbotron, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+import { Col, Row, Card, CardText, CardBody, Button, Label, Input} from 'reactstrap';
 
 class Login extends Component {
   // Set initial state

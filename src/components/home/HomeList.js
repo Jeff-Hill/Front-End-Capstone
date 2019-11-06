@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import BuyerCard from "../user/BuyerCard";
 import SellerCard from "../user/SellerCard";
 import UserManager from "../../modules/UserManager"
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Row, Col, Label, Container, FormGroup, Input } from 'reactstrap';
+
 
 export default class HomeList extends Component {
 

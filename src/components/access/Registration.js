@@ -12,7 +12,6 @@ import {
   Label,
   Input,
   ButtonGroup,
-  CardSubtitle
 } from "reactstrap";
 
 let currentUser = sessionStorage.getItem("userId");
@@ -31,8 +30,7 @@ class Registration extends Component {
       .then(newUser => {
         sessionStorage.setItem("userId", newUser.id);
         this.props.isUserLoggedIn();
-        //   console.log(newUser.id)
-        //   alert("Thank you for Registering")
+
       })
       .then(() =>
         this.props.history.push(`/profile/${sessionStorage.getItem("userId")}`)

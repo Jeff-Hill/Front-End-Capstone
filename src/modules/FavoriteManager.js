@@ -20,10 +20,6 @@ export default {
 
   },
 
-  remove(resource, id) {
-        return APIManager.delete(resource, id)
-
-  },
 
   put(resource, resourceObjId) {
     return APIManager.put(resource, resourceObjId)

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route} from "react-router-dom";
 import { withRouter } from "react-router";
-import HomeList from "./home/HomeList";
 import UserList from "./user/UserList";
 import FavoriteList from "./favorite/FavoriteList";
 import UserManager from "../modules/UserManager";
@@ -24,7 +23,6 @@ class ApplicationViews extends Component {
   };
 
   componentDidMount() {
-    console.log("component mounted");
     const newState = {};
     UserManager.getAll("users")
       .then(users => (newState.users = users))
@@ -221,13 +219,11 @@ class ApplicationViews extends Component {
       promises.push(UserManager.get("users", userFavorites[i].favoritedId));
     }
     Promise.all(promises).then(allFavoritedUsers => {
-      console.log("all favorited users", allFavoritedUsers);
       this.setState({ allFavoritedUsers: allFavoritedUsers });
     });
   };
 
   render() {
-    console.log("App Views rendered");
     return (
       <React.Fragment>
         <Route
@@ -294,9 +290,7 @@ class ApplicationViews extends Component {
           exact
           path="/profile/:userId(\d+)"
           render={props => {
-            let user = this.state.users.find(
-              user => user.id === parseInt(props.match.params.userId)
-            );
+
             return (
               <ProfileForm
                 {...props}

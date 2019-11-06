@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ax from "./ax.jpg"
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Card, CardBody,
+    CardTitle, FormGroup, Label, Input } from 'reactstrap';
 
 export default class SellerCard extends Component {
     userReadyToSell = () => {
@@ -41,7 +41,6 @@ export default class SellerCard extends Component {
                       type="checkbox"
                       id="favorite"
                       name="favorite"
-                    //   value={this.state.userNeedsWood}
                     onChange={(event) => this.props.saveNewFavoritePair(this.props.user, event)}
                     />
                     <h5>Favorite This Chopper</h5>

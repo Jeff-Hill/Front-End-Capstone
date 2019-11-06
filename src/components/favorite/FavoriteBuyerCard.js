@@ -3,14 +3,8 @@ import fire from "./fire.jpg"
 
 import {
   Card,
-  CardImg,
-  CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
-  Button,
-  Row,
-  Col,
   FormGroup,
   Label,
   Input
@@ -46,7 +40,6 @@ export default class FavoriteBuyerCard extends Component {
                       name="favorite"
 
 
-                    //   value={this.state.userNeedsWood}
                      onChange={() => this.props.deleteNewFavorite(this.props.user.id)}
 
                     />

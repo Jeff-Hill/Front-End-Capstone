@@ -16,11 +16,9 @@ export default class FireFuel extends Component {
   // This function's purpose is to re-render this component after a user is registered or logged in
   // which will re-run the isAuthenticated and show the navbar on the Home page
   isUserLoggedIn = () => {
-    console.log("checking to see if user is logged in")
     if (this.isAuthenticated()) {
       this.setState({ isLoggedIn: true });
     } else {
-      console.log("no user")
         this.setState({isLoggedIn: false})
     }
   };
@@ -29,7 +27,6 @@ export default class FireFuel extends Component {
   // if session storage has a user logged in and to render the appropriate components.
 
   render() {
-    console.log("render of the main page");
     if (this.state.isLoggedIn) {
       return (
         <React.Fragment>
@@ -38,7 +35,6 @@ export default class FireFuel extends Component {
         </React.Fragment>
       );
     } else {
-      console.log("IT'S FALSE")
       return (
         <React.Fragment>
 {/* Pass in the isUserLoggedFunction so it can be used by the child components of Authentication */}
