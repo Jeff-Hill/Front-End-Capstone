@@ -1,4 +1,4 @@
-import {React,  Component } from "react";
+import React,  {Component } from "react";
 import { withRouter } from "react-router-dom";
 import UserManager from "../../modules/UserManager";
 import { Button, Form, FormGroup, Input, FormText } from "reactstrap";

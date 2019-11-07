@@ -189,6 +189,15 @@
       "phoneNumber": "615-654-9852",
       "userSeller": true,
       "cityId": 10
+    },
+    {
+      "id": 40,
+      "username": "miles",
+      "password": "miles",
+      "phoneNumber": "615-875-2358",
+      "userSeller": false,
+      "userNeedsWood": true,
+      "cityId": 7
     }
   ],
   "sellerProfiles": [
